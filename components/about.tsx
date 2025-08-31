@@ -1,9 +1,8 @@
-// components/AboutSection.tsx
 "use client";
 import { motion, useInView } from "framer-motion";
-import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 import { useRef } from "react";
+import React from "react";
 
 export function AboutSection() {
   const ref = useRef(null);
@@ -103,14 +102,13 @@ export function AboutSection() {
             {/* The "LEARN MORE" button */}
             <motion.a
               href="#"
-              className="hidden lg:flex w-fit items-center gap-2 py-3 px-6 rounded-full border border-white/30 hover:bg-white hover:text-black transition-colors duration-300 group"
+              className="hidden lg:flex w-32 h-32 rounded-full border border-white/30 items-center justify-center hover:bg-white hover:text-black transition-colors duration-300 group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="text-sm font-medium uppercase tracking-wider">
+              <span className="text-xs font-medium uppercase tracking-wider text-center leading-tight">
                 LEARN MORE
               </span>
-              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </motion.a>
           </motion.div>
         </div>
@@ -124,29 +122,11 @@ export function AboutSection() {
           transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
           className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] rounded-[3rem] shadow-2xl overflow-hidden"
         >
-          <Image
-            src="/chris-profile.jpg"
+          <img
+            src="/assets/images/profile.jpeg"
             alt="Profile of Chris"
-            layout="fill"
-            objectFit="cover"
-            className="rounded-[3rem]"
+            className="rounded-[3rem] w-full h-full object-cover"
           />
-          {/* Circular "LEARN MORE" button on top of the image */}
-          <motion.a
-            href="#"
-            className="absolute right-8 top-1/2 transform -translate-y-1/2 hidden lg:flex size-32 rounded-full border border-white/30 items-center justify-center hover:bg-white hover:text-black transition-colors duration-300"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={
-              isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
-            }
-            transition={{ duration: 0.6, delay: 1.2 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <span className="text-xs font-medium uppercase tracking-wider text-center leading-tight">
-              LEARN MORE
-            </span>
-          </motion.a>
         </motion.div>
       </div>
 

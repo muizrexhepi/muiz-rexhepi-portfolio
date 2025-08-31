@@ -130,19 +130,41 @@ export const Navbar = ({ currentPath }: NavbarProps) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="absolute bottom-8 flex gap-8 text-sm font-light tracking-wider"
+              className="absolute bottom-8 flex gap-8 text-sm font-light tracking-wider uppercase"
             >
-              <Link href="#" className="hover:text-gray-300 transition-colors">
-                EM
+              <Link
+                href="mailto:mail@muizrexhepi.com"
+                className="hover:text-gray-300 transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                Email
               </Link>
-              <Link href="#" className="hover:text-gray-300 transition-colors">
-                IG
+              <Link
+                href="https://www.instagram.com/muiz.rexhepi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gray-300 transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                Instagram
               </Link>
-              <Link href="#" className="hover:text-gray-300 transition-colors">
-                TW
+              <Link
+                href="https://x.com/muiz_rexhepi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gray-300 transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                Twitter
               </Link>
-              <Link href="#" className="hover:text-gray-300 transition-colors">
-                IN
+              <Link
+                href="https://www.linkedin.com/in/muiz-rexhepi/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-gray-300 transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                LinkedIn
               </Link>
             </motion.div>
           </motion.div>
@@ -170,27 +192,35 @@ interface NavLinkProps {
   isActive?: boolean;
 }
 
-// NavLink Component
 const NavLink = ({ href, children, isActive = false }: NavLinkProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <Link href={href} className="relative overflow-hidden">
+    <Link
+      href={href}
+      className="relative overflow-hidden"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <motion.div
-        className="relative px-4 py-1 text-lg tracking-tight rounded-full transition-colors duration-300"
-        whileHover={{
-          backgroundColor: "#ffffff",
-        }}
-        animate={{
-          backgroundColor: isActive ? "#ffffff" : "rgba(0,0,0,0)",
-        }}
+        className="relative px-4 py-1 text-lg tracking-tight rounded-full"
+        initial={false}
       >
+        {/* Background */}
+        <motion.div
+          className="absolute inset-0 bg-white rounded-full"
+          initial={{ scale: 0 }}
+          animate={{ scale: isActive || isHovered ? 1 : 0 }}
+          transition={{ duration: 0.2, ease: "easeInOut" }}
+        />
+
+        {/* Text */}
         <motion.span
           className="relative z-10"
           animate={{
-            color: isActive ? "#000000" : "#ffffff",
+            color: isActive || isHovered ? "#000000" : "#ffffff",
           }}
-          whileHover={{
-            color: "#000000",
-          }}
+          transition={{ duration: 0.2, ease: "easeInOut" }}
         >
           {children}
         </motion.span>

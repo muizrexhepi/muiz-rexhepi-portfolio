@@ -117,8 +117,8 @@ export function ProjectsSection() {
       </nav>
 
       {/* Main Content */}
-      <div className="w-full mx-auto pt-32 relative z-10">
-        <div className="flex flex-col-reverse md:flex-row items-start justify-between mb-16 md:mb-20 px-4 md:px-0">
+      <div className="w-full mx-auto relative z-10">
+        <div className="flex flex-col-reverse gap-6 md:flex-row items-start justify-between mb-12 md:mb-20">
           <motion.a
             href="/projects"
             className="w-32 h-32 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 group mb-8 md:mb-0"
@@ -166,7 +166,7 @@ export function ProjectsSection() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 md:mt-20 px-4 md:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 md:mt-20">
           {favoriteProjects.slice(0, 3).map((project, index) => (
             <motion.div
               key={index}

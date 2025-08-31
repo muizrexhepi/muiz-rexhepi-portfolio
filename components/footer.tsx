@@ -106,7 +106,7 @@ export function FooterSection() {
           </motion.div>
           <div className="flex gap-6 md:gap-8 uppercase text-sm md:text-base font-light text-white">
             <motion.a
-              href="https://instagram.com"
+              href="https://www.instagram.com/muiz.rexhepi"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors"
@@ -117,7 +117,7 @@ export function FooterSection() {
               Instagram
             </motion.a>
             <motion.a
-              href="https://twitter.com"
+              href="https://x.com/muiz_rexhepi"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors"
@@ -128,7 +128,7 @@ export function FooterSection() {
               Twitter
             </motion.a>
             <motion.a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/muiz-rexhepi/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors"
