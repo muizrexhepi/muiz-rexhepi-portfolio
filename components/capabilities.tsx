@@ -234,7 +234,7 @@ export function CapabilitiesSection() {
   return (
     <>
       <div className="pb-12">
-        <div className="flex items-center gap-2 text-white text-sm font-light tracking-wide">
+        <div className="flex items-center gap-2 text-white text-sm font-light tracking-wide border-t lg:border-none pt-3">
           <span>04/04</span>
           <span>—</span>
           <span>CAPABILITIES</span>

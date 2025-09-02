@@ -57,6 +57,37 @@ export function HeroSection() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Description animation variants (same as AboutSection)
+  const descriptionText =
+    "FULL-STACK WEB & APP DEVELOPER PASSIONATE ABOUT CREATING FAST, CLEAN, AND SCALABLE DIGITAL SOLUTIONS.";
+
+  const descriptionWords = descriptionText.split(" ");
+
+  const descriptionContainerVariants = {
+    hidden: { opacity: 1 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08, // Stagger delay between each word
+        delayChildren: 1.1, // Start after the title animations
+      },
+    },
+  };
+
+  const descriptionWordVariants = {
+    hidden: {
+      y: "100%", // Start from below the container
+      opacity: 0,
+    },
+    visible: {
+      y: "0%", // Move to normal position
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  };
+
   // Desktop Title Spans
   const DesktopTitle = () => (
     <>
@@ -90,14 +121,27 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 1.1 }}
         >
           <div className="max-w-xs xl:max-w-sm mt-4">
-            <p className="text-sm xl:text-base text-left font-light leading-tight tracking-tight text-white uppercase">
-              <span className="ml-12">
-                {" "}
-                PASSIONATE ABOUT CREATING SCALABLE WEB APPLICATIONS AND
-              </span>{" "}
-              ELEGANT CODE SOLUTIONS, BRINGING IDEAS TO LIFE THROUGH FULL-STACK
-              DEVELOPMENT.
-            </p>
+            <div className="overflow-hidden">
+              <motion.p
+                className="text-sm xl:text-base text-left font-light leading-tight tracking-tight text-white uppercase"
+                variants={descriptionContainerVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                <span className="ml-12"> </span>
+                {descriptionWords.map((word, index) => (
+                  <span key={index} className="inline-block overflow-hidden">
+                    <motion.span
+                      className="inline-block"
+                      variants={descriptionWordVariants}
+                    >
+                      {word}
+                      {index < descriptionWords.length - 1 && "\u00A0"}
+                    </motion.span>
+                  </span>
+                ))}
+              </motion.p>
+            </div>
           </div>
         </motion.div>
       </motion.span>
@@ -144,7 +188,7 @@ export function HeroSection() {
   );
 
   return (
-    <section className="min-h-screen text-white w-full flex flex-col relative">
+    <section className="lg:min-h-screen text-white w-full bg-transparent flex flex-col relative">
       <style>{marqueeStyles}</style>
 
       {/* Date and Scroll Indicator */}
@@ -160,11 +204,11 @@ export function HeroSection() {
       </div>
 
       {/* Main Hero Content */}
-      <div className="flex-1 flex items-start py-36 sm:py-24 justify-center relative">
+      <div className="flex-1 flex items-start py-24 sm:py-12 justify-center relative">
         <div className="w-full max-w-7xl mx-auto">
           <div className="text-center mb-8 md:mb-16">
             <div className="relative">
-              <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light leading-[0.9] tracking-tight mb-8 md:mb-12">
+              <h1 className="text-7xl lg:text-8xl xl:text-9xl font-light leading-[0.9] tracking-tight mb-8 md:mb-12">
                 {isClient && isMobile ? (
                   <MobileMarqueeTitle />
                 ) : (
@@ -172,49 +216,53 @@ export function HeroSection() {
                 )}
               </h1>
 
-              {/* Description Text - Mobile/Tablet Centered - This div will only be visible on desktop */}
-              <motion.div
-                className="flex justify-center lg:hidden mt-14"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.1 }}
-              >
-                <div className="max-w-sm md:max-w-md ">
-                  <p className="text-base font-light text-left leading-tight tracking-wide text-white uppercase">
-                    PASSIONATE ABOUT CREATING SCALABLE WEB APPLICATIONS AND
-                    ELEGANT CODE SOLUTIONS, BRINGING IDEAS TO LIFE THROUGH
-                    FULL-STACK DEVELOPMENT.
-                  </p>
+              {/* Description Text - Mobile/Tablet Centered with Animated Words */}
+              <div className="flex justify-center lg:hidden mt-14">
+                <div className="max-w-sm md:max-w-md">
+                  <div className="overflow-hidden">
+                    <motion.p
+                      className="text-lg font-light text-left leading-tight tracking-tight text-white uppercase"
+                      variants={descriptionContainerVariants}
+                      initial="hidden"
+                      animate="visible"
+                    >
+                      {" "}
+                      <span className="invisible">rand</span>
+                      {descriptionWords.map((word, index) => (
+                        <span
+                          key={index}
+                          className="inline-block overflow-hidden"
+                        >
+                          <motion.span
+                            className="inline-block"
+                            variants={descriptionWordVariants}
+                          >
+                            {word}
+                            {index < descriptionWords.length - 1 && "\u00A0"}
+                          </motion.span>
+                        </span>
+                      ))}
+                    </motion.p>
+                  </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
+          <motion.a
+            href="#about"
+            className="relative left-1/2 transform -translate-x-1/2 size-28 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 group"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 2 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <div>
+              <ArrowDown size={42} />
+            </div>
+          </motion.a>
         </div>
       </div>
-
-      {/* Scroll Down Button */}
-      <motion.a
-        href="#about"
-        className="absolute bottom-32 sm:bottom-46 left-1/2 transform -translate-x-1/2 size-28 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 group"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.3 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <motion.div
-          animate={{
-            y: [0, -10, 0],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <ArrowDown size={42} />
-        </motion.div>
-      </motion.a>
     </section>
   );
 }
