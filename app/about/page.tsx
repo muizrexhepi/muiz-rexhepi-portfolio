@@ -101,7 +101,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="text-white min-h-screen px-5 sm:px-12 lg:px-18">
       <style>{borderAnimationStyles}</style>
 
       <section ref={heroRef} className="min-h-screen relative overflow-hidden">
@@ -114,10 +114,10 @@ export default function AboutPage() {
             animate={heroInView ? "visible" : "hidden"}
           >
             <Image
-              src="/assets/images/profile.PNG"
+              src="/assets/images/profile.jpeg"
               fill
               alt="Muiz Rexhepi"
-              className="w-full h-full object-cover rounded-3xl"
+              className="w-full h-full object-cover rounded-3xl object-top"
             />
           </motion.div>
         </div>
@@ -171,7 +171,7 @@ export default function AboutPage() {
           className={`border-line ${aboutInView ? "animate" : ""} mb-20`}
         ></div>
 
-        <div className="max-w-7xl mx-auto">
+        <div className="mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-2">
               <motion.div
@@ -225,7 +225,7 @@ export default function AboutPage() {
           className={`border-line ${brandsInView ? "animate" : ""} mb-20`}
         ></div>
 
-        <div className="max-w-7xl mx-auto">
+        <div className=" mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-2">
               <motion.div
@@ -272,7 +272,7 @@ export default function AboutPage() {
           className={`border-line ${skillsInView ? "animate" : ""} mb-20`}
         ></div>
 
-        <div className="max-w-7xl mx-auto">
+        <div className=" mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-2">
               <motion.div

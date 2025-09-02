@@ -232,7 +232,7 @@ export function CapabilitiesSection() {
   }, [isInView]); // Depend on isInView to trigger Matter.js setup
 
   return (
-    <>
+    <div className=" px-5 sm:px-12 lg:px-18">
       <div className="pb-12">
         <div className="flex items-center gap-2 text-white text-sm font-light tracking-wide border-t lg:border-none pt-3">
           <span>04/04</span>
@@ -297,6 +297,6 @@ export function CapabilitiesSection() {
           ))}
         </motion.div>
       </section>
-    </>
+    </div>
   );
 }

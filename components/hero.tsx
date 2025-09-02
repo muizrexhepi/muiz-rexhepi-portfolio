@@ -192,7 +192,7 @@ export function HeroSection() {
       <style>{marqueeStyles}</style>
 
       {/* Date and Scroll Indicator */}
-      <div className="pt-12">
+      <div className="pt-12 px-5 sm:px-12 lg:px-18">
         <motion.p
           className="text-xs md:text-sm font-light tracking-wider text-white"
           initial={{ opacity: 0, y: 20 }}
@@ -217,7 +217,7 @@ export function HeroSection() {
               </h1>
 
               {/* Description Text - Mobile/Tablet Centered with Animated Words */}
-              <div className="flex justify-center lg:hidden mt-14">
+              <div className="flex justify-center lg:hidden mt-14 px-5 sm:px-12 lg:px-18">
                 <div className="max-w-sm md:max-w-md">
                   <div className="overflow-hidden">
                     <motion.p

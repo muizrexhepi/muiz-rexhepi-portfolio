@@ -33,7 +33,7 @@ export function FooterSection() {
 
   return (
     <footer
-      className="relative min-h-screen w-full flex flex-col justify-end text-white pt-20 pb-8 overflow-hidden"
+      className="relative min-h-screen w-full flex flex-col justify-end text-white pt-20 pb-8 overflow-hidden px-5 sm:px-12 lg:px-18"
       id="contact"
     >
       {/* Background grain texture */}

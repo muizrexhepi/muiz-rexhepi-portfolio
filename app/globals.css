@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Root variables */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -13,7 +12,6 @@
   --font-sans: var(--font-sans);
 }
 
-/* Dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -21,7 +19,6 @@
   }
 }
 
-/* Base styles */
 html,
 body {
   background: var(--background);
@@ -29,11 +26,112 @@ body {
   font-family: var(--font-sans);
   scroll-behavior: smooth;
   overflow: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
+}
+
+.animated-gradient-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+
+  background: linear-gradient(
+    -45deg,
+    #000000 0%,
+    #0a0a0a 20%,
+    #111111 40%,
+    #080808 60%,
+    #0d0d0d 80%,
+    #050505 100%
+  );
+
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(15, 15, 15, 0.3) 25%,
+    rgba(20, 20, 20, 0.4) 50%,
+    rgba(12, 12, 12, 0.3) 75%,
+    transparent 100%
+  );
+
+  background-size: 300% 300%;
+  animation: gradient-shift-reverse 20s ease infinite;
+  opacity: 0.7;
+}
+
+@keyframes gradient-shift-reverse {
+  0% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+.animated-gradient-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      ellipse at top left,
+      rgba(18, 18, 18, 0.2) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at bottom right,
+      rgba(22, 22, 22, 0.15) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at center,
+      rgba(14, 14, 14, 0.1) 0%,
+      transparent 70%
+    );
+
+  animation: floating-orbs 25s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+@keyframes floating-orbs {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.8;
+  }
+  33% {
+    transform: translateY(-20px) rotate(120deg);
+    opacity: 0.6;
+  }
+  66% {
+    transform: translateY(10px) rotate(240deg);
+    opacity: 0.9;
+  }
 }

@@ -13,7 +13,7 @@ export const Navbar = ({ currentPath }: NavbarProps) => {
 
   return (
     <>
-      <nav className="relative flex justify-between items-center py-4 sm:py-8 lg:py-12">
+      <nav className="relative flex justify-between items-center py-4 sm:py-8 lg:py-12 px-5 sm:px-12 lg:px-18">
         <Logo />
 
         {/* Desktop Navigation */}

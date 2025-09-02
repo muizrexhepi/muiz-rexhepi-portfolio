@@ -21,9 +21,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body
-        className={`${poppins.variable} font-sans antialiased px-5 sm:px-12 lg:px-18`}
-      >
+      <body className={`${poppins.variable} font-sans antialiased`}>
         <Navbar />
         {children}
         <FooterSection />
