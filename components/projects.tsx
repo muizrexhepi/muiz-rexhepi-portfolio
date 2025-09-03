@@ -6,9 +6,7 @@ import Link from "next/link";
 import { projects, Project } from "@/data/projects";
 import { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode } from "swiper/modules";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
 
