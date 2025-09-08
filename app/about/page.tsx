@@ -104,7 +104,10 @@ export default function AboutPage() {
     <div className="text-white min-h-screen px-5 sm:px-12 lg:px-18">
       <style>{borderAnimationStyles}</style>
 
-      <section ref={heroRef} className="min-h-screen relative overflow-hidden">
+      <section
+        ref={heroRef}
+        className="h-[60dvh] lg:min-h-screen relative overflow-hidden"
+      >
         {/* Full Screen Image Container */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
@@ -200,7 +203,7 @@ export default function AboutPage() {
                   variants={textUpVariants}
                 >
                   Hello, my name's Muiz, I'm a Macedonia-born developer based in
-                  Skopje. I'm currently working as a senior full-stack developer
+                  Tetovo. I'm currently working as a senior full-stack developer
                   creating scalable applications, websites, and digital
                   experiences.
                 </motion.h2>

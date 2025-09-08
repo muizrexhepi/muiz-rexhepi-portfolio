@@ -24,6 +24,7 @@ export const projects: Project[] = [
     role: "Website Redesign",
     url: "https://app.asknoel.ai",
     favorite: false,
+    image: "/assets/images/asknoel.png",
   },
   {
     name: "GoBusly",

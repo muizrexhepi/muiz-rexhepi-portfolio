@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { FooterSection } from "@/components/footer";
+import AnimatedBackground from "@/components/animated-gradient-background";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.variable} font-sans antialiased`}>
+        <AnimatedBackground />
         <Navbar />
         {children}
         <FooterSection />

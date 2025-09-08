@@ -57,7 +57,7 @@ export function FooterSection() {
           className="relative flex flex-grow flex-col items-center justify-center text-center p-8 border backdrop-blur-sm"
         >
           <motion.p
-            className="text-white text-xs md:text-sm uppercase tracking-widest font-light mb-4"
+            className="text-white text-sm md:text-base lg:text-xl uppercase tracking-widest font-light mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={contentInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -65,7 +65,7 @@ export function FooterSection() {
             GOT A PROJECT IN MIND?
           </motion.p>
           <motion.h2
-            className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight mb-12 md:mb-20"
+            className="text-5xl md:text-7xl lg:text-9xl font-light tracking-tight mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={contentInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -75,14 +75,14 @@ export function FooterSection() {
 
           <motion.a
             href="mailto:mail@muizrexhepi.com"
-            className="size-32 md:size-42 rounded-full border border-white/30 flex flex-col items-center justify-center p-4 text-center transition-colors duration-300 hover:bg-white hover:text-black group"
+            className="size-32 rounded-full border border-white/30 flex flex-col items-center justify-center p-4 text-center transition-colors duration-300 hover:bg-white hover:text-black group"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={contentInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.6 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="text-sm md:text-base font-medium uppercase leading-tight tracking-wider">
+            <span className="text-sm font-medium uppercase leading-[1.1em] tracking-wider">
               WRITE A
               <br />
               MESSAGE
@@ -104,7 +104,7 @@ export function FooterSection() {
               FEEL FREE TO CONNECT WITH ME ON SOCIAL
             </p>
           </motion.div>
-          <div className="flex gap-6 md:gap-8 uppercase text-sm md:text-base font-light text-white">
+          <div className="flex gap-6 md:gap-8 lg:gap-45 uppercase text-sm md:text-base font-light text-white">
             <motion.a
               href="https://www.instagram.com/muiz.rexhepi"
               target="_blank"
