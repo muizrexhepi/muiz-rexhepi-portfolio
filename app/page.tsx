@@ -1,5 +1,6 @@
 import { AboutSection } from "@/components/about";
 import { CapabilitiesSection } from "@/components/capabilities";
+import { FooterSection } from "@/components/footer";
 import { HeroSection } from "@/components/hero";
 import { ProjectsSection } from "@/components/projects";
 
@@ -11,7 +12,8 @@ export default function HomePage() {
         <AboutSection />
         <ProjectsSection />
         <CapabilitiesSection />
-      </div>
+      </div>{" "}
+      <FooterSection />
     </div>
   );
 }

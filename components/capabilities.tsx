@@ -1,4 +1,3 @@
-// components/CapabilitiesSection.tsx
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -28,7 +27,7 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.05, // Stagger delay for each item
+      staggerChildren: 0.05,
     },
   },
 };
@@ -52,6 +51,7 @@ export function CapabilitiesSection() {
   const engineRef = useRef<Matter.Engine | null>(null);
   const runnerRef = useRef<Matter.Runner | null>(null);
   const bodiesRef = useRef<Matter.Body[]>([]);
+  const [isInteracting, setIsInteracting] = useState(false);
 
   // Use useInView to detect when the container is in the viewport
   const isInView = useInView(containerRef, { once: true, amount: 0.2 });
@@ -72,6 +72,7 @@ export function CapabilitiesSection() {
       Composite,
       Mouse,
       MouseConstraint,
+      Events,
     } = Matter;
 
     const engine = Engine.create({
@@ -158,6 +159,15 @@ export function CapabilitiesSection() {
     });
     Composite.add(engine.world, mouseConstraint);
 
+    // Listen for mouse events to detect interaction
+    Events.on(mouseConstraint, "startdrag", () => {
+      setIsInteracting(true);
+    });
+
+    Events.on(mouseConstraint, "enddrag", () => {
+      setIsInteracting(false);
+    });
+
     const runner = Runner.create();
     runnerRef.current = runner;
     Runner.run(runner, engine);
@@ -167,7 +177,6 @@ export function CapabilitiesSection() {
       ballElements.forEach((el, i) => {
         const body = ballBodies[i];
         if (body) {
-          // Check if body exists to prevent errors
           el.style.transform = `translate(${
             body.position.x - el.offsetWidth / 2
           }px, ${body.position.y - el.offsetHeight / 2}px) rotate(${
@@ -229,10 +238,10 @@ export function CapabilitiesSection() {
       if (engineRef.current) Engine.clear(engineRef.current);
       if (render) Render.stop(render);
     };
-  }, [isInView]); // Depend on isInView to trigger Matter.js setup
+  }, [isInView]);
 
   return (
-    <div className=" px-5 sm:px-12 lg:px-18">
+    <div className="px-5 sm:px-12 lg:px-18">
       <div className="pb-12">
         <div className="flex items-center gap-2 text-white text-sm font-light tracking-wide border-t lg:border-none pt-3">
           <span>04/04</span>
@@ -264,23 +273,38 @@ export function CapabilitiesSection() {
 
         <motion.div
           ref={containerRef}
-          className="absolute inset-0 w-full h-[70vh] overflow-hidden border border-white/30 rounded-[3rem] cursor-grab active:cursor-grabbing"
+          className={`absolute inset-0 w-full h-[70vh] overflow-hidden border border-white/30 rounded-[3rem] ${
+            isInteracting ? "cursor-grabbing" : "cursor-grab"
+          }`}
+          style={{
+            // Allow scrolling when not interacting with physics objects
+            pointerEvents: isInteracting ? "none" : "auto",
+          }}
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
+          data-lenis-prevent={isInteracting} // Prevent Lenis scroll when dragging
         >
           <canvas
             ref={canvasRef}
-            className="absolute inset-0 w-full h-[70vh] z-0 pointer-events-none"
+            className="absolute inset-0 w-full h-[70vh] z-10"
+            style={{
+              // Canvas handles physics interactions
+              pointerEvents: "auto",
+            }}
           />
           {skills.map((skill, index) => (
             <motion.div
               key={index}
-              className={`skill-ball absolute pointer-events-auto size-24 md:size-48 rounded-full border border-white/30 flex items-center justify-center text-center p-4 transition-colors duration-300 ${
+              className={`skill-ball absolute z-20 size-24 md:size-48 rounded-full border border-white/30 flex items-center justify-center text-center p-4 transition-colors duration-300 ${
                 hoveredIndex === index
                   ? "bg-white text-black"
                   : "bg-transparent text-white"
               }`}
+              style={{
+                // Balls are interactive but don't block scrolling
+                pointerEvents: "none", // Let canvas handle physics
+              }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
               whileHover={{

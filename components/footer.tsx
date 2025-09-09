@@ -16,8 +16,6 @@ export function FooterSection() {
     margin: "-100px 0px",
   });
 
-  // Animation variants for the main content container
-  // This tells Framer Motion exactly what the "initial" and "docked" states should look like.
   const containerVariants = {
     initial: {
       borderColor: "rgba(255, 255, 255, 0)", // Fully transparent border

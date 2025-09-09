@@ -13,7 +13,7 @@ export const Navbar = ({ currentPath }: NavbarProps) => {
 
   return (
     <>
-      <nav className="relative flex justify-between items-center py-4 sm:py-8 lg:py-12 px-5 sm:px-12 lg:px-18">
+      <nav className="relative flex justify-between items-center py-4 sm:py-8 lg:py-12 px-5 sm:px-12 lg:px-18 z-[99]">
         <Logo />
 
         {/* Desktop Navigation */}
@@ -203,7 +203,9 @@ const NavLink = ({ href, children, isActive = false }: NavLinkProps) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <motion.div
-        className="relative px-4 py-1 text-lg tracking-tight rounded-full"
+        className={`relative px-4 py-1 text-lg tracking-tight rounded-full ${
+          isActive ? "border-2 border-white" : ""
+        }`} // <-- added border if active
         initial={false}
       >
         {/* Background */}
