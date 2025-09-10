@@ -15,7 +15,7 @@ export const projects: Project[] = [
     role: "Full Web App Development",
     url: "https://tvojpazar.vercel.app",
     favorite: true,
-    image: "/assets/images/tvojpazar.png", // Added image here
+    image: "/assets/images/tvojpazar.png",
   },
   {
     name: "AskNoel",
@@ -33,7 +33,7 @@ export const projects: Project[] = [
     role: "Full App Development + Brand Evolution",
     url: "https://gobusly.com",
     favorite: true,
-    image: "/assets/images/gobusly.png", // Added image here
+    image: "/assets/images/gobusly.png",
   },
   {
     name: "Hakbus",
@@ -58,7 +58,7 @@ export const projects: Project[] = [
     role: "Website Redesign",
     url: "https://insyllium.com",
     favorite: false,
-    image: "/insyllium-preview.jpg", // Added image here
+    image: "/insyllium-preview.jpg",
   },
   {
     name: "Insylink",
@@ -75,7 +75,7 @@ export const projects: Project[] = [
     role: "Branding + Web Design",
     url: "https://www.amgebäudereinigung.hamburg",
     favorite: true,
-    image: "/assets/images/am.png", // Added image here
+    image: "/assets/images/am.png",
   },
   {
     name: "Lans-Gr",

@@ -1,8 +1,6 @@
 "use client";
-import { motion, useInView } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
-import { useRef } from "react";
 
 const borderAnimationStyles = `
   .border-line {
@@ -27,48 +25,30 @@ const borderAnimationStyles = `
 `;
 
 export default function AboutPage() {
-  const heroRef = useRef(null);
-  const aboutRef = useRef(null);
-  const brandsRef = useRef(null);
-  const skillsRef = useRef(null);
-
-  const heroInView = useInView(heroRef, { once: true, amount: 0.2 });
-  const aboutInView = useInView(aboutRef, { once: true, amount: 0.3 });
-  const brandsInView = useInView(brandsRef, { once: true, amount: 0.3 });
-  const skillsInView = useInView(skillsRef, { once: true, amount: 0.3 });
-
-  // Animation variants
-  const imageVariants = {
+  const imageVariants: Variants = {
     hidden: { opacity: 0.3, scale: 1.1 },
     visible: {
       opacity: 1,
       scale: 1,
       transition: {
         duration: 1.2,
+        ease: "easeOut",
       },
     },
   };
 
-  const textUpVariants = {
+  const textUpVariants: Variants = {
     hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.8,
-      },
+      transition: { duration: 0.8, ease: "easeOut" },
     },
   };
 
-  const staggerContainer = {
-    hidden: { opacity: 1 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
-    },
+  const staggerContainer: Variants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
   };
 
   const brands = [
@@ -101,50 +81,48 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="text-white min-h-screen px-5 sm:px-12 lg:px-18">
+    <div className="text-white min-h-screen px-5 sm:px-12 lg:px-18 ">
       <style>{borderAnimationStyles}</style>
 
-      <section
-        ref={heroRef}
-        className="h-[60dvh] lg:min-h-screen relative overflow-hidden"
-      >
-        {/* Full Screen Image Container */}
+      {/* Hero Section */}
+      <section className="h-[75vh] lg:h-[85vh] relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
             className="w-full h-full"
             variants={imageVariants}
             initial="hidden"
-            animate={heroInView ? "visible" : "hidden"}
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
           >
             <Image
               src="/assets/images/profile.jpeg"
               fill
+              priority
               alt="Muiz Rexhepi"
               className="w-full h-full object-cover rounded-3xl object-top"
             />
           </motion.div>
         </div>
 
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-black/20 rounded-3xl"></div>
 
-        {/* MUIZ Text - Desktop: Bottom Center, Mobile: Bottom Left */}
         <motion.h1
           className="absolute bottom-8 md:bottom-12 left-4 md:left-1/2 md:-translate-x-1/2 text-8xl md:text-9xl lg:text-[12rem] font-light tracking-tight text-white z-10"
           variants={textUpVariants}
           initial="hidden"
-          animate={heroInView ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
           transition={{ delay: 0.6 }}
         >
           MUIZ
         </motion.h1>
 
-        {/* Description - Bottom Left */}
         <motion.div
-          className="absolute bottom-8 left-8 max-w-md z-10 hidden md:block"
+          className="absolute bottom-12 left-8 max-w-sm z-10 hidden md:block"
           variants={textUpVariants}
           initial="hidden"
-          animate={heroInView ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ delay: 0.8 }}
         >
           <p className="text-lg font-light text-white/90 leading-relaxed">
@@ -153,27 +131,24 @@ export default function AboutPage() {
           </p>
         </motion.div>
 
-        {/* Mobile Description */}
+        <motion.div
+          className="absolute bottom-24 left-5 right-5 z-10 md:hidden"
+          variants={textUpVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ delay: 0.8 }}
+        >
+          <p className="text-base font-light text-white/90 leading-relaxed">
+            The developer's role is like an architect who builds digital
+            experiences that connect and inspire.
+          </p>
+        </motion.div>
       </section>
-      <motion.div
-        className="z-10 md:hidden"
-        variants={textUpVariants}
-        initial="hidden"
-        animate={heroInView ? "visible" : "hidden"}
-        transition={{ delay: 0.8 }}
-      >
-        <p className="text-base font-light text-white/90 leading-relaxed">
-          The developer's role is like an architect who builds digital
-          experiences that connect and inspire.
-        </p>
-      </motion.div>
 
       {/* About Me Section */}
-      <section ref={aboutRef} className="md:py-20">
-        <div
-          className={`border-line ${aboutInView ? "animate" : ""} mb-20`}
-        ></div>
-
+      <section className="py-16 md:py-20">
+        <div className={`border-line animate mb-16 md:mb-20`}></div>
         <div className="mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-2">
@@ -181,7 +156,8 @@ export default function AboutPage() {
                 className="text-sm text-white/60 tracking-wider"
                 variants={textUpVariants}
                 initial="hidden"
-                animate={aboutInView ? "visible" : "hidden"}
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
               >
                 01/
                 <br />
@@ -190,12 +166,12 @@ export default function AboutPage() {
                 About me
               </motion.div>
             </div>
-
             <div className="lg:col-span-10">
               <motion.div
                 variants={staggerContainer}
                 initial="hidden"
-                animate={aboutInView ? "visible" : "hidden"}
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
                 className="space-y-8"
               >
                 <motion.h2
@@ -207,7 +183,6 @@ export default function AboutPage() {
                   creating scalable applications, websites, and digital
                   experiences.
                 </motion.h2>
-
                 <motion.p
                   className="text-xl lg:text-2xl font-light text-white/80 leading-relaxed max-w-4xl"
                   variants={textUpVariants}
@@ -223,19 +198,17 @@ export default function AboutPage() {
       </section>
 
       {/* Brands Section */}
-      <section ref={brandsRef} className="md:py-20">
-        <div
-          className={`border-line ${brandsInView ? "animate" : ""} mb-20`}
-        ></div>
-
-        <div className=" mx-auto">
+      <section className="py-16 md:py-20">
+        <div className={`border-line animate mb-16 md:mb-20`}></div>
+        <div className="mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-2">
               <motion.div
                 className="text-sm text-white/60 tracking-wider"
                 variants={textUpVariants}
                 initial="hidden"
-                animate={brandsInView ? "visible" : "hidden"}
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
               >
                 02/
                 <br />
@@ -246,12 +219,12 @@ export default function AboutPage() {
                 worked with
               </motion.div>
             </div>
-
             <div className="lg:col-span-10">
               <motion.div
                 variants={staggerContainer}
                 initial="hidden"
-                animate={brandsInView ? "visible" : "hidden"}
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
                 className="space-y-6"
               >
                 {brands.map((brand, index) => (
@@ -270,19 +243,17 @@ export default function AboutPage() {
       </section>
 
       {/* Skills Section */}
-      <section ref={skillsRef} className="md:py-20">
-        <div
-          className={`border-line ${skillsInView ? "animate" : ""} mb-20`}
-        ></div>
-
-        <div className=" mx-auto">
+      <section className="py-16 md:py-20">
+        <div className={`border-line animate mb-16 md:mb-20`}></div>
+        <div className="mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-2">
               <motion.div
                 className="text-sm text-white/60 tracking-wider"
                 variants={textUpVariants}
                 initial="hidden"
-                animate={skillsInView ? "visible" : "hidden"}
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
               >
                 03/
                 <br />
@@ -291,13 +262,13 @@ export default function AboutPage() {
                 Skills
               </motion.div>
             </div>
-
             <div className="lg:col-span-10">
               <motion.div
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6"
                 variants={staggerContainer}
                 initial="hidden"
-                animate={skillsInView ? "visible" : "hidden"}
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
               >
                 {skills.map((skill, index) => (
                   <motion.div

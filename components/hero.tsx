@@ -250,7 +250,7 @@ export function HeroSection() {
           </div>
           <motion.a
             href="#about"
-            className="relative left-1/2 transform -translate-x-1/2 size-28 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 group"
+            className="relative left-1/2 transform -translate-x-1/2 size-28 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-black group"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 2 }}
