@@ -6,6 +6,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useLenis } from "lenis/react";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper as SwiperType } from "swiper";
+
+import "swiper/css";
+import "swiper/css/free-mode";
 
 export default function ProjectsPage() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -15,9 +20,7 @@ export default function ProjectsPage() {
 
   const containerRef = useRef<HTMLDivElement>(null);
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const touchStartX = useRef<number>(0);
-  const touchStartY = useRef<number>(0);
-  const touchMoved = useRef<boolean>(false);
+  const swiperRef = useRef<SwiperType | null>(null);
   const lastScrollTime = useRef<number>(0);
   const router = useRouter();
   const lenis = useLenis();
@@ -32,13 +35,21 @@ export default function ProjectsPage() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Disable body scroll
+  // Disable body scroll for desktop only
   useEffect(() => {
-    if (lenis) {
-      lenis.stop();
+    if (!isMobile) {
+      if (lenis) {
+        lenis.stop();
+      }
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      if (lenis) {
+        lenis.start();
+      }
+      document.body.style.overflow = "auto";
+      document.documentElement.style.overflow = "auto";
     }
-    document.body.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden";
 
     return () => {
       if (lenis) {
@@ -47,22 +58,21 @@ export default function ProjectsPage() {
       document.body.style.overflow = "auto";
       document.documentElement.style.overflow = "auto";
     };
-  }, [lenis]);
+  }, [lenis, isMobile]);
 
-  // Smooth scroll to project
+  // Desktop scroll to project
   const scrollToProject = useCallback(
     (index: number) => {
-      if (!containerRef.current || isTransitioning || index === currentIndex)
+      if (
+        !containerRef.current ||
+        isTransitioning ||
+        index === currentIndex ||
+        isMobile
+      )
         return;
 
       setIsTransitioning(true);
       setCurrentIndex(index);
-
-      if (isMobile) {
-        // For mobile, just update the state - no scrolling needed
-        setTimeout(() => setIsTransitioning(false), 150);
-        return;
-      }
 
       const container = containerRef.current;
       const targetY = index * window.innerHeight;
@@ -91,7 +101,19 @@ export default function ProjectsPage() {
     [isTransitioning, currentIndex, isMobile]
   );
 
-  // Handle wheel events for desktop
+  // Mobile swiper slide change
+  const handleSlideChange = (swiper: SwiperType) => {
+    setCurrentIndex(swiper.activeIndex);
+  };
+
+  // Go to specific slide for mobile
+  const goToSlide = (index: number) => {
+    if (swiperRef.current && isMobile) {
+      swiperRef.current.slideTo(index);
+    }
+  };
+
+  // Handle wheel events for desktop only
   useEffect(() => {
     if (isMobile || !isLoaded) return;
 
@@ -148,80 +170,6 @@ export default function ProjectsPage() {
     };
   }, [currentIndex, isMobile, isLoaded, scrollToProject, isTransitioning]);
 
-  // Mobile touch handling - Fixed version
-  useEffect(() => {
-    if (!isMobile || !isLoaded) return;
-
-    const handleTouchStart = (e: TouchEvent): void => {
-      touchStartX.current = e.touches[0].clientX;
-      touchStartY.current = e.touches[0].clientY;
-      touchMoved.current = false;
-    };
-
-    const handleTouchMove = (e: TouchEvent): void => {
-      if (!touchMoved.current) {
-        const diffX = Math.abs(e.touches[0].clientX - touchStartX.current);
-        const diffY = Math.abs(e.touches[0].clientY - touchStartY.current);
-
-        // Only set touchMoved if there's significant movement
-        if (diffX > 10 || diffY > 10) {
-          touchMoved.current = true;
-        }
-      }
-    };
-
-    const handleTouchEnd = (e: TouchEvent): void => {
-      if (isTransitioning || !touchMoved.current) return;
-
-      const touchEndX = e.changedTouches[0].clientX;
-      const touchEndY = e.changedTouches[0].clientY;
-      const diffX = touchStartX.current - touchEndX;
-      const diffY = touchStartY.current - touchEndY;
-
-      // Require minimum swipe distance and prioritize vertical swipes
-      if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 80) {
-        e.preventDefault(); // Prevent default scroll behavior
-
-        const now = Date.now();
-        if (now - lastScrollTime.current < 600) return;
-        lastScrollTime.current = now;
-
-        if (diffY > 0) {
-          // Swipe up - next project
-          const nextIndex =
-            currentIndex === projects.length - 1 ? 0 : currentIndex + 1;
-          scrollToProject(nextIndex);
-        } else {
-          // Swipe down - previous project
-          const prevIndex =
-            currentIndex === 0 ? projects.length - 1 : currentIndex - 1;
-          scrollToProject(prevIndex);
-        }
-      }
-    };
-
-    const preventDefault = (e: TouchEvent) => {
-      e.preventDefault();
-    };
-
-    // Add listeners to the document for better touch handling
-    document.addEventListener("touchstart", handleTouchStart, {
-      passive: false,
-    });
-    document.addEventListener("touchmove", handleTouchMove, { passive: false });
-    document.addEventListener("touchend", handleTouchEnd, { passive: false });
-
-    // Prevent default scrolling behavior on the container
-    document.addEventListener("touchmove", preventDefault, { passive: false });
-
-    return () => {
-      document.removeEventListener("touchstart", handleTouchStart);
-      document.removeEventListener("touchmove", handleTouchMove);
-      document.removeEventListener("touchend", handleTouchEnd);
-      document.removeEventListener("touchmove", preventDefault);
-    };
-  }, [currentIndex, isMobile, isLoaded, scrollToProject, isTransitioning]);
-
   const createSlug = (name: string): string => {
     return name
       .toLowerCase()
@@ -257,12 +205,13 @@ export default function ProjectsPage() {
   }, [preloadImages]);
 
   return (
-    <div className="fixed inset-0 w-full h-full text-white overflow-hidden ">
+    <div className="fixed inset-0 w-full h-full text-white overflow-hidden">
       {isMobile ? (
-        // --- MOBILE LAYOUT (Updated with Next.js Image) ---
+        // --- MOBILE LAYOUT WITH SWIPER ---
         <div className="h-full flex flex-col pt-24">
+          {/* Mobile Navigation Dots */}
           <motion.div
-            className="flex justify-center gap-3 pb-8 px-4 shrink-0"
+            className="flex justify-center gap-3 pb-8 px-4 shrink-0 z-50"
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : -30 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -270,9 +219,8 @@ export default function ProjectsPage() {
             {projects.map((_, index: number) => (
               <motion.button
                 key={index}
-                onClick={() => scrollToProject(index)}
+                onClick={() => goToSlide(index)}
                 className="relative"
-                disabled={isTransitioning}
               >
                 <motion.div
                   className="h-0.5 rounded-full"
@@ -288,61 +236,82 @@ export default function ProjectsPage() {
               </motion.button>
             ))}
           </motion.div>
+
+          {/* Mobile Swiper */}
           <div className="flex-1 px-6 pb-8">
-            <motion.div
-              className="relative w-full h-full rounded-2xl overflow-hidden cursor-pointer"
-              onClick={() => handleProjectClick(projects[currentIndex])}
+            <Swiper
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+              }}
+              onSlideChange={handleSlideChange}
+              spaceBetween={20}
+              slidesPerView={1}
+              centeredSlides={true}
+              grabCursor={true}
+              touchRatio={1}
+              touchAngle={45}
+              threshold={10}
+              longSwipes={true}
+              longSwipesMs={300}
+              longSwipesRatio={0.5}
+              followFinger={true}
+              allowTouchMove={true}
+              className="w-full h-full"
             >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentIndex}
-                  className="relative w-full h-full"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  {projects[currentIndex].image ? (
-                    <Image
-                      src={projects[currentIndex].image}
-                      alt={projects[currentIndex].name}
-                      fill
-                      className="object-cover"
-                      priority={currentIndex === 0}
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      quality={85}
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                      <span className="text-xl font-light text-white/50">
-                        {projects[currentIndex].name}
-                      </span>
+              {projects.map((project, index) => (
+                <SwiperSlide key={index} className="w-full h-full">
+                  <motion.div
+                    className="relative w-full h-full rounded-2xl overflow-hidden cursor-pointer"
+                    onClick={() => handleProjectClick(project)}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {project.image ? (
+                      <Image
+                        src={project.image}
+                        alt={project.name}
+                        fill
+                        className="object-cover"
+                        priority={index <= 2}
+                        sizes="100vw"
+                        quality={85}
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                        <span className="text-xl font-light text-white/50">
+                          {project.name}
+                        </span>
+                      </div>
+                    )}
+
+                    {/* Mobile Project Info Overlay */}
+                    <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                      <div className="space-y-3">
+                        <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-white">
+                          {project.name}
+                        </h2>
+                        <p className="text-xs uppercase tracking-[0.25em] text-white/70">
+                          {project.role}
+                        </p>
+                        {project.favorite && (
+                          <div className="flex items-center gap-2 text-xs text-white/60">
+                            <div className="w-1 h-1 bg-white/60 rounded-full"></div>
+                            FEATURED
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  )}
-                  <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
-                    <div className="space-y-3">
-                      <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-white">
-                        {projects[currentIndex].name}
-                      </h2>
-                      <p className="text-xs uppercase tracking-[0.25em] text-white/70">
-                        {projects[currentIndex].role}
-                      </p>
-                      {projects[currentIndex].favorite && (
-                        <div className="flex items-center gap-2 text-xs text-white/60">
-                          <div className="w-1 h-1 bg-white/60 rounded-full"></div>
-                          FEATURED
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </motion.div>
+                  </motion.div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
       ) : (
-        // --- DESKTOP LAYOUT (Updated with Next.js Image) ---
+        // --- DESKTOP LAYOUT (UNCHANGED) ---
         <>
+          {/* Desktop Left Counter */}
           <motion.div
             className="fixed left-8 lg:left-16 top-1/2 transform -translate-y-1/2 z-40"
             initial={{ opacity: 0, x: -30 }}
@@ -369,6 +338,7 @@ export default function ProjectsPage() {
             </div>
           </motion.div>
 
+          {/* Desktop Right Navigation */}
           <motion.div
             className="fixed right-8 lg:right-16 xl:right-[14.285714%] top-1/2 transform -translate-y-1/2 z-50"
             initial={{ opacity: 0, x: 50 }}
@@ -397,6 +367,7 @@ export default function ProjectsPage() {
             </div>
           </motion.div>
 
+          {/* Desktop Project Container */}
           <div
             ref={containerRef}
             className="h-full overflow-hidden"
@@ -438,6 +409,7 @@ export default function ProjectsPage() {
             ))}
           </div>
 
+          {/* Desktop Bottom Text */}
           <div className="absolute bottom-0 left-0 right-0 px-8 lg:px-16 pb-16 pointer-events-none z-40">
             <div className="overflow-hidden">
               <AnimatePresence mode="wait">
