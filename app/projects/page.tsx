@@ -5,6 +5,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useLenis } from "lenis/react";
+import Image from "next/image";
 
 export default function ProjectsPage() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -16,6 +17,7 @@ export default function ProjectsPage() {
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
   const touchStartX = useRef<number>(0);
   const touchStartY = useRef<number>(0);
+  const touchMoved = useRef<boolean>(false);
   const lastScrollTime = useRef<number>(0);
   const router = useRouter();
   const lenis = useLenis();
@@ -56,18 +58,24 @@ export default function ProjectsPage() {
       setIsTransitioning(true);
       setCurrentIndex(index);
 
+      if (isMobile) {
+        // For mobile, just update the state - no scrolling needed
+        setTimeout(() => setIsTransitioning(false), 150);
+        return;
+      }
+
       const container = containerRef.current;
       const targetY = index * window.innerHeight;
 
       const startY = container.scrollTop;
       const distance = targetY - startY;
-      const duration = 1000; // Increased duration for a smoother feel
+      const duration = 1000;
       const startTime = performance.now();
 
       const animateScroll = (currentTime: number) => {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        const easeOutQuint = 1 - Math.pow(1 - progress, 5); // Smoother easing
+        const easeOutQuint = 1 - Math.pow(1 - progress, 5);
 
         container.scrollTop = startY + distance * easeOutQuint;
 
@@ -80,7 +88,7 @@ export default function ProjectsPage() {
 
       requestAnimationFrame(animateScroll);
     },
-    [isTransitioning, currentIndex]
+    [isTransitioning, currentIndex, isMobile]
   );
 
   // Handle wheel events for desktop
@@ -126,42 +134,65 @@ export default function ProjectsPage() {
       }
     };
 
-    window.addEventListener("wheel", handleWheel, { passive: false });
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener("wheel", handleWheel, { passive: false });
+    }
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      window.removeEventListener("wheel", handleWheel);
+      if (container) {
+        container.removeEventListener("wheel", handleWheel);
+      }
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [currentIndex, isMobile, isLoaded, scrollToProject, isTransitioning]);
 
-  // Mobile touch handling
+  // Mobile touch handling - Fixed version
   useEffect(() => {
     if (!isMobile || !isLoaded) return;
 
     const handleTouchStart = (e: TouchEvent): void => {
       touchStartX.current = e.touches[0].clientX;
       touchStartY.current = e.touches[0].clientY;
+      touchMoved.current = false;
+    };
+
+    const handleTouchMove = (e: TouchEvent): void => {
+      if (!touchMoved.current) {
+        const diffX = Math.abs(e.touches[0].clientX - touchStartX.current);
+        const diffY = Math.abs(e.touches[0].clientY - touchStartY.current);
+
+        // Only set touchMoved if there's significant movement
+        if (diffX > 10 || diffY > 10) {
+          touchMoved.current = true;
+        }
+      }
     };
 
     const handleTouchEnd = (e: TouchEvent): void => {
-      if (isTransitioning) return;
+      if (isTransitioning || !touchMoved.current) return;
 
       const touchEndX = e.changedTouches[0].clientX;
       const touchEndY = e.changedTouches[0].clientY;
       const diffX = touchStartX.current - touchEndX;
       const diffY = touchStartY.current - touchEndY;
 
-      if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 50) {
+      // Require minimum swipe distance and prioritize vertical swipes
+      if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 80) {
+        e.preventDefault(); // Prevent default scroll behavior
+
         const now = Date.now();
-        if (now - lastScrollTime.current < 800) return;
+        if (now - lastScrollTime.current < 600) return;
         lastScrollTime.current = now;
 
         if (diffY > 0) {
+          // Swipe up - next project
           const nextIndex =
             currentIndex === projects.length - 1 ? 0 : currentIndex + 1;
           scrollToProject(nextIndex);
         } else {
+          // Swipe down - previous project
           const prevIndex =
             currentIndex === 0 ? projects.length - 1 : currentIndex - 1;
           scrollToProject(prevIndex);
@@ -169,12 +200,25 @@ export default function ProjectsPage() {
       }
     };
 
-    window.addEventListener("touchstart", handleTouchStart);
-    window.addEventListener("touchend", handleTouchEnd);
+    const preventDefault = (e: TouchEvent) => {
+      e.preventDefault();
+    };
+
+    // Add listeners to the document for better touch handling
+    document.addEventListener("touchstart", handleTouchStart, {
+      passive: false,
+    });
+    document.addEventListener("touchmove", handleTouchMove, { passive: false });
+    document.addEventListener("touchend", handleTouchEnd, { passive: false });
+
+    // Prevent default scrolling behavior on the container
+    document.addEventListener("touchmove", preventDefault, { passive: false });
 
     return () => {
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchend", handleTouchEnd);
+      document.removeEventListener("touchstart", handleTouchStart);
+      document.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener("touchend", handleTouchEnd);
+      document.removeEventListener("touchmove", preventDefault);
     };
   }, [currentIndex, isMobile, isLoaded, scrollToProject, isTransitioning]);
 
@@ -190,10 +234,32 @@ export default function ProjectsPage() {
     router.push(`/project/${slug}`);
   };
 
+  // Preload adjacent images for better performance
+  const preloadImages = useCallback(() => {
+    const indicesToPreload = [
+      (currentIndex + 1) % projects.length,
+      (currentIndex - 1 + projects.length) % projects.length,
+    ];
+
+    indicesToPreload.forEach((index) => {
+      if (projects[index].image) {
+        const link = document.createElement("link");
+        link.rel = "preload";
+        link.as = "image";
+        link.href = projects[index].image;
+        document.head.appendChild(link);
+      }
+    });
+  }, [currentIndex]);
+
+  useEffect(() => {
+    preloadImages();
+  }, [preloadImages]);
+
   return (
-    <div className="fixed inset-0 w-full h-full text-white overflow-hidden bg-black">
+    <div className="fixed inset-0 w-full h-full text-white overflow-hidden ">
       {isMobile ? (
-        // --- MOBILE LAYOUT (Unchanged) ---
+        // --- MOBILE LAYOUT (Updated with Next.js Image) ---
         <div className="h-full flex flex-col pt-24">
           <motion.div
             className="flex justify-center gap-3 pb-8 px-4 shrink-0"
@@ -237,10 +303,14 @@ export default function ProjectsPage() {
                   transition={{ duration: 0.5 }}
                 >
                   {projects[currentIndex].image ? (
-                    <img
+                    <Image
                       src={projects[currentIndex].image}
                       alt={projects[currentIndex].name}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
+                      priority={currentIndex === 0}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      quality={85}
                     />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
@@ -271,7 +341,7 @@ export default function ProjectsPage() {
           </div>
         </div>
       ) : (
-        // --- DESKTOP LAYOUT (Updated) ---
+        // --- DESKTOP LAYOUT (Updated with Next.js Image) ---
         <>
           <motion.div
             className="fixed left-8 lg:left-16 top-1/2 transform -translate-y-1/2 z-40"
@@ -300,7 +370,7 @@ export default function ProjectsPage() {
           </motion.div>
 
           <motion.div
-            className="fixed right-8 lg:right-16 xl:right-1/7 top-1/2 transform -translate-y-1/2 z-50"
+            className="fixed right-8 lg:right-16 xl:right-[14.285714%] top-1/2 transform -translate-y-1/2 z-50"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: isLoaded ? 1 : 0, x: isLoaded ? 0 : 50 }}
             transition={{ duration: 1, delay: 0.5 }}
@@ -310,7 +380,6 @@ export default function ProjectsPage() {
                 <button
                   key={index}
                   onClick={() => scrollToProject(index)}
-                  //  **CHANGE**: Hover now scrolls to the project
                   onMouseEnter={() => scrollToProject(index)}
                   className="relative group"
                   disabled={isTransitioning}
@@ -344,12 +413,16 @@ export default function ProjectsPage() {
                   className="relative max-w-5xl mx-auto w-full cursor-pointer z-30"
                   onClick={() => handleProjectClick(project)}
                 >
-                  <div className="relative aspect-[16/10] rounded-3xl overflow-hidden">
+                  <div className="relative aspect-[16/10] rounded-3xl overflow-hidden h-[70vh] 2xl:h-full mx-auto">
                     {project.image ? (
-                      <img
+                      <Image
                         src={project.image}
                         alt={project.name}
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
+                        priority={index <= 2}
+                        sizes="(max-width: 1024px) 80vw, 60vw"
+                        quality={90}
                       />
                     ) : (
                       <div className="w-full h-full bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 flex items-center justify-center">
@@ -359,18 +432,18 @@ export default function ProjectsPage() {
                       </div>
                     )}
                   </div>
+                  <div className="absolute aspect-[16/10] inset-0 bg-black/20 rounded-3xl max-w-5xl mx-auto h-[70vh] 2xl:h-full"></div>
                 </motion.div>
               </div>
             ))}
           </div>
 
-          {/* **CHANGE**: Added z-40 to ensure text is always on top */}
           <div className="absolute bottom-0 left-0 right-0 px-8 lg:px-16 pb-16 pointer-events-none z-40">
             <div className="overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.h1
                   key={currentIndex}
-                  className="text-[8rem] lg:text-[12rem] xl:text-[14rem] font-bold tracking-tighter uppercase text-white leading-none select-none"
+                  className="text-[8rem] lg:text-[10rem] xl:text-[11rem] 2xl:text-[14rem] font-bold tracking-tighter uppercase text-white leading-none select-none"
                   style={{
                     fontFamily: "system-ui, -apple-system, sans-serif",
                     letterSpacing: "-0.04em",

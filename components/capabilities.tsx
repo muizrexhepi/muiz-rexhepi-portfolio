@@ -277,19 +277,17 @@ export function CapabilitiesSection() {
             isInteracting ? "cursor-grabbing" : "cursor-grab"
           }`}
           style={{
-            // Allow scrolling when not interacting with physics objects
             pointerEvents: isInteracting ? "none" : "auto",
           }}
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          data-lenis-prevent={isInteracting} // Prevent Lenis scroll when dragging
+          data-lenis-prevent={isInteracting}
         >
           <canvas
             ref={canvasRef}
             className="absolute inset-0 w-full h-[70vh] z-10"
             style={{
-              // Canvas handles physics interactions
               pointerEvents: "auto",
             }}
           />
