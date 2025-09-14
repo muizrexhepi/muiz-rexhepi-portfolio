@@ -4,7 +4,12 @@ import { projects } from "@/data/projects";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
 import {
   ArrowLeft,
   ExternalLink,
@@ -40,7 +45,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
     offset: ["start start", "end start"],
   });
 
-  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   useEffect(() => {
@@ -80,16 +85,13 @@ export default function ProjectPage({ params }: ProjectPageProps) {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.645, 0.045, 0.355, 1] as [number, number, number, number],
-      },
+      transition: { duration: 0.8 },
     },
   };
 
   const staggerContainer = {
     hidden: {},
-    visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
+    visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
   };
 
   const nextProjectIndex =
@@ -101,42 +103,13 @@ export default function ProjectPage({ params }: ProjectPageProps) {
     <div ref={containerRef} className="text-white min-h-screen relative">
       <style>{borderAnimationStyles}</style>
 
-      {/* Navigation Header */}
-      {/* <motion.header
-        className={`fixed top-0 left-0 right-0 z-50 px-5 sm:px-12 py-6 transition-all duration-500 ${
-          scrollY > 100 ? "bg-black/60 backdrop-blur-xl" : ""
-        }`}
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="flex items-center justify-between">
-          <Link
-            href="/projects"
-            className="flex items-center gap-2 text-white/60 hover:text-white transition-colors duration-300 group"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
-            <span className="text-sm font-light">Back to Projects</span>
-          </Link>
-
-          {project.url && (
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-white/60 hover:text-white transition-colors duration-300 group"
-            >
-              <span className="text-sm font-light">Visit Live Site</span>
-              <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-            </a>
-          )}
-        </div>
-      </motion.header> */}
-
       {/* Hero Section */}
-      <section ref={heroRef} className="h-screen relative overflow-hidden">
+      <section
+        ref={heroRef}
+        className="relative w-full h-[60vh] sm:h-[75vh] md:h-screen overflow-hidden px-5 sm:px-12 lg:px-18"
+      >
         {project.image && (
-          <motion.div className="absolute inset-0" style={{ y: heroY }}>
+          <motion.div className="absolute inset-0 z-10" style={{ y: heroY }}>
             <Image
               src={project.image}
               alt={project.name}
@@ -145,12 +118,12 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               priority
               quality={95}
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60" />
+            <div className="absolute inset-0 bg-black/50" />
           </motion.div>
         )}
 
         <motion.div
-          className="relative z-20 h-full flex flex-col justify-end px-5 sm:px-12 pb-16 lg:pb-24"
+          className="relative z-20 h-full flex flex-col items-center justify-center text-center px-5 sm:px-12"
           style={{ opacity: heroOpacity }}
         >
           <motion.div
@@ -162,7 +135,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             {/* Project Meta */}
             <motion.div
               variants={textUpVariants}
-              className="flex flex-wrap items-center gap-4 text-sm text-white/60 mb-6"
+              className="flex flex-wrap items-center justify-center gap-4 text-sm text-white/60 mb-6"
             >
               <div className="flex items-center gap-2">
                 <User className="w-4 h-4" />
@@ -199,27 +172,10 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             {/* Project Description */}
             <motion.p
               variants={textUpVariants}
-              className="text-lg sm:text-xl font-light text-white/80 max-w-3xl leading-relaxed mb-8"
+              className="text-lg sm:text-xl font-light text-white/80 max-w-3xl leading-relaxed mb-8 mx-auto"
             >
               {project.description.split(".")[0]}.
             </motion.p>
-
-            {/* Technologies */}
-            {project.technologies && (
-              <motion.div
-                variants={textUpVariants}
-                className="flex flex-wrap gap-2"
-              >
-                {project.technologies.slice(0, 6).map((tech, index) => (
-                  <span
-                    key={index}
-                    className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-sm text-white/70"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </motion.div>
-            )}
           </motion.div>
         </motion.div>
       </section>

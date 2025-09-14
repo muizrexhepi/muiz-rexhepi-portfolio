@@ -2,8 +2,9 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
 import { FooterSection } from "@/components/footer";
+import Image from "next/image";
 
-export default function App() {
+export default function AboutPage() {
   const componentId = React.useId();
 
   const borderAnimationStyles = `
@@ -100,10 +101,12 @@ export default function App() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.1 }}
             >
-              <img
+              {" "}
+              <Image
                 src="/assets/images/profile.jpeg"
                 alt="Muiz Rexhepi"
-                className="w-full h-full object-cover rounded-3xl object-top"
+                fill
+                className="rounded-4xl object-cover object-top"
               />
             </motion.div>
           </div>

@@ -415,7 +415,7 @@ export default function ProjectsPage() {
               <AnimatePresence mode="wait">
                 <motion.h1
                   key={currentIndex}
-                  className="text-[8rem] lg:text-[10rem] xl:text-[11rem] 2xl:text-[14rem] font-bold tracking-tighter uppercase text-white leading-none select-none"
+                  className="text-[8rem] lg:text-[10rem] xl:text-[11rem] 2xl:text-[13rem] font-bold tracking-tighter uppercase text-white leading-none select-none"
                   style={{
                     fontFamily: "system-ui, -apple-system, sans-serif",
                     letterSpacing: "-0.04em",
