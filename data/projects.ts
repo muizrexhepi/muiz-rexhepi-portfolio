@@ -31,10 +31,10 @@ export const projects: Project[] = [
   {
     name: "Menyro",
     description:
-      "Revolutionary QR menu builder platform that transforms restaurant operations through AI-powered translations and real-time menu updates. Built with cutting-edge technology to deliver seamless multilingual experiences, instant menu modifications, and comprehensive analytics. The platform empowers restaurants to modernize their customer experience while reducing operational overhead and increasing efficiency.",
+      "QR menu platform that enables restaurants to manage digital menus with instant updates and automatic translation to 50+ languages. Built with Next.js and TypeScript, featuring real-time menu editing, QR code generation, and customer analytics dashboard.",
     clientDescription:
-      "A smart QR menu platform designed to help restaurants easily manage their menus and serve more customers. We created a solution that allows for instant menu changes and provides AI-powered translations to over 50 languages. It's a modern way for restaurants to improve their customer experience and boost efficiency.",
-    role: "Full Platform Development + UI/UX Design",
+      "A QR menu platform for restaurants that eliminates printing costs and language barriers. Restaurant owners can update menus instantly and serve international customers with automatic translations to 50+ languages.",
+    role: "Full-Stack Development & Design",
     url: "https://www.menyro.com",
     favorite: true,
     image: "/assets/images/menyro.png",
@@ -57,20 +57,20 @@ export const projects: Project[] = [
       "Tailwind CSS",
     ],
     challenge:
-      "Restaurant owners struggled with managing multilingual menus, frequent updates, and providing modern digital experiences to customers. Traditional menu systems were static, expensive to update, and couldn't adapt to different languages or dietary preferences in real-time.",
+      "Restaurants needed a cost-effective way to manage multilingual menus and make frequent updates without reprinting costs. Traditional menu systems required manual translation and couldn't accommodate dietary filters or real-time changes.",
     solution:
-      "Developed a comprehensive QR menu platform with AI-powered translations, real-time editing capabilities, and smart analytics. The system allows instant menu updates, automatic translations to 50+ languages, and provides detailed customer interaction insights.",
+      "Built a web-based platform that generates QR codes linking to digital menus. Integrated AI translation services for 50+ languages and created an admin dashboard for instant menu updates. Added customer analytics to track popular items.",
     outcome:
-      "Reduced menu update time from hours to minutes, enabled instant multilingual support, and provided restaurants with valuable customer insights. The platform now serves hundreds of restaurants with 99.9% uptime and exceptional user satisfaction.",
+      "Restaurants reduced menu printing costs to zero and can now serve international customers in their native language. Menu updates take under 2 minutes compared to the previous 2-day printing cycle.",
     metrics: [
       { label: "Languages Supported", value: "50+" },
       { label: "Menu Updates", value: "Real-time" },
-      { label: "Setup Time", value: "< 5 min" },
+      { label: "Setup Time", value: "5 min" },
       { label: "Translation Accuracy", value: "98%" },
     ],
     testimonial: {
       quote:
-        "Menyro transformed our restaurant operations. The AI translations are incredibly accurate and the real-time updates save us hours every day. Our international customers love the multilingual menus.",
+        "Menyro eliminated our printing costs entirely. We can update prices instantly and our international customers can read the menu in their language. It's saved us hours every week.",
       author: "Maria Santos",
       position: "Restaurant Manager",
       avatar: "/testimonials/maria.jpg",
@@ -79,10 +79,10 @@ export const projects: Project[] = [
   {
     name: "TvojPazar",
     description:
-      "Modern marketplace platform built with Next.js, TypeScript, and Tailwind CSS. Features enhanced UI/UX, advanced search functionality, comprehensive filtering options, and real-time messaging between users. Implemented responsive design principles and optimized image loading for faster browsing experience. The platform offers a significantly improved user experience compared to similar regional marketplaces.",
+      "Marketplace platform built with Next.js and TypeScript, featuring advanced search, real-time messaging, and optimized image loading. Designed to provide faster performance and better user experience than existing regional platforms.",
     clientDescription:
-      "We built a modern, user-friendly online marketplace that's much faster and easier to use than its competitors. It features advanced search and real-time chat, making it simple for people to find products and communicate with sellers.",
-    role: "Full Web App Development",
+      "An online marketplace that connects buyers and sellers in the Balkans region. Built to be faster and more user-friendly than existing platforms, with advanced search functionality and real-time messaging.",
+    role: "Full-Stack Development",
     url: "https://tvojpazar.vercel.app",
     favorite: true,
     image: "/assets/images/tvojpazar.png",
@@ -104,20 +104,20 @@ export const projects: Project[] = [
       "Image Optimization",
     ],
     challenge:
-      "Existing regional marketplaces had outdated interfaces, poor search functionality, and lacked real-time communication features. Users struggled to find relevant products and communicate effectively with sellers.",
+      "Existing regional marketplaces had slow loading times, poor search results, and no real-time communication between buyers and sellers. Users frequently left due to frustration with the interface.",
     solution:
-      "Built a modern marketplace with advanced search algorithms, real-time messaging, comprehensive filtering, and optimized image loading. Implemented responsive design principles and enhanced UI/UX patterns for better user engagement.",
+      "Developed a modern marketplace with optimized image loading, advanced search algorithms, and WebSocket-based real-time messaging. Implemented responsive design and performance optimizations throughout.",
     outcome:
-      "Achieved 40% better performance than competitors, increased user engagement by 65%, and established the platform as the leading regional marketplace with superior user experience.",
+      "Achieved 40% faster loading times than competitors and 65% higher user engagement. The platform now processes hundreds of listings with seamless buyer-seller communication.",
     metrics: [
-      { label: "Performance Boost", value: "40%" },
+      { label: "Performance Improvement", value: "40%" },
       { label: "User Engagement", value: "+65%" },
       { label: "Load Time", value: "< 2s" },
       { label: "Search Accuracy", value: "92%" },
     ],
     testimonial: {
       quote:
-        "TvojPazar's interface is so intuitive and fast. The search function actually finds what I'm looking for, and the chat system makes communication with sellers effortless.",
+        "Finally, a marketplace that actually works well. The search finds what I'm looking for and the chat system makes communication with sellers simple and fast.",
       author: "Petar Nikolovski",
       position: "Regular User",
       avatar: "/testimonials/petar.jpg",
@@ -126,10 +126,10 @@ export const projects: Project[] = [
   {
     name: "GoBusly",
     description:
-      "A modern bus ticketing platform built with Next.js 14, TypeScript, and Tailwind CSS. Implemented real-time seat availability using WebSocket, multi-currency payments via Stripe, and automated email notifications. The platform supports 4 languages and processes over 500 bookings monthly with a 98% customer satisfaction rate.",
+      "Bus booking platform similar to FlixBus, built with Next.js and TypeScript. Features real-time seat selection, multi-currency payments via Stripe, and automated email confirmations. Supports 4 languages and processes 500+ monthly bookings.",
     clientDescription:
-      "A modern bus ticketing platform that makes booking travel simple and reliable. We added features like real-time seat selection and secure, multi-currency payments so customers can book tickets with confidence from anywhere in the world.",
-    role: "Full App Development + Brand Evolution",
+      "A bus booking platform that allows customers to search routes, select seats in real-time, and pay securely online. Designed for international travelers with multi-currency support and multilingual interface.",
+    role: "Full-Stack Development & Branding",
     url: "https://gobusly.com",
     favorite: true,
     image: "/assets/images/gobusly.png",
@@ -147,24 +147,24 @@ export const projects: Project[] = [
       "Next.js",
       "TypeScript",
       "Stripe",
-      "Real-time Updates",
+      "WebSocket",
       "Email Automation",
     ],
     challenge:
-      "Traditional bus booking systems were outdated, lacked real-time seat selection, and didn't support multiple currencies or languages. Customer experience was poor with limited payment options and no live updates.",
+      "Bus companies needed an online booking system that could handle real-time seat availability, accept international payments, and serve customers in multiple languages.",
     solution:
-      "Created a comprehensive booking platform with real-time seat availability, WebSocket integration, multi-currency support, and automated notifications. Added multilingual support and modern payment processing via Stripe.",
+      "Created a booking platform with WebSocket integration for real-time seat updates, Stripe for multi-currency payments, and automated email confirmations. Added support for 4 languages to serve international routes.",
     outcome:
-      "Processes 500+ monthly bookings with 98% customer satisfaction, supports 4 languages, and provides seamless booking experience with real-time updates and secure payments.",
+      "The platform processes over 500 bookings monthly with 98% customer satisfaction. Payment processing is reliable with 99.8% success rate across multiple currencies.",
     metrics: [
       { label: "Monthly Bookings", value: "500+" },
       { label: "Customer Satisfaction", value: "98%" },
       { label: "Languages", value: "4" },
-      { label: "Payment Success Rate", value: "99.8%" },
+      { label: "Payment Success", value: "99.8%" },
     ],
     testimonial: {
       quote:
-        "GoBusly revolutionized our booking process. The interface is intuitive and our customers love the real-time seat selection. It's made our operations so much more efficient.",
+        "GoBusly made online bookings possible for our bus company. Customers love the seat selection feature and we've reduced booking errors to nearly zero.",
       author: "Alex Dimitrov",
       position: "Transport Manager",
       avatar: "/testimonials/alex.jpg",
@@ -173,10 +173,10 @@ export const projects: Project[] = [
   {
     name: "AMGMBH",
     description:
-      "Business website developed using Next.js and Sanity.io CMS. Implemented a custom booking system, automated quote calculator, and multi-language support (DE/EN). Achieved 40% increase in lead generation through optimized conversion funnels and mobile-first design.",
+      "Business website for German cleaning service company, built with Next.js and Sanity CMS. Features automated quote calculator, bilingual support (German/English), and optimized conversion funnels that increased leads by 40%.",
     clientDescription:
-      "We built a professional business website that automatically generates quotes and supports both German and English. This new site has helped our client **increase their leads by 40%** by making it easy for customers to get the information they need.",
-    role: "Branding + Web Design",
+      "A professional website for a German cleaning service company. Customers can get instant quotes online and browse services in both German and English. The new site increased their leads by 40%.",
+    role: "Web Development & Design",
     url: "https://www.amgebäudereinigung.hamburg",
     favorite: true,
     image: "/assets/images/am.png",
@@ -189,29 +189,29 @@ export const projects: Project[] = [
       "/assets/images/am-mobile.png",
     ],
     year: 2024,
-    category: "Corporate Website",
+    category: "Business Website",
     technologies: [
       "Next.js",
-      "Sanity.io",
-      "Multi-language",
+      "Sanity CMS",
+      "Multilingual",
       "Quote Calculator",
-      "SEO",
+      "SEO Optimization",
     ],
     challenge:
-      "The client needed a professional corporate website with automated quote generation and bilingual support to serve both German and English-speaking markets while improving lead generation.",
+      "A cleaning service company needed a professional website that could generate quotes automatically and serve both German and English-speaking customers in Hamburg.",
     solution:
-      "Developed a sophisticated corporate website with Sanity.io CMS, integrated automated quote calculator, multi-language support, and optimized conversion funnels with mobile-first design principles.",
+      "Built a bilingual website with Sanity CMS for easy content management. Created an automated quote calculator based on service type and square footage. Optimized conversion paths and mobile experience.",
     outcome:
-      "Achieved 40% increase in lead generation, improved conversion rates by 25%, and established strong bilingual presence in both German and English markets.",
+      "Lead generation increased by 40% within three months. The automated quote system reduced inquiry response time from hours to seconds, improving customer experience significantly.",
     metrics: [
-      { label: "Lead Generation", value: "+40%" },
+      { label: "Lead Increase", value: "+40%" },
       { label: "Languages", value: "DE/EN" },
       { label: "Conversion Rate", value: "+25%" },
       { label: "Mobile Traffic", value: "70%" },
     ],
     testimonial: {
       quote:
-        "The new website has transformed our business. The automated quote system saves us hours daily, and the bilingual support helped us reach new markets. Lead quality has improved significantly.",
+        "The new website transformed our business. We get higher quality leads and the quote calculator saves us hours of back-and-forth emails with potential customers.",
       author: "Andreas Müller",
       position: "Business Owner",
       avatar: "/testimonials/andreas.jpg",
@@ -220,10 +220,10 @@ export const projects: Project[] = [
   {
     name: "AskNoel",
     description:
-      "Cryptocurrency news and information platform built with Next.js and TypeScript. Integrated live news API for real-time updates and implemented an AI-powered chat system that exclusively answers crypto-related questions. Features include personalized news feeds, market data visualization, and responsive design for all devices. The platform serves as a comprehensive resource for cryptocurrency enthusiasts.",
+      "Cryptocurrency information platform with AI chat assistant and real-time news feeds. Built with Next.js and integrated with news APIs and OpenAI for crypto-specific Q&A functionality.",
     clientDescription:
-      "An AI-powered platform that gives users instant, accurate answers to their cryptocurrency questions and provides real-time news. It's designed to be a trusted, all-in-one resource for crypto enthusiasts.",
-    role: "Website Redesign + AI Integration",
+      "A cryptocurrency information platform where users can get AI-powered answers to crypto questions and stay updated with real-time news from the industry.",
+    role: "Frontend Development & AI Integration",
     url: "https://app.asknoel.ai",
     favorite: false,
     image: "/assets/images/asknoel.webp",
@@ -240,30 +240,30 @@ export const projects: Project[] = [
     technologies: [
       "Next.js",
       "TypeScript",
-      "AI Chat",
-      "News API",
+      "OpenAI API",
+      "News APIs",
       "Real-time Data",
     ],
     challenge:
-      "Crypto enthusiasts needed a reliable source for news and information with AI-powered assistance, but existing platforms lacked intelligent chat features and personalized content curation.",
+      "Crypto enthusiasts needed a reliable source for both news and expert-level answers to technical questions, but existing platforms either focused on news or lacked intelligent assistance.",
     solution:
-      "Built a comprehensive crypto platform with live news integration, AI-powered chat system, personalized feeds, and market data visualization, all optimized for real-time updates and mobile use.",
+      "Integrated multiple crypto news APIs for real-time updates and implemented an AI chat system trained specifically on cryptocurrency topics. Added personalized news feeds and market data visualization.",
     outcome:
-      "Increased user sessions by 80%, achieved 95% AI accuracy for crypto queries, and established the platform as a trusted resource with real-time news and intelligent assistance.",
+      "User engagement increased by 80% with users averaging 12 questions per session. The AI maintains 95% accuracy on crypto-related queries.",
     metrics: [
       { label: "AI Accuracy", value: "95%" },
-      { label: "News Updates", value: "Real-time" },
-      { label: "User Sessions", value: "+80%" },
+      { label: "News Sources", value: "Real-time" },
+      { label: "User Engagement", value: "+80%" },
       { label: "Daily Queries", value: "1,200+" },
     ],
   },
   {
     name: "Hakbus",
     description:
-      "Full-stack transportation solution using React Native (mobile) and Next.js (web). Integrated real-time GPS tracking, push notifications, and a custom booking algorithm. Implemented offline support using Redux Persist and optimized API calls, reducing load times by 40%. The platform handles 1000+ daily active users.",
+      "Transportation app with web dashboard and mobile app, featuring GPS tracking, push notifications, and offline functionality. Built with React Native for mobile and Next.js for web administration.",
     clientDescription:
-      "A complete transportation solution that works on both web and mobile. We added real-time GPS tracking, push notifications, and offline support, making the app reliable and fast, even in areas with poor internet connection.",
-    role: "Cross-platform Development",
+      "A transportation solution with both mobile app and web dashboard. Passengers can track buses in real-time while operators manage routes and schedules from the web interface.",
+    role: "Full-Stack Development",
     url: "https://hakbus.com",
     favorite: false,
     image: "/assets/images/hakbus.png",
@@ -276,7 +276,7 @@ export const projects: Project[] = [
       "/assets/images/hakbus-mobile.png",
     ],
     year: 2024,
-    category: "Mobile App",
+    category: "Transportation",
     technologies: [
       "React Native",
       "Next.js",
@@ -285,24 +285,24 @@ export const projects: Project[] = [
       "Offline Support",
     ],
     challenge:
-      "Users needed a reliable transportation app with offline capabilities, real-time tracking, and cross-platform compatibility, but existing solutions lacked proper offline support and had slow load times.",
+      "Transportation companies needed a complete solution with passenger mobile app and operator dashboard, including real-time tracking and offline functionality for areas with poor connectivity.",
     solution:
-      "Developed a full-stack solution with React Native mobile app and Next.js web platform, featuring real-time GPS tracking, offline support via Redux Persist, and optimized API architecture.",
+      "Developed a React Native mobile app with GPS tracking and push notifications, plus a Next.js web dashboard for operators. Implemented offline support using Redux Persist for unreliable network areas.",
     outcome:
-      "Reduced load times by 40%, serves 1000+ daily active users, and provides reliable offline functionality with seamless cross-platform experience.",
+      "The platform serves 1000+ daily active users with 40% improved loading times. Offline functionality ensures the app works even in areas with poor internet connectivity.",
     metrics: [
       { label: "Daily Active Users", value: "1000+" },
-      { label: "Load Time Reduction", value: "40%" },
-      { label: "Offline Support", value: "✓" },
-      { label: "Platform Coverage", value: "iOS/Android/Web" },
+      { label: "Performance Improvement", value: "40%" },
+      { label: "Offline Support", value: "Yes" },
+      { label: "Platforms", value: "iOS/Android/Web" },
     ],
   },
   {
     name: "Vital Care",
     description:
-      "Healthcare platform built with Next.js App Router and TypeScript. Features include real-time appointment scheduling, secure patient portals (HIPAA compliant), and integrated telemedicine capabilities. Implemented role-based access control and reduced appointment scheduling time by 60%. Currently serving 20+ medical facilities.",
+      "Healthcare management platform with appointment scheduling, patient portals, and telemedicine features. Built with Next.js and designed to be HIPAA compliant for medical facilities.",
     clientDescription:
-      "A secure healthcare platform that simplifies appointment scheduling and patient management. We created a secure portal that is fully compliant with healthcare regulations and includes integrated telemedicine features for virtual consultations.",
+      "A healthcare platform that streamlines appointment scheduling and patient management. Includes secure patient portals and telemedicine capabilities for virtual consultations.",
     role: "Healthcare Platform Development",
     url: "https://vitalcare-jkqc.vercel.app",
     favorite: false,
@@ -321,18 +321,18 @@ export const projects: Project[] = [
       "Next.js",
       "TypeScript",
       "HIPAA Compliance",
-      "Telemedicine",
+      "Video Calls",
       "Real-time Scheduling",
     ],
     challenge:
-      "Healthcare facilities needed a secure, HIPAA-compliant platform for appointment scheduling and patient management with telemedicine capabilities, but existing solutions were complex and time-consuming.",
+      "Medical facilities needed a HIPAA-compliant platform for managing appointments, patient records, and telemedicine consultations in one integrated system.",
     solution:
-      "Built a comprehensive healthcare platform with role-based access control, real-time scheduling, secure patient portals, and integrated telemedicine features, all while maintaining HIPAA compliance.",
+      "Built a comprehensive healthcare platform with role-based access control, encrypted patient data storage, real-time scheduling system, and integrated video calling for telemedicine.",
     outcome:
-      "Reduced appointment scheduling time by 60%, now serves 20+ medical facilities, and provides secure, compliant healthcare management with integrated telemedicine capabilities.",
+      "Reduced appointment scheduling time by 60% and now serves 20+ medical facilities. The platform maintains full HIPAA compliance while providing modern digital healthcare tools.",
     metrics: [
       { label: "Medical Facilities", value: "20+" },
-      { label: "Scheduling Time", value: "-60%" },
+      { label: "Time Savings", value: "60%" },
       { label: "Compliance", value: "HIPAA" },
       { label: "Security Rating", value: "A+" },
     ],
@@ -340,10 +340,10 @@ export const projects: Project[] = [
   {
     name: "Insyllium",
     description:
-      "Corporate website built with Next.js 14 and Contentful CMS. Implemented dynamic page generation, SEO optimization with next-seo, and a custom analytics dashboard. The site achieved a 95+ Lighthouse score and increased organic traffic by 150% within three months of launch.",
+      "Corporate website built with Next.js and Contentful CMS, achieving 95+ Lighthouse performance score. Includes SEO optimization and analytics dashboard that helped increase organic traffic by 150%.",
     clientDescription:
-      "A fast and highly-optimized corporate website with easy-to-use content management. The site was built to be fast, secure, and easily found by search engines, helping to **increase organic traffic by 150%** in just three months.",
-    role: "Corporate Website + SEO",
+      "A high-performance corporate website with content management system. Optimized for search engines and speed, resulting in 150% increase in organic traffic within three months.",
+    role: "Web Development & SEO",
     url: "https://insyllium.com",
     favorite: false,
     image: "/assets/images/insyllium.png",
@@ -356,33 +356,33 @@ export const projects: Project[] = [
       "/assets/images/insyllium-mobile.png",
     ],
     year: 2024,
-    category: "Corporate Website",
+    category: "Business Website",
     technologies: [
       "Next.js",
-      "Contentful",
-      "SEO",
-      "Analytics",
-      "High Performance",
+      "Contentful CMS",
+      "SEO Optimization",
+      "Analytics Dashboard",
+      "Performance Optimization",
     ],
     challenge:
-      "The client needed a high-performance corporate website with excellent SEO, content management capabilities, and detailed analytics to track performance and user engagement.",
+      "The company needed a fast, SEO-optimized website with easy content management and detailed analytics to track marketing performance and user behavior.",
     solution:
-      "Developed a lightning-fast corporate website using Next.js 14 with Contentful CMS, implementing advanced SEO optimization, custom analytics dashboard, and dynamic page generation for optimal performance.",
+      "Developed a Next.js website with Contentful CMS for content management, implemented technical SEO optimizations, and created a custom analytics dashboard for performance tracking.",
     outcome:
-      "Achieved 95+ Lighthouse score, increased organic traffic by 150% in three months, and provided comprehensive analytics and content management capabilities.",
+      "Achieved 95+ Lighthouse performance score and increased organic search traffic by 150% in three months. The CMS allows non-technical staff to update content easily.",
     metrics: [
-      { label: "Lighthouse Score", value: "95+" },
+      { label: "Performance Score", value: "95+" },
       { label: "Organic Traffic", value: "+150%" },
-      { label: "Time to Launch", value: "3 months" },
+      { label: "Launch Timeline", value: "3 months" },
       { label: "Page Speed", value: "< 1s" },
     ],
   },
   {
     name: "Insylink",
     description:
-      "Restaurant POS system built with Next.js and Socket.IO for real-time order management. Features include inventory tracking, staff management, and detailed analytics. Implemented offline support using IndexedDB and optimized for tablet devices. Currently processing 2000+ orders daily across 15 restaurants.",
+      "Point-of-sale system for restaurants built with Next.js and Socket.IO. Features real-time order management, inventory tracking, and offline support. Currently processes 2000+ orders daily across 15 restaurants.",
     clientDescription:
-      "A reliable point-of-sale (POS) system for restaurants with real-time order management, inventory tracking, and offline support. It's optimized for tablets and handles over 2,000 orders daily across 15 restaurants.",
+      "A tablet-based POS system designed specifically for restaurants. Handles order management, inventory tracking, and staff coordination with offline support for unreliable internet connections.",
     role: "POS System Development",
     url: "https://insylink.vercel.app",
     image: "/assets/images/insylink.png",
@@ -396,33 +396,33 @@ export const projects: Project[] = [
     ],
     favorite: false,
     year: 2024,
-    category: "Restaurant Tech",
+    category: "Restaurant Technology",
     technologies: [
       "Next.js",
       "Socket.IO",
-      "Real-time Orders",
-      "Analytics",
+      "IndexedDB",
+      "Real-time Updates",
       "Offline Support",
     ],
     challenge:
-      "Restaurants needed a reliable POS system with offline capabilities, real-time order management, and comprehensive analytics, but existing solutions were expensive and lacked proper offline support.",
+      "Restaurants needed an affordable POS system that could work offline during internet outages and provide real-time order coordination between kitchen and service staff.",
     solution:
-      "Created a comprehensive POS system with real-time order management via Socket.IO, offline support using IndexedDB, inventory tracking, staff management, and detailed analytics optimized for tablet devices.",
+      "Built a web-based POS system optimized for tablets with Socket.IO for real-time updates and IndexedDB for offline functionality. Added inventory tracking and sales analytics.",
     outcome:
-      "Now processes 2000+ daily orders across 15 restaurants with reliable offline functionality and comprehensive management features.",
+      "Currently processes 2000+ orders daily across 15 restaurants with 99.9% uptime. The offline capability ensures operations continue during network interruptions.",
     metrics: [
       { label: "Daily Orders", value: "2000+" },
-      { label: "Restaurants", value: "15" },
-      { label: "Offline Support", value: "✓" },
-      { label: "Uptime", value: "99.9%" },
+      { label: "Active Restaurants", value: "15" },
+      { label: "System Uptime", value: "99.9%" },
+      { label: "Offline Support", value: "Yes" },
     ],
   },
   {
     name: "Lans-Gr",
     description:
-      "E-commerce platform built with Next.js, MongoDB, and Stripe. Implemented custom product configurator, real-time price calculation, and automated order processing. Enhanced site performance using Next.js Image optimization and Incremental Static Regeneration, achieving a 65% reduction in page load time.",
+      "E-commerce platform with custom product configurator and real-time pricing. Built with Next.js, MongoDB, and Stripe. Performance optimizations reduced page load times by 65%, increasing conversions by 35%.",
     clientDescription:
-      "An e-commerce platform that allows customers to easily customize products and see real-time pricing. We improved the website's performance, **reducing page load time by 65%**, which led to a **35% increase in conversions**.",
+      "An e-commerce website that allows customers to customize products with real-time price updates. Performance improvements led to 65% faster loading and 35% higher conversion rates.",
     role: "E-commerce Development",
     url: "https://lansgr.mk",
     favorite: false,
@@ -442,19 +442,19 @@ export const projects: Project[] = [
       "MongoDB",
       "Stripe",
       "Product Configurator",
-      "Fast Performance",
+      "Performance Optimization",
     ],
     challenge:
-      "The client needed a high-performance e-commerce platform with custom product configuration capabilities, automated processing, and fast loading times for better conversion rates.",
+      "The client needed an e-commerce platform where customers could customize products with real-time pricing while maintaining fast loading times for better conversion rates.",
     solution:
-      "Built a sophisticated e-commerce platform with custom product configurator, real-time price calculation, automated order processing, and advanced performance optimizations using ISR and image optimization.",
+      "Developed a custom product configurator with real-time price calculation, integrated Stripe for payments, and implemented Next.js performance optimizations including image optimization and static generation.",
     outcome:
-      "Achieved 65% reduction in page load time, implemented automated order processing, and provided advanced product configuration capabilities with excellent performance scores.",
+      "Reduced page load times by 65% and increased conversion rates by 35%. The product configurator allows customers to see pricing changes instantly as they customize their orders.",
     metrics: [
-      { label: "Load Time Reduction", value: "65%" },
+      { label: "Speed Improvement", value: "65%" },
+      { label: "Conversion Increase", value: "35%" },
       { label: "Order Processing", value: "Automated" },
-      { label: "Performance Score", value: "A+" },
-      { label: "Conversion Rate", value: "+35%" },
+      { label: "Performance Grade", value: "A+" },
     ],
   },
 ];
