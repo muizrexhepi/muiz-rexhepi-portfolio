@@ -207,9 +207,7 @@ export default function ProjectsPage() {
   return (
     <div className="fixed inset-0 w-full h-full text-white overflow-hidden">
       {isMobile ? (
-        // --- MOBILE LAYOUT WITH SWIPER ---
         <div className="h-full flex flex-col pt-24">
-          {/* Mobile Navigation Dots */}
           <motion.div
             className="flex justify-center gap-3 pb-8 px-4 shrink-0 z-50"
             initial={{ opacity: 0, y: -30 }}

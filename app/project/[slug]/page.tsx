@@ -305,7 +305,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                   key={index}
                   variants={textUpVariants}
                   className={`relative rounded-3xl overflow-hidden ${
-                    index === 0 ? "aspect-[16/9]" : "aspect-[21/9]"
+                    index === 0 ? "aspect-[16/9]" : "aspect-[16/9]"
                   }`}
                 >
                   <Image
@@ -587,6 +587,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
             <Link
               href={`/project/${createSlug(nextProject.name)}`}
+              scroll={true}
               className="group block relative aspect-[16/9] sm:aspect-[21/9] rounded-3xl overflow-hidden bg-gradient-to-br from-gray-900 to-black border border-white/10 hover:border-white/20 transition-all duration-500"
             >
               {nextProject.image ? (
@@ -601,7 +602,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 <div className="w-full h-full bg-gradient-to-br from-blue-500/20 via-purple-600/20 to-pink-500/20" />
               )}
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent group-hover:from-black/40 transition-all duration-500" />
+              <div className="absolute inset-0 bg-black/50" />
 
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center px-4">
