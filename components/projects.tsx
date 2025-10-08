@@ -79,7 +79,9 @@ export function ProjectsSection() {
       },
     },
   };
-
+  function slugify(name: string) {
+    return name.toLowerCase().replace(/\s+/g, "-");
+  }
   return (
     <section
       ref={ref}
@@ -182,7 +184,10 @@ export function ProjectsSection() {
               {favoriteProjects.map((project, index) => (
                 <SwiperSlide key={index}>
                   <div>
-                    <Link href={project.url!} target="_blank" className="block">
+                    <Link
+                      href={`/project/${slugify(project.name)}`}
+                      className="block"
+                    >
                       <div className="relative w-full h-[450px] rounded-3xl overflow-hidden bg-gray-900">
                         {project.image ? (
                           <Image
@@ -201,7 +206,6 @@ export function ProjectsSection() {
                       </div>
                     </Link>
 
-                    {/* Project Info Below Image */}
                     <div className="mt-4 text-start">
                       <h3 className="text-lg font-medium tracking-tight uppercase text-white/60">
                         {project.name}
@@ -216,7 +220,6 @@ export function ProjectsSection() {
             </Swiper>
           </div>
         ) : (
-          // Desktop Grid
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 md:mt-20">
             {favoriteProjects.slice(0, 3).map((project, index) => (
               <motion.div
@@ -236,7 +239,10 @@ export function ProjectsSection() {
                 onMouseEnter={() => setHoveredProject(project)}
                 onMouseLeave={() => setHoveredProject(null)}
               >
-                <Link href={project.url!} target="_blank" className="block">
+                <Link
+                  href={`/project/${slugify(project.name)}`}
+                  className="block"
+                >
                   <div className="relative w-full h-[400px] md:h-[450px] lg:h-[500px] rounded-3xl overflow-hidden bg-gray-900">
                     {project.image ? (
                       <Image
