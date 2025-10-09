@@ -96,13 +96,70 @@ export default function ClientProjectPage({ slug }: { slug: string }) {
     <div ref={containerRef} className="text-white min-h-screen relative">
       <style>{borderAnimationStyles}</style>
 
-      {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative w-full h-[60vh] sm:h-[75vh] md:h-screen overflow-hidden px-5 sm:px-12 lg:px-18"
+        className="relative w-full lg:min-h-screen overflow-hidden px-5 sm:px-12 lg:px-18 flex flex-col justify-center gap-16 pt-16 lg:pt-32 pb-16"
       >
+        <motion.div
+          className="relative z-20 flex flex-col items-center text-center max-w-4xl mx-auto"
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Project Title */}
+          <motion.h1
+            variants={textUpVariants}
+            className="text-4xl sm:text-6xl lg:text-8xl font-light mb-6 tracking-tight leading-none"
+          >
+            {project.name}
+          </motion.h1>
+
+          {/* Project Description */}
+          <motion.p
+            variants={textUpVariants}
+            className="text-lg sm:text-xl font-light text-white/80 max-w-3xl leading-relaxed mb-8"
+          >
+            {project.description.split(".")[0]}.
+          </motion.p>
+
+          {/* Project Meta */}
+          <motion.div
+            variants={textUpVariants}
+            className="flex flex-wrap items-center justify-center gap-4 text-sm text-white/60"
+          >
+            <div className="flex items-center gap-2">
+              <User className="w-4 h-4" />
+              <span>{project.role}</span>
+            </div>
+            <div className="w-px h-4 bg-white/30" />
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4" />
+              <span>{project.year}</span>
+            </div>
+            <div className="w-px h-4 bg-white/30" />
+            <div className="px-3 py-1 rounded-full bg-white/10 text-xs font-medium">
+              {project.category}
+            </div>
+            {project.favorite && (
+              <>
+                <div className="w-px h-4 bg-white/30" />
+                <div className="flex items-center gap-2 text-amber-400">
+                  <Heart className="w-4 h-4 fill-current" />
+                  <span>Featured</span>
+                </div>
+              </>
+            )}
+          </motion.div>
+        </motion.div>
+
+        {/* Bottom Image Content */}
         {project.image && (
-          <motion.div className="absolute inset-0 z-10" style={{ y: heroY }}>
+          <motion.div
+            className="relative w-full max-w-6xl mx-auto rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden aspect-[16/9]"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          >
             <Image
               src={project.image}
               alt={project.name}
@@ -111,72 +168,12 @@ export default function ClientProjectPage({ slug }: { slug: string }) {
               priority
               quality={95}
             />
-            <div className="absolute inset-0 bg-black/50" />
           </motion.div>
         )}
-
-        <motion.div
-          className="relative z-20 h-full flex flex-col items-center justify-center text-center px-5 sm:px-12"
-          style={{ opacity: heroOpacity }}
-        >
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-            className="max-w-4xl"
-          >
-            {/* Project Meta */}
-            <motion.div
-              variants={textUpVariants}
-              className="flex flex-wrap items-center justify-center gap-4 text-sm text-white/60 mb-6"
-            >
-              <div className="flex items-center gap-2">
-                <User className="w-4 h-4" />
-                <span>{project.role}</span>
-              </div>
-              <div className="w-px h-4 bg-white/30" />
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4" />
-                <span>{project.year}</span>
-              </div>
-              <div className="w-px h-4 bg-white/30" />
-              <div className="px-3 py-1 rounded-full bg-white/10 text-xs font-medium">
-                {project.category}
-              </div>
-              {project.favorite && (
-                <>
-                  <div className="w-px h-4 bg-white/30" />
-                  <div className="flex items-center gap-2 text-amber-400">
-                    <Heart className="w-4 h-4 fill-current" />
-                    <span>Featured</span>
-                  </div>
-                </>
-              )}
-            </motion.div>
-
-            {/* Project Title */}
-            <motion.h1
-              variants={textUpVariants}
-              className="text-4xl sm:text-6xl lg:text-8xl font-light mb-6 tracking-tight leading-none"
-            >
-              {project.name}
-            </motion.h1>
-
-            {/* Project Description */}
-            <motion.p
-              variants={textUpVariants}
-              className="text-lg sm:text-xl font-light text-white/80 max-w-3xl leading-relaxed mb-8 mx-auto"
-            >
-              {project.description.split(".")[0]}.
-            </motion.p>
-          </motion.div>
-        </motion.div>
       </section>
 
-      {/* Main Content */}
       <div className="px-5 sm:px-12 lg:px-18">
-        {/* Project Overview */}
-        <section className="py-16 lg:py-24">
+        <section className="py-8 lg:py-24">
           <div className="border-line animate mb-16 lg:mb-20"></div>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
             <motion.div
@@ -240,7 +237,7 @@ export default function ClientProjectPage({ slug }: { slug: string }) {
         </section>
 
         {/* The Challenge */}
-        <section className="py-16 lg:py-24">
+        <section className="py-8 lg:py-24">
           <div className="border-line animate mb-16 lg:mb-20"></div>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
             <motion.div
@@ -284,7 +281,7 @@ export default function ClientProjectPage({ slug }: { slug: string }) {
 
         {/* Visual Gallery */}
         {project.gallery && project.gallery.length > 0 && (
-          <section className="py-16 lg:py-24">
+          <section className="py-8 lg:py-24">
             <div className="border-line animate mb-16 lg:mb-20"></div>
             <motion.div
               variants={staggerContainer}
@@ -316,9 +313,9 @@ export default function ClientProjectPage({ slug }: { slug: string }) {
 
         {/* Mobile Experience */}
         {project.mobileImage && (
-          <section className="py-16 lg:py-24">
+          <section className="py-8 lg:py-24">
             <div className="border-line animate mb-16 lg:mb-20"></div>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-12 items-center">
               <motion.div
                 className="lg:col-span-6 order-2 lg:order-1"
                 variants={staggerContainer}
@@ -380,7 +377,7 @@ export default function ClientProjectPage({ slug }: { slug: string }) {
         )}
 
         {/* Solution & Outcome */}
-        <section className="py-16 lg:py-24">
+        <section className="py-8 lg:py-24">
           <div className="border-line animate mb-16 lg:mb-20"></div>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
             <motion.div
@@ -441,7 +438,7 @@ export default function ClientProjectPage({ slug }: { slug: string }) {
 
         {/* Testimonial */}
         {project.testimonial && (
-          <section className="py-16 lg:py-24">
+          <section className="py-8 lg:py-24">
             <div className="border-line animate mb-16 lg:mb-20"></div>
             <motion.div
               variants={textUpVariants}
@@ -480,7 +477,7 @@ export default function ClientProjectPage({ slug }: { slug: string }) {
         )}
 
         {/* Results */}
-        <section className="py-16 lg:py-24">
+        <section className="py-8 lg:py-24">
           <div className="border-line animate mb-16 lg:mb-20"></div>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
             <motion.div
@@ -523,7 +520,7 @@ export default function ClientProjectPage({ slug }: { slug: string }) {
         </section>
 
         {/* Call to Action */}
-        <section className="py-16 lg:py-24">
+        <section className="py-8 lg:py-24">
           <div className="border-line animate mb-16 lg:mb-20"></div>
           <motion.div
             variants={textUpVariants}

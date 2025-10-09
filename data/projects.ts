@@ -457,9 +457,6 @@ export const projects: Project[] = [
   },
 ];
 
-// ... rest of your file remains the same
-
-// Helper functions for filtering and sorting
 export const getProjectsByCategory = (category: string) => {
   return projects.filter((project) => project.category === category);
 };
