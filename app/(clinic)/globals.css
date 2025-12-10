@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  /* Fonts */
+  --font-sans: "Inter", sans-serif;
+  --font-display: "DM Sans", sans-serif;
+
+  /* Brand Colors (Apple Blue) */
+  --color-brand-50: #f0f7ff;
+  --color-brand-100: #e0efff;
+  --color-brand-200: #b8dbff;
+  --color-brand-300: #85c2ff;
+  --color-brand-400: #4ca3ff;
+  --color-brand-500: #0071e3;
+  --color-brand-600: #0062c3;
+  --color-brand-700: #004990;
+  --color-brand-900: #002e5b;
+
+  /* Custom Slate - Deep Text Black */
+  --color-slate-850: #1d1d1f;
+
+  /* Custom Shadows */
+  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-card-hover: 0 12px 32px rgba(0, 0, 0, 0.08),
+    0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+/* Base Styles */
+body {
+  background-color: #ffffff;
+  color: var(--color-slate-850);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Utilities */
+@utility glass-nav {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
