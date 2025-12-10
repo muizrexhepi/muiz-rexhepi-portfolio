@@ -35,7 +35,7 @@ export const Pricing: React.FC = () => {
 
             <a
               href="#"
-              className="w-full py-4 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-full transition-all mb-10 text-[15px]"
+              className="w-full text-center py-4 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-full transition-all mb-10 text-[15px]"
             >
               Start Essentials
             </a>
@@ -73,7 +73,7 @@ export const Pricing: React.FC = () => {
 
             <a
               href="#"
-              className="w-full py-4 bg-brand-500 hover:bg-brand-400 text-white font-bold rounded-full transition-all shadow-lg shadow-brand-500/25 mb-10 text-[15px]"
+              className="w-full py-4 text-center  bg-brand-500 hover:bg-brand-400 text-white font-bold rounded-full transition-all shadow-lg shadow-brand-500/25 mb-10 text-[15px]"
             >
               Start Growth Plan
             </a>

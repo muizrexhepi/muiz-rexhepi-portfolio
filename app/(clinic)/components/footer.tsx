@@ -29,6 +29,7 @@ export const Footer: React.FC = () => {
           A premium service by{" "}
           <a
             href="https://muizrexhepi.com"
+            target="_blank"
             className="text-brand-500 font-medium hover:underline"
           >
             Muiz Rexhepi
@@ -38,19 +39,20 @@ export const Footer: React.FC = () => {
         </p>
         <div className="flex justify-center space-x-8">
           <Link
-            href="/privacy"
+            href="/clinic/privacy"
             className="text-slate-400 hover:text-slate-600 text-sm font-medium transition-colors"
           >
             Privacy
           </Link>
           <Link
-            href="/terms"
+            href="/clinic/terms"
             className="text-slate-400 hover:text-slate-600 text-sm font-medium transition-colors"
           >
             Terms
           </Link>
           <a
-            href="#"
+            href="https://x.com/muiz_rexhepi"
+            target="_blank"
             className="text-slate-400 hover:text-slate-600 text-sm font-medium transition-colors"
           >
             Twitter

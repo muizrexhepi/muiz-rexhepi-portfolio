@@ -1,18 +1,18 @@
-"use client";
-
-import "../globals.css";
+import "./globals.css";
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
-import { useEffect } from "react";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Dental Clinic Websites | Muiz Rexhepi",
+  description:
+    "Modern, trust-focused websites for dental clinics that increase patient bookings.",
+};
 
 export default function ClinicLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // prevent flash on client mount (optional)
-  useEffect(() => {}, []);
-
   return (
     <html lang="en">
       <body className="font-sans bg-[#FAFAFA] antialiased">

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 
 export const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -32,20 +33,21 @@ export const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+      className={`fixed bg-white w-full top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "glass-nav border-b border-slate-200 shadow-sm"
+          ? "shadow-sm bg-white/80 backdrop-blur-2xl"
           : "bg-transparent border-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <div
+          <Link
+            href={"/clinic"}
             className="flex items-center gap-2.5 cursor-pointer group"
-            onClick={() => scrollToSection("hero")}
           >
-            <div className="w-9 h-9 bg-brand-500 rounded-lg flex items-center justify-center shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+            {" "}
+            <div className="w-9 h-9 bg-brand-500 rounded-lg flex items-center justify-center shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform duration-300">
               <svg
                 className="w-5 h-5 text-white"
                 fill="none"
@@ -63,7 +65,7 @@ export const Navbar: React.FC = () => {
             <span className="font-display font-bold text-xl text-[#1d1d1f]">
               ClinicFlow
             </span>
-          </div>
+          </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-1">
@@ -82,7 +84,7 @@ export const Navbar: React.FC = () => {
             <div className="pl-6">
               <button
                 onClick={() => scrollToSection("contact")}
-                className="bg-[#1d1d1f] hover:bg-black text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all shadow-md"
+                className="bg-brand-500 hover:bg-brand-600 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all shadow-md"
               >
                 Get Free Audit
               </button>

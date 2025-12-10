@@ -36,9 +36,9 @@ export const Comparison: React.FC = () => {
                       Replace the src below with your actual "Bad UI" screenshot URL.
                     */}
               <img
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200"
+                src="/assets/images/clinicOld.png"
                 alt="Outdated dental website design"
-                className="w-full h-full object-cover object-top -mt-12 grayscale opacity-80"
+                className="w-full h-full object-cover object-top grayscale opacity-80"
               />
               {/* Overlay to make it look 'inactive' */}
               <div className="absolute inset-0 bg-slate-200/10 pointer-events-none"></div>
@@ -71,15 +71,10 @@ export const Comparison: React.FC = () => {
 
             {/* Image Container with "Tab Cutoff" Logic */}
             <div className="flex-grow bg-white rounded-2xl border border-slate-200 overflow-hidden relative aspect-[4/3] shadow-2xl shadow-brand-500/10 ring-4 ring-brand-500/5 transition-transform duration-500 hover:scale-[1.02]">
-              {/* 
-                      NOTE: The '-mt-12' class below pulls the image up by 48px.
-                      This hides the browser tabs/address bar from your screenshot.
-                      Replace the src below with your actual "Good UI" screenshot URL.
-                    */}
               <img
-                src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=1200"
+                src="/assets/images/clinicModern.png"
                 alt="Modern ClinicFlow design"
-                className="w-full h-full object-cover object-top -mt-12"
+                className="w-full h-full object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none"></div>
             </div>

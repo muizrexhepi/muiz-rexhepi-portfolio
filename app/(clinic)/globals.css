@@ -44,3 +44,28 @@ html {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
+
+/* --- MARQUEE ANIMATION KEYFRAMES --- */
+/* This defines the actual movement for the marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Translate the width of one set of logos (half the content) */
+    transform: translateX(-50%);
+  }
+}
+
+/* --- CUSTOM TAILWIND UTILITIES (Animation) --- */
+@layer utilities {
+  /* Apply the animation to the element */
+  .animate-marquee {
+    animation: marquee 35s linear infinite; /* You can adjust the time for speed */
+  }
+
+  /* Pause the animation on hover */
+  .pause-on-hover:hover {
+    animation-play-state: paused;
+  }
+}
