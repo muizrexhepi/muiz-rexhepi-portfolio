@@ -4,7 +4,7 @@ import { NavigationTabs } from "../_components/navigation-tabs";
 import { ToolsSection } from "../_components/tools-section";
 
 export const metadata: Metadata = {
-  title: "Tools | Muiz Rexhepi",
+  title: "Tools",
   description:
     "Technical skills and tools used by Muiz Rexhepi - React, Next.js, React Native, TypeScript, Node.js, and more.",
   keywords: [
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "Technical Skills",
   ],
   openGraph: {
-    title: "Tools | Muiz Rexhepi",
+    title: "Tools",
     description:
       "Technical skills and tools used by Muiz Rexhepi - Fullstack Developer.",
     url: "https://muizrexhepi.com/tools",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tools | Muiz Rexhepi",
+    title: "Tools",
     description:
       "Technical skills and tools used by Muiz Rexhepi - Fullstack Developer.",
   },

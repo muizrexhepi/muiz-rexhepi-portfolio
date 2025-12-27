@@ -4,7 +4,7 @@ import { NavigationTabs } from "../_components/navigation-tabs";
 import { ExperienceSection } from "../_components/experience-section";
 
 export const metadata: Metadata = {
-  title: "Experience | Muiz Rexhepi",
+  title: "Experience",
   description:
     "Work experience and education of Muiz Rexhepi - Fullstack Developer specializing in React, Next.js, and React Native.",
   keywords: [
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "Portfolio",
   ],
   openGraph: {
-    title: "Experience | Muiz Rexhepi",
+    title: "Experience",
     description:
       "Work experience and education of Muiz Rexhepi - Fullstack Developer.",
     url: "https://muizrexhepi.com/experience",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Experience | Muiz Rexhepi",
+    title: "Experience",
     description:
       "Work experience and education of Muiz Rexhepi - Fullstack Developer.",
   },

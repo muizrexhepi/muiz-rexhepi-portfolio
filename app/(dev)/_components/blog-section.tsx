@@ -1,41 +1,11 @@
+import { blogPosts } from "@/data/blogs";
 import Link from "next/link";
 
-interface BlogPost {
-  title: string;
-  date: string;
-  description: string;
-  tags: string[];
-  slug: string;
-}
-
-const blogPosts: BlogPost[] = [
-  {
-    title: "Building Scalable React Native Apps with Zustand",
-    date: "Dec 20, 2024",
-    description:
-      "A guide to managing state efficiently in React Native applications using Zustand. Covers store architecture, persistence with AsyncStorage, and performance optimization patterns.",
-    tags: ["React Native", "State Management"],
-    slug: "zustand-react-native",
-  },
-  {
-    title: "Server-Side Rendering in Next.js: A Deep Dive",
-    date: "Nov 15, 2024",
-    description:
-      "Exploring SSR and RSC techniques in Next.js App Router for superior SEO and performance. Includes real-world examples from building GoBusly.",
-    tags: ["Next.js", "SSR", "Performance"],
-    slug: "nextjs-ssr-deep-dive",
-  },
-  {
-    title: "Offline-First Architecture in Mobile Apps",
-    date: "Oct 5, 2024",
-    description:
-      "How to engineer a reliable POS system that operates seamlessly without internet. Deep dive into local-first data patterns and sync strategies.",
-    tags: ["Mobile", "Architecture"],
-    slug: "offline-first-architecture",
-  },
-];
-
 export function BlogSection() {
+  const sortedPosts = [...blogPosts].sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
+
   return (
     <section>
       <div className="mb-4 md:mb-6">
@@ -45,7 +15,7 @@ export function BlogSection() {
         </p>
       </div>
       <div className="space-y-8 md:space-y-6">
-        {blogPosts.map((post) => (
+        {sortedPosts.map((post) => (
           <Link
             href={`/blog/${post.slug}`}
             key={post.slug}
@@ -53,21 +23,21 @@ export function BlogSection() {
           >
             <article>
               <div className="flex items-start justify-between gap-4 mb-1">
-                <h3 className="font-medium text-sm md:text-base group-hover:text-muted-foreground">
+                <h3 className="font-medium text-sm md:text-base group-hover:text-primary transition-colors">
                   {post.title}
                 </h3>
-                <span className="text-xs text-muted-foreground whitespace-nowrap shrink-0">
+                <span className="text-xs text-muted-foreground whitespace-nowrap shrink-0 tabular-nums">
                   {post.date}
                 </span>
               </div>
-              <p className="text-muted-foreground text-xs md:text-sm mb-2 leading-relaxed">
+              <p className="text-muted-foreground text-xs md:text-sm mb-2 leading-relaxed line-clamp-2">
                 {post.description}
               </p>
-              <div className="flex items-center gap-1.5">
-                {post.tags.map((tag) => (
+              <div className="flex flex-wrap items-center gap-1.5">
+                {post.tags.slice(0, 3).map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs px-1.5 py-0.5 bg-muted rounded text-muted-foreground"
+                    className="text-[10px] md:text-xs px-1.5 py-0.5 bg-muted rounded text-muted-foreground border border-transparent group-hover:border-border transition-colors"
                   >
                     {tag}
                   </span>
