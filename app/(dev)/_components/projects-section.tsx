@@ -19,7 +19,7 @@ const projects: Project[] = [
     description:
       "Mobile app that helps users organize their thoughts into manageable tasks using AI.",
     technologies: ["React Native", "TypeScript", "Expo", "Firebase", "OpenAI"],
-    link: "https://nuroo.ai",
+    link: "https://apps.apple.com/mk/app/nuroo-ai/id6748567237",
     icon: "/nuroo.webp",
   },
   {
@@ -39,7 +39,7 @@ const projects: Project[] = [
     description:
       "Multi-platform ticket booking solution with mobile apps, web app, and admin dashboard.",
     technologies: ["React Native", "Next.js", "Expo", "Analytics"],
-    link: "https://hakbus.com",
+    link: "https://hakbus.org",
     icon: "/hakbus.webp",
   },
   {
@@ -69,7 +69,7 @@ const projects: Project[] = [
     description:
       "Crypto news platform with real-time price tracking and AI chatbot.",
     technologies: ["Next.js", "TypeScript", "AI", "Real-time"],
-    link: "https://asknoel.com",
+    link: "https://asknoel.ai",
     icon: "/asknoel.webp",
   },
   {

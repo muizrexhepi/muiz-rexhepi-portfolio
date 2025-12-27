@@ -22,7 +22,7 @@ const experiences: Experience[] = [
     description:
       "European bus ticket booking platform. Leading product development, technical architecture, and business strategy.",
     skills: ["Next.js", "TypeScript", "React Native", "Node.js", "PostgreSQL"],
-    icon: "/placeholder.svg?height=40&width=40",
+    icon: "/gobusly.webp",
     url: "https://gobusly.com",
   },
   {

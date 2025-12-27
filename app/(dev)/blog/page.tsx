@@ -4,7 +4,7 @@ import { NavigationTabs } from "../_components/navigation-tabs";
 import { BlogSection } from "../_components/blog-section";
 
 export const metadata: Metadata = {
-  title: "Blog | Muiz Rexhepi",
+  title: "Blog",
   description:
     "Thoughts on web development, mobile apps, and modern tooling by Muiz Rexhepi.",
   keywords: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "Technical Writing",
   ],
   openGraph: {
-    title: "Blog | Muiz Rexhepi",
+    title: "Blog",
     description:
       "Thoughts on web development, mobile apps, and modern tooling.",
     url: "https://muizrexhepi.com/blog",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog | Muiz Rexhepi",
+    title: "Blog",
     description:
       "Thoughts on web development, mobile apps, and modern tooling.",
   },
