@@ -18,7 +18,7 @@ const projects: Project[] = [
     period: "Jan 2026 - Present",
     description:
       "A high-performance nutrition and health tracking mobile app designed for speed and simplicity.",
-    technologies: ["React Native", "TypeScript", "Expo", "Firebase", "NativeWind"],
+    technologies: ["React Native", "TypeScript", "Expo", "Convex", "OpenAI", "Swift"],
     link: "https://uselogly.app",
     icon: "/logly.png", // Make sure to upload this icon to your public folder!
   },
