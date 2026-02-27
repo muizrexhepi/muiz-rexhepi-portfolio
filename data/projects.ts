@@ -29,6 +29,54 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    name: "Logly",
+    description:
+      "A sophisticated health and nutrition tracking application that simplifies meal logging through a high-performance mobile interface. Logly empowers users to monitor their dietary habits with precision, featuring a custom-built nutrition engine and secure, lightning-fast authentication.",
+    clientDescription:
+      "A personal health SaaS platform designed to eliminate the friction of traditional calorie tracking. It provides users with a streamlined mobile experience for logging meals, tracking macros, and visualizing long-term health trends.",
+    role: "Full-Stack Mobile Development & UI/UX",
+    url: "https://uselogly.app",
+    favorite: true,
+    image: "/assets/images/logly.png",
+    mobileImage: "/assets/images/logly-mobile.png",
+    landingPageImage: "/assets/images/logly-landing.png",
+    gallery: [
+      "/assets/images/logly.png",
+      "/assets/images/logly-dashboard.png",
+      "/assets/images/logly-logging.png",
+      "/assets/images/logly-mobile.png",
+    ],
+    year: 2026,
+    category: "Healthcare",
+    technologies: [
+      "React Native",
+      "TypeScript",
+      "Firebase",
+      "Expo",
+      "NativeWind",
+      "Email OTP Authentication",
+    ],
+    challenge:
+      "Most nutrition apps are cluttered and slow, making the habit of logging meals feel like a chore. The goal was to build a mobile-first solution that handles complex nutritional data while maintaining a sub-100ms response time for user interactions.",
+    solution:
+      "Developed a robust cross-platform mobile app using React Native and Expo. Implemented a secure Email OTP system for passwordless login and architected an optimized local-first data strategy to ensure the app remains functional and fast even with spotty connectivity.",
+    outcome:
+      "Successfully launched on the Apple App Store, achieving a 99.9% crash-free rate during initial testing. The app's streamlined 'Log in Seconds' workflow has significantly improved user retention compared to traditional manual entry competitors.",
+    metrics: [
+      { label: "Logging Speed", value: "< 5 Seconds" },
+      { label: "Uptime", value: "99.9%" },
+      { label: "Platform", value: "iOS & Android" },
+      { label: "Auth Security", value: "OTP-Verified" },
+    ],
+    testimonial: {
+      quote:
+        "Logly turned a tedious daily task into something that takes seconds. The interface is clean, and the speed is unmatched by any other tracker I've used.",
+      author: "Beta Tester",
+      position: "Fitness Enthusiast",
+      avatar: "/testimonials/user.jpg",
+    },
+  },
+  {
     name: "GoBusly",
     description:
       "A market-leading bus booking platform that has successfully scaled to thousands of daily active users. GoBusly offers a seamless travel booking experience with features like real-time seat selection, multi-currency payments, and support for 7 languages.",

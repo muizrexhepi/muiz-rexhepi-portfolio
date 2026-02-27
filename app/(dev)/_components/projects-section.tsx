@@ -13,6 +13,16 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: "Logly",
+    role: "Founder & Lead Developer",
+    period: "Jan 2026 - Present",
+    description:
+      "A high-performance nutrition and health tracking mobile app designed for speed and simplicity.",
+    technologies: ["React Native", "TypeScript", "Expo", "Firebase", "NativeWind"],
+    link: "https://uselogly.app",
+    icon: "/logly.png", // Make sure to upload this icon to your public folder!
+  },
+  {
     name: "Nuroo AI",
     role: "Mobile App Developer",
     period: "Aug 2025 - Present",
