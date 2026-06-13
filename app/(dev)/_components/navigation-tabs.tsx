@@ -15,20 +15,22 @@ export function NavigationTabs() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex items-center gap-0.5 md:gap-1 p-1 bg-muted/50 rounded-lg w-fit mb-8 md:mb-12">
+    <nav className="mb-8 flex w-fit items-center gap-0.5 rounded-lg bg-muted/50 p-1 md:mb-12 md:gap-1">
       {tabs.map((tab) => {
         const isActive =
-          pathname === tab.id ||
-          (tab.id !== "/" && pathname.startsWith(tab.id));
+          tab.id === "/"
+            ? pathname === "/" || pathname.startsWith("/work")
+            : pathname === tab.id || pathname.startsWith(tab.id);
+
         return (
           <Link
             key={tab.id}
             href={tab.id}
             className={cn(
-              "relative px-2.5 md:px-4 py-1.5 md:py-2 text-xs md:text-sm font-medium rounded-md transition-colors",
+              "relative rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors md:px-4 md:py-2 md:text-sm",
               isActive
                 ? "bg-background text-foreground shadow-sm"
-                : "text-muted-foreground hover:text-foreground"
+                : "text-muted-foreground hover:text-foreground",
             )}
           >
             {tab.label}

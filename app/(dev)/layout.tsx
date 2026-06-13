@@ -43,30 +43,30 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL("https://muizrexhepi.com"),
   title: {
-    default: "Muiz Rexhepi | Fullstack Developer",
+    default: "Muiz Rexhepi | React Native & Full-Stack Developer",
     template: "%s | Muiz Rexhepi",
   },
   description:
-    "Fullstack Developer specializing in React, Next.js, React Native, and TypeScript. Building high-performance web and mobile applications.",
+    "React Native and Full-Stack Developer from North Macedonia building production mobile and web apps with Expo, Next.js, TypeScript, AI integrations, subscriptions, payments and analytics.",
   keywords: [
     "Muiz Rexhepi",
-    "Fullstack Developer",
-    "React Developer",
-    "Next.js Developer",
     "React Native Developer",
-    "TypeScript",
-    "Web Developer",
-    "Mobile Developer",
+    "Full-Stack Developer",
+    "Next.js Developer",
+    "Expo Developer",
+    "TypeScript Developer",
+    "Mobile App Developer",
+    "AI App Developer",
     "North Macedonia",
-    "Software Engineer",
+    "Tetovo",
   ],
   authors: [{ name: "Muiz Rexhepi", url: "https://muizrexhepi.com" }],
   creator: "Muiz Rexhepi",
   publisher: "Muiz Rexhepi",
   openGraph: {
-    title: "Muiz Rexhepi | Fullstack Developer",
+    title: "Muiz Rexhepi | React Native & Full-Stack Developer",
     description:
-      "Fullstack Developer specializing in React, Next.js, React Native, and TypeScript.",
+      "Production mobile and web apps with Expo, Next.js, TypeScript, AI integrations, subscriptions, payments and analytics.",
     url: "https://muizrexhepi.com",
     siteName: "Muiz Rexhepi",
     type: "website",
@@ -74,24 +74,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Muiz Rexhepi | Fullstack Developer",
+    title: "Muiz Rexhepi | React Native & Full-Stack Developer",
     description:
-      "Fullstack Developer specializing in React, Next.js, React Native, and TypeScript.",
-    creator: "@muizrexhepi",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  verification: {
-    google: "your-google-verification-code",
+      "Production mobile and web apps with Expo, Next.js, TypeScript and AI integrations.",
+    creator: "@muiz_rexhepi",
   },
 };
 

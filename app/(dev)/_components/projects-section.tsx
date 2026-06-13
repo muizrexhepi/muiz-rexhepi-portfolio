@@ -1,171 +1,107 @@
-import { ExternalLink } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import Image from "next/image";
+import { projects } from "@/data/projects";
 
-interface Project {
+function ProjectMark({
+  name,
+  icon,
+  initials,
+}: {
   name: string;
-  role: string;
-  period: string;
-  description: string;
-  technologies: string[];
-  link?: string;
-  icon: string;
-}
+  icon?: string;
+  initials: string;
+}) {
+  if (icon) {
+    return (
+      <Image
+        src={icon}
+        alt={`${name} icon`}
+        width={40}
+        height={40}
+        className="h-10 w-10 rounded-xl border border-border bg-muted object-cover"
+      />
+    );
+  }
 
-const projects: Project[] = [
-  {
-    name: "Logly",
-    role: "Founder & Lead Developer",
-    period: "Jan 2026 - Present",
-    description:
-      "A high-performance nutrition and health tracking mobile app designed for speed and simplicity.",
-    technologies: ["React Native", "TypeScript", "Expo", "Convex", "OpenAI", "Swift"],
-    link: "https://uselogly.app",
-    icon: "/logly.png", // Make sure to upload this icon to your public folder!
-  },
-  {
-    name: "Nuroo AI",
-    role: "Mobile App Developer",
-    period: "Aug 2025 - Present",
-    description:
-      "Mobile app that helps users organize their thoughts into manageable tasks using AI.",
-    technologies: ["React Native", "TypeScript", "Expo", "Firebase", "OpenAI"],
-    link: "https://apps.apple.com/mk/app/nuroo-ai/id6748567237",
-    icon: "/nuroo.webp",
-  },
-  {
-    name: "GoBusly",
-    role: "Lead Frontend Developer",
-    period: "Jan 2025 - Jul 2025",
-    description:
-      "Web app for booking bus tickets across Europe with real-time availability and payments.",
-    technologies: ["Next.js", "TypeScript", "SSR", "SEO"],
-    link: "https://gobusly.com",
-    icon: "/gobusly.webp",
-  },
-  {
-    name: "Hakbus",
-    role: "Full-Stack Developer",
-    period: "Jul 2024 - Dec 2024",
-    description:
-      "Multi-platform ticket booking solution with mobile apps, web app, and admin dashboard.",
-    technologies: ["React Native", "Next.js", "Expo", "Analytics"],
-    link: "https://hakbus.org",
-    icon: "/hakbus.webp",
-  },
-  {
-    name: "Menyro",
-    role: "Frontend Developer",
-    period: "Apr 2024 - Jul 2024",
-    description:
-      "Web platform to digitalize restaurant menus with real-time updates and translations in 35+ languages.",
-    technologies: ["Next.js", "React", "DeepL API", "Tailwind CSS"],
-    link: "https://menyro.com",
-    icon: "/menyro.png",
-  },
-  {
-    name: "Insylink",
-    role: "Frontend Developer",
-    period: "Dec 2023 - Mar 2024",
-    description:
-      "Restaurant POS app for tablets and mobile with offline-first functionality.",
-    technologies: ["React Native", "Offline-first", "Zustand"],
-    link: "https://insylink.vercel.app",
-    icon: "/insylink.svg",
-  },
-  {
-    name: "AskNoel",
-    role: "Frontend Developer",
-    period: "Nov 2023 - Dec 2023",
-    description:
-      "Crypto news platform with real-time price tracking and AI chatbot.",
-    technologies: ["Next.js", "TypeScript", "AI", "Real-time"],
-    link: "https://asknoel.ai",
-    icon: "/asknoel.webp",
-  },
-  {
-    name: "TvojPazar",
-    role: "Full-Stack Developer",
-    period: "Mar 2023 - Jun 2023",
-    description:
-      "Marketplace platform with advanced search, filtering, and responsive UI.",
-    technologies: ["Next.js", "Tailwind CSS", "React"],
-    link: "https://tvojpazar.mk",
-    icon: "/tvojpazar.svg",
-  },
-  {
-    name: "AMGMBH",
-    role: "Frontend Developer",
-    period: "Jul 2022 - Nov 2022",
-    description:
-      "Marketing website with CMS integration for real-time content updates.",
-    technologies: ["Next.js", "Tailwind CSS", "CMS", "SEO"],
-    link: "https://amgebaeudereinigung.hamburg",
-    icon: "/am.svg",
-  },
-  {
-    name: "Lans-Gr",
-    role: "Frontend Developer",
-    period: "Jul 2022 - Nov 2022",
-    description:
-      "Multi-language website for one of the largest shutter companies in the Balkans.",
-    technologies: ["Next.js", "Tailwind CSS", "i18n", "SEO"],
-    link: "https://lans-gr.mk",
-    icon: "/lansgr.png",
-  },
-];
+  return (
+    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-muted text-xs font-semibold text-foreground">
+      {initials}
+    </div>
+  );
+}
 
 export function ProjectsSection() {
   return (
     <section>
-      <h2 className="text-lg md:text-xl font-semibold mb-6 md:mb-8">
-        Projects
-      </h2>
-      <div className="space-y-10 md:space-y-8">
+      <div className="mb-6 md:mb-8">
+        <h2 className="text-lg font-semibold tracking-tight md:text-xl">
+          Selected work
+        </h2>
+        <p className="mt-1 text-sm leading-6 text-muted-foreground">
+          Production apps, client platforms and product experiments shipped
+          across mobile and web.
+        </p>
+      </div>
+
+      <div className="space-y-7 md:space-y-8">
         {projects.map((project) => (
-          <article key={project.name} className="flex gap-3 md:gap-4">
-            <div className="shrink-0">
-              <Image
-                src={project.icon || "/placeholder.svg"}
-                alt={`${project.name} icon`}
-                width={36}
-                height={36}
-                className="rounded-lg md:w-10 md:h-10"
-              />
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-2 mb-1">
-                <h3 className="font-semibold text-sm md:text-base">
-                  {project.name}
-                </h3>
-                <span className="text-xs text-muted-foreground">
-                  {project.role}
-                </span>
+          <article key={project.slug} className="group">
+            <Link href={`/work/${project.slug}`} className="block">
+              <div className="flex gap-4">
+                <div className="shrink-0 pt-1">
+                  <ProjectMark
+                    name={project.name}
+                    icon={project.icon}
+                    initials={project.initials}
+                  />
+                </div>
+
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h3 className="text-base font-semibold tracking-tight text-foreground">
+                          {project.name}
+                        </h3>
+
+                        <span className="rounded-full border border-border px-2 py-0.5 text-[11px] font-medium text-muted-foreground">
+                          {project.status}
+                        </span>
+                      </div>
+
+                      <p className="mt-0.5 text-xs font-medium text-muted-foreground">
+                        {project.role}
+                      </p>
+                    </div>
+
+                    <p className="text-xs tabular-nums text-muted-foreground">
+                      {project.period}
+                    </p>
+                  </div>
+
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                    {project.summary}
+                  </p>
+
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {project.stack.slice(0, 5).map((tech) => (
+                      <span
+                        key={tech}
+                        className="rounded-md bg-muted px-2 py-1 text-xs text-muted-foreground"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors group-hover:text-foreground">
+                    View case study
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </div>
+                </div>
               </div>
-              <p className="text-xs md:text-sm text-muted-foreground mb-2 md:mb-3">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-1.5 md:gap-2 mb-2 md:mb-3">
-                {project.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="text-xs px-1.5 md:px-2 py-0.5 md:py-1 bg-muted rounded-md text-muted-foreground"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              {project.link && (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs md:text-sm text-muted-foreground hover:text-foreground"
-                >
-                  <ExternalLink className="h-3 w-3 md:h-3.5 md:w-3.5" />
-                  Live Demo
-                </a>
-              )}
-            </div>
+            </Link>
           </article>
         ))}
       </div>

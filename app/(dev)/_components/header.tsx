@@ -4,25 +4,46 @@ import { SocialLinks } from "./soical-links";
 
 export function Header() {
   return (
-    <header className="mb-6 md:mb-10">
-      <div className="flex items-center justify-between mb-3 md:mb-4">
-        <Link
-          href="/"
-          className="text-lg md:text-xl font-medium hover:opacity-80"
-        >
-          {"Hi, I'm Muiz Rexhepi"}
-        </Link>
+    <header className="mb-8 md:mb-12">
+      <div className="mb-4 flex items-start justify-between gap-6">
+        <div>
+          <Link
+            href="/"
+            className="block text-xl font-semibold tracking-tight text-foreground transition-opacity hover:opacity-80 md:text-2xl"
+          >
+            Muiz Rexhepi
+          </Link>
+
+          <p className="mt-1 text-sm font-medium text-muted-foreground">
+            React Native & Full-Stack Developer
+          </p>
+        </div>
+
         <ThemeToggle />
       </div>
-      <p className="text-muted-foreground leading-snug md:leading-relaxed text-xs md:text-sm mb-3 md:mb-4">
-        Fullstack Developer with experience building web and mobile apps using{" "}
-        <span className="text-foreground font-medium">React</span>,{" "}
-        <span className="text-foreground font-medium">Next.js</span>,{" "}
-        <span className="text-foreground font-medium">React Native</span>, and{" "}
-        <span className="text-foreground font-medium">TypeScript</span>. Based
-        in North Macedonia.
+
+      <p className="max-w-xl text-sm leading-6 text-muted-foreground md:text-[15px] md:leading-7">
+        I build and ship production mobile and web apps with{" "}
+        <span className="font-medium text-foreground">Expo</span>,{" "}
+        <span className="font-medium text-foreground">Next.js</span>,{" "}
+        <span className="font-medium text-foreground">TypeScript</span> and
+        modern backend tools. My work includes App Store apps, AI features,
+        subscriptions, payments, analytics, dashboards and client-facing
+        platforms.
       </p>
-      <SocialLinks />
+
+      <div className="mt-4 flex flex-wrap items-center gap-3">
+        <SocialLinks />
+
+        <span className="hidden h-4 w-px bg-border sm:block" />
+
+        <a
+          href="mailto:mail@muizrexhepi.com"
+          className="text-xs font-medium text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:text-foreground"
+        >
+          available for React Native / Full-Stack roles
+        </a>
+      </div>
     </header>
   );
 }
