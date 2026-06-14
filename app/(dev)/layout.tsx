@@ -6,8 +6,10 @@ import { ThemeProvider } from "./_components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const siteUrl = "https://muizrexhepi.com";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://muizrexhepi.com"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Muiz Rexhepi | React Native & Full-Stack Developer",
     template: "%s | Muiz Rexhepi",
@@ -26,17 +28,28 @@ export const metadata: Metadata = {
     "North Macedonia",
     "Tetovo",
   ],
-  authors: [{ name: "Muiz Rexhepi", url: "https://muizrexhepi.com" }],
+  authors: [{ name: "Muiz Rexhepi", url: siteUrl }],
   creator: "Muiz Rexhepi",
   publisher: "Muiz Rexhepi",
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
     title: "Muiz Rexhepi | React Native & Full-Stack Developer",
     description:
       "Production mobile and web apps with Expo, Next.js, TypeScript, AI integrations, subscriptions, payments and analytics.",
-    url: "https://muizrexhepi.com",
+    url: siteUrl,
     siteName: "Muiz Rexhepi",
     type: "website",
     locale: "en_US",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Muiz Rexhepi - React Native and Full-Stack Developer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -44,6 +57,7 @@ export const metadata: Metadata = {
     description:
       "Production mobile and web apps with Expo, Next.js, TypeScript and AI integrations.",
     creator: "@muiz_rexhepi",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
