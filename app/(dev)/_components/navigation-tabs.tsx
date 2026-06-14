@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
 
 const tabs = [
   { id: "/", label: "Projects" },
-  { id: "/experience", label: "Experience" },
-  { id: "/tools", label: "Tools" },
-  { id: "/blog", label: "Blog" },
+  { id: "/education", label: "Education" },
+  { id: "/tools", label: "Stack" },
+  { id: "/blog", label: "Writing" },
 ];
 
 export function NavigationTabs() {

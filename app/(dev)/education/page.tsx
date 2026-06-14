@@ -1,24 +1,24 @@
 import type { Metadata } from "next";
 import { Header } from "../_components/header";
 import { NavigationTabs } from "../_components/navigation-tabs";
-import { ToolsSection } from "../_components/tools-section";
+import { EducationSection } from "../_components/education-section";
 
 export const metadata: Metadata = {
-  title: "Tools",
+  title: "Education",
   description:
-    "Technical stack used by Muiz Rexhepi across mobile apps, web platforms, AI products and production systems.",
+    "Education, thesis, languages and technical background of Muiz Rexhepi, React Native and Full-Stack Developer.",
   alternates: {
-    canonical: "https://muizrexhepi.com/tools",
+    canonical: "https://muizrexhepi.com/education",
   },
 };
 
-export default function ToolsPage() {
+export default function EducationPage() {
   return (
     <main className="min-h-screen bg-background">
       <div className="mx-auto max-w-2xl px-5 py-12 md:px-4 md:py-16">
         <Header />
         <NavigationTabs />
-        <ToolsSection />
+        <EducationSection />
 
         <footer className="mt-16 border-t border-border pt-8 md:mt-20">
           <p className="text-center text-sm text-muted-foreground">

@@ -22,7 +22,7 @@ const toolGroups: ToolGroup[] = [
   {
     title: "Frontend",
     description:
-      "Fast, responsive interfaces for SaaS products, dashboards and public websites.",
+      "Fast, responsive interfaces for SaaS products, dashboards, marketplaces and public websites.",
     tools: [
       "React",
       "Next.js",
@@ -53,8 +53,8 @@ const toolGroups: ToolGroup[] = [
       "AI features, analytics, subscriptions and product launch infrastructure.",
     tools: [
       "OpenAI",
-      "DeepSeek",
       "Deepgram",
+      "DeepSeek",
       "PostHog",
       "Stripe",
       "Paddle",

@@ -1,37 +1,3 @@
-// import type { Metadata } from "next";
-// import { Poppins } from "next/font/google";
-// import "../globals.css";
-// import { Navbar } from "@/components/navbar";
-// import AnimatedBackground from "@/components/animated-gradient-background";
-// import { LenisProvider } from "@/components/lenis-provider";
-
-// const poppins = Poppins({
-//   variable: "--font-poppins",
-//   subsets: ["latin"],
-//   weight: ["400", "500", "700"],
-// });
-
-// export const metadata: Metadata = {
-//   title: "Muiz Rexhepi - Full-Stack Software Engineer",
-//   description:
-//     "Full-stack software engineer specializing in building reliable web applications and clean, maintainable code.",
-// };
-
-// export default function RootLayout({
-//   children,
-// }: Readonly<{ children: React.ReactNode }>) {
-//   return (
-//     <html lang="en">
-//       <body className={`${poppins.variable} font-sans antialiased`}>
-//         <LenisProvider>
-//           <AnimatedBackground />
-//           <Navbar />
-//           {children}
-//         </LenisProvider>
-//       </body>
-//     </html>
-//   );
-// }
 import type React from "react";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
@@ -79,12 +45,23 @@ export const metadata: Metadata = {
       "Production mobile and web apps with Expo, Next.js, TypeScript and AI integrations.",
     creator: "@muiz_rexhepi",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#fafafa" },
-    { media: "(prefers-color-scheme: dark)", color: "#1c1c1e" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b0d0f" },
   ],
   width: "device-width",
   initialScale: 1,

@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { projects } from "@/data/projects";
 
 function ProjectMark({
@@ -39,7 +39,7 @@ export function ProjectsSection() {
           Selected work
         </h2>
         <p className="mt-1 text-sm leading-6 text-muted-foreground">
-          Production apps, client platforms and product experiments shipped
+          Production apps, client platforms and commercial web products shipped
           across mobile and web.
         </p>
       </div>
@@ -83,6 +83,17 @@ export function ProjectsSection() {
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">
                     {project.summary}
                   </p>
+
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {project.proof.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-border px-2 py-0.5 text-[11px] font-medium text-foreground"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
 
                   <div className="mt-3 flex flex-wrap gap-1.5">
                     {project.stack.slice(0, 5).map((tech) => (

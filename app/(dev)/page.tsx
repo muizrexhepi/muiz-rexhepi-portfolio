@@ -76,7 +76,7 @@ export default function Home() {
         <ProjectsSection />
         <footer className="mt-16 md:mt-20 pt-8 border-t border-border">
           <p className="text-sm text-muted-foreground text-center">
-            © {new Date().getFullYear()} Muiz Rexhepi. Built with Next.js.
+            © {new Date().getFullYear()} Muiz Rexhepi.
           </p>
         </footer>
       </div>

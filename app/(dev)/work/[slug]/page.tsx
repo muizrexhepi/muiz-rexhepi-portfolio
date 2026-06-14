@@ -1,10 +1,9 @@
+import type React from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { Header } from "../../_components/header";
-import { NavigationTabs } from "../../_components/navigation-tabs";
 import { getProject, projects } from "@/data/projects";
 
 type PageProps = {
@@ -89,7 +88,9 @@ function Section({
 }) {
   return (
     <section className="border-t border-border pt-8">
-      <h2 className="mb-4 text-base font-semibold tracking-tight">{title}</h2>
+      <h2 className="mb-4 text-base font-semibold tracking-tight text-foreground">
+        {title}
+      </h2>
       {children}
     </section>
   );
@@ -106,10 +107,7 @@ export default async function WorkProjectPage({ params }: PageProps) {
   return (
     <main className="min-h-screen bg-background">
       <div className="mx-auto max-w-2xl px-5 py-12 md:px-4 md:py-16">
-        <Header />
-        <NavigationTabs />
-
-        <div className="mb-8">
+        <div className="mb-10">
           <Link
             href="/"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
@@ -120,7 +118,7 @@ export default async function WorkProjectPage({ params }: PageProps) {
         </div>
 
         <article>
-          <header className="mb-10">
+          <header className="mb-12">
             <div className="mb-5">
               <ProjectMark
                 name={project.name}
@@ -170,6 +168,21 @@ export default async function WorkProjectPage({ params }: PageProps) {
               </p>
             </Section>
 
+            <Section title="Proof points">
+              <div className="grid gap-2 sm:grid-cols-3">
+                {project.proof.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-xl border border-border bg-muted/40 px-3 py-3"
+                  >
+                    <p className="text-sm font-semibold text-foreground">
+                      {item}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </Section>
+
             <Section title="Scope">
               <div className="flex flex-wrap gap-1.5">
                 {project.scope.map((item) => (
@@ -183,7 +196,7 @@ export default async function WorkProjectPage({ params }: PageProps) {
               </div>
             </Section>
 
-            <Section title="Technical stack">
+            <Section title="Stack">
               <div className="flex flex-wrap gap-1.5">
                 {project.stack.map((tech) => (
                   <span

@@ -4,47 +4,39 @@ import { NavigationTabs } from "../_components/navigation-tabs";
 import { BlogSection } from "../_components/blog-section";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Writing",
   description:
-    "Thoughts on web development, mobile apps, and modern tooling by Muiz Rexhepi.",
-  keywords: [
-    "Muiz Rexhepi",
-    "Blog",
-    "Web Development",
-    "React",
-    "Next.js",
-    "React Native",
-    "Technical Writing",
-  ],
+    "Notes on building production AI apps, mobile products, React Native, Next.js and full-stack product systems by Muiz Rexhepi.",
+  alternates: {
+    canonical: "https://muizrexhepi.com/blog",
+  },
   openGraph: {
-    title: "Blog",
+    title: "Writing | Muiz Rexhepi",
     description:
-      "Thoughts on web development, mobile apps, and modern tooling.",
+      "Notes on building production AI apps, mobile products and full-stack systems.",
     url: "https://muizrexhepi.com/blog",
     siteName: "Muiz Rexhepi",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog",
+    title: "Writing | Muiz Rexhepi",
     description:
-      "Thoughts on web development, mobile apps, and modern tooling.",
-  },
-  alternates: {
-    canonical: "https://muizrexhepi.com/blog",
+      "Notes on building production AI apps, mobile products and full-stack systems.",
   },
 };
 
 export default function BlogPage() {
   return (
     <main className="min-h-screen bg-background">
-      <div className="max-w-2xl mx-auto px-5 md:px-4 py-12 md:py-16">
+      <div className="mx-auto max-w-2xl px-5 py-12 md:px-4 md:py-16">
         <Header />
         <NavigationTabs />
         <BlogSection />
-        <footer className="mt-16 md:mt-20 pt-8 border-t border-border">
-          <p className="text-sm text-muted-foreground text-center">
-            © {new Date().getFullYear()} Muiz Rexhepi. Built with Next.js.
+
+        <footer className="mt-16 border-t border-border pt-8 md:mt-20">
+          <p className="text-center text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Muiz Rexhepi.
           </p>
         </footer>
       </div>

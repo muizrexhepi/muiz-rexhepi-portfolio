@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ThemeToggle } from "./theme-toggle";
-import { SocialLinks } from "./soical-links";
+import { SocialLinks } from "./social-links";
 
 export function Header() {
   return (
@@ -28,8 +28,8 @@ export function Header() {
         <span className="font-medium text-foreground">Next.js</span>,{" "}
         <span className="font-medium text-foreground">TypeScript</span> and
         modern backend tools. My work includes App Store apps, AI features,
-        subscriptions, payments, analytics, dashboards and client-facing
-        platforms.
+        subscriptions, payments, analytics, dashboards, marketplaces and
+        client-facing platforms.
       </p>
 
       <div className="mt-4 flex flex-wrap items-center gap-3">
@@ -42,6 +42,17 @@ export function Header() {
           className="text-xs font-medium text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:text-foreground"
         >
           available for React Native / Full-Stack roles
+        </a>
+
+        <span className="hidden h-4 w-px bg-border sm:block" />
+
+        <a
+          href="/Muiz-Rexhepi-CV.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs font-medium text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:text-foreground"
+        >
+          view CV
         </a>
       </div>
     </header>
