@@ -1,28 +1,10 @@
-import { projects, Project } from "@/data/projects";
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
+import { projects } from "@/lib/projects";
+import { site } from "@/lib/site";
 
-const createSlug = (name: string): string => {
-  return name
-    .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9-]/g, "");
-};
-
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticUrls = ["/", "/contact", "/projects"].map((path) => ({
-    url: `https://muizrexhepi.com${path}`,
-    lastModified: new Date().toISOString(),
-  }));
-
-  const projectUrls = projects.map((project: Project) => ({
-    url: `https://muizrexhepi.com/project/${createSlug(project.name)}`,
-    lastModified: new Date().toISOString(),
-  }));
-
-  const allUrls = [...staticUrls, ...projectUrls];
-  const uniqueUrls = Array.from(
-    new Map(allUrls.map((u) => [u.url, u])).values()
-  );
-
-  return uniqueUrls;
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
+    "/", "/work", "/services", "/about", "/process", "/contact", "/privacy", "/terms",
+    ...projects.map(({ slug }) => `/work/${slug}`),
+  ].map((path) => ({ url: `${site.url}${path}` }));
 }

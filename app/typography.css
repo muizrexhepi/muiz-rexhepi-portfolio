@@ -1,0 +1,65 @@
+.type-display {
+  font-size: clamp(2.75rem, 7vw, 5.25rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.058em;
+  text-wrap: balance;
+}
+
+.type-display-home {
+  font-size: clamp(2.25rem, 9vw, 6.9rem);
+  font-weight: 650;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.type-section {
+  font-size: clamp(2.35rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+.type-subsection {
+  font-size: clamp(1.6rem, 3vw, 2.35rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.type-card {
+  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.type-small {
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.type-lead {
+  font-size: clamp(1.0625rem, 1.45vw, 1.25rem);
+  line-height: 1.55;
+}
+
+.type-body {
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.type-body-small {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.type-caption {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.55;
+}

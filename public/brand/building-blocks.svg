@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 500" fill="none" stroke="#151316" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <pattern id="checks" width="56" height="56" patternUnits="userSpaceOnUse">
+      <rect width="56" height="56" fill="#fff8ed" stroke="none"/>
+      <path d="M0 0h28v28H0zM28 28h28v28H28z" fill="#151316" stroke="none"/>
+    </pattern>
+  </defs>
+  <path d="M65 367c-34-126 85-253 248-259 81-3 131 33 128 76-2 39-52 56-104 44" stroke-dasharray="4 10" opacity=".75"/>
+  <path d="M498 180c39 97-6 184-111 221-63 22-128 20-178 1" stroke-dasharray="4 10" opacity=".75"/>
+  <g transform="rotate(-11 243 219)">
+    <rect x="88" y="108" width="332" height="256" rx="20" fill="#151316"/>
+    <rect x="76" y="95" width="332" height="256" rx="20" fill="#fff8ed"/>
+    <path d="M76 143h332"/>
+    <circle cx="102" cy="120" r="5" fill="#f59ad8"/>
+    <circle cx="121" cy="120" r="5" fill="#fbd45c"/>
+    <circle cx="140" cy="120" r="5" fill="#7bdac4"/>
+    <rect x="101" y="167" width="282" height="158" rx="9" fill="#b8aaff"/>
+    <path d="M119 300h242M132 313v-19m29 12v-13m29 13v-13m29 13v-13m29 13v-13m29 13v-13m29 13v-13m29 20v-20" stroke-width="2" opacity=".55"/>
+    <path d="M154 229l-25 19 25 18m151-37 25 19-25 18m-85 11 29-62" stroke-width="8"/>
+    <path d="M113 189h38m184 0h35" stroke-width="2"/>
+  </g>
+  <g transform="rotate(9 404 321)">
+    <rect x="357" y="240" width="127" height="177" rx="20" fill="#151316"/>
+    <rect x="349" y="230" width="127" height="177" rx="20" fill="#7bdac4"/>
+    <path d="M398 245h29m-30 145h31"/>
+    <rect x="364" y="260" width="96" height="108" rx="5" fill="url(#checks)"/>
+    <path d="M413 274c0 24 14 39 39 39-25 0-39 15-39 39 0-24-15-39-39-39 24 0 39-15 39-39Z" fill="#fbd45c"/>
+  </g>
+  <path d="M98 303l14 106 24-30 32 13z" fill="#151316" transform="translate(7 7)"/>
+  <path d="M98 303l14 106 24-30 32 13z" fill="#fbd45c"/>
+  <path d="M442 65c1 24 11 35 34 37-23 1-33 12-34 35-1-23-12-34-35-35 23-2 34-13 35-37Z" fill="#fff8ed"/>
+  <path d="M191 66l-5-17m-8 25-17-7m44-6 7-15M48 235l-15-8m12 23-18 1m22 14-12 13M304 424l2 26m-15-13 28 1"/>
+  <circle cx="503" cy="216" r="6" fill="#fbd45c"/>
+  <path d="M239 430c23 6 36 10 52 22" stroke-width="2"/>
+</svg>

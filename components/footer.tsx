@@ -1,144 +1,71 @@
-"use client";
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { GithubIcon, Linkedin01Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 
-export function FooterSection() {
-  const mainContentRef = useRef(null);
-  const footerNavRef = useRef(null);
+import { Container } from "@/components/layout/container";
+import { site } from "@/lib/site";
 
-  const contentInView = useInView(mainContentRef, {
-    once: true,
-    margin: "-200px 0px",
-  });
+const navigation = [
+  { label: "Work", href: "/work" },
+  { label: "Services", href: "/services" },
+  { label: "Process", href: "/process" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
 
-  const navInView = useInView(footerNavRef, {
-    once: false,
-    margin: "-100px 0px",
-  });
+const socials = [
+  { label: "LinkedIn", href: site.profiles.linkedin, icon: Linkedin01Icon },
+  { label: "GitHub", href: site.profiles.github, icon: GithubIcon },
+];
 
-  const containerVariants = {
-    initial: {
-      borderColor: "rgba(255, 255, 255, 0)", // Fully transparent border
-      backgroundColor: "rgba(255, 255, 255, 0)", // Fully transparent background
-      borderRadius: "0rem",
-    },
-    docked: {
-      borderColor: "rgba(255, 255, 255, 0.3)", // The white/30 border color
-      backgroundColor: "rgba(255, 255, 255, 0.05)", // The white/[0.05] background color
-      borderRadius: "3rem",
-    },
-  };
-
+export function Footer() {
   return (
-    <footer
-      className="relative min-h-screen w-full flex flex-col justify-end text-white pt-20 pb-8 overflow-hidden px-5 sm:px-12 lg:px-18"
-      id="contact"
-    >
-      {/* Background grain texture */}
-      <div
-        className="absolute inset-0 z-0 opacity-10"
-        style={{
-          backgroundImage: "url('/grain.png')",
-          backgroundSize: "300px 300px",
-          backgroundRepeat: "repeat",
-        }}
-      />
-
-      <div className="flex-1 flex flex-col justify-center">
-        <motion.div
-          ref={mainContentRef}
-          layout // Animates size and position
-          variants={containerVariants} // Defines the states for color/border animation
-          initial="initial" // Sets the default state
-          animate={navInView ? "docked" : "initial"} // Toggles between states based on scroll position
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative flex flex-grow flex-col items-center justify-center text-center p-8 border backdrop-blur-sm"
-        >
-          <motion.p
-            className="text-white text-sm md:text-base lg:text-xl uppercase tracking-widest font-light mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={contentInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            GOT A PROJECT IN MIND?
-          </motion.p>
-          <motion.h2
-            className="text-5xl md:text-7xl lg:text-9xl font-light tracking-tight mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={contentInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            LET&apos;S CONNECT
-          </motion.h2>
-
-          <motion.a
-            href="mailto:mail@muizrexhepi.com"
-            className="size-32 rounded-full border border-white/30 flex flex-col items-center justify-center p-4 text-center transition-colors duration-300 hover:bg-white hover:text-black group"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={contentInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <span className="text-sm font-medium uppercase leading-[1.1em] tracking-wider">
-              WRITE A
-              <br />
-              MESSAGE
-            </span>
-          </motion.a>
-        </motion.div>
-      </div>
-
-      {/* Footer Nav - (no changes here) */}
-      <div ref={footerNavRef} className="relative z-10 w-full pt-12">
-        <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-8 md:gap-4">
-          <motion.div
-            className="flex items-center gap-4 text-center md:text-left"
-            initial={{ opacity: 0, y: 20 }}
-            animate={contentInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            <p className="text-sm md:text-base font-light tracking-wide text-white max-w-md">
-              FEEL FREE TO CONNECT WITH ME ON SOCIAL
+    <footer className="border-t border-border bg-[#100e11]">
+      <Container className="pt-10 pb-7 sm:pt-14 sm:pb-8">
+        <div className="grid items-start gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-[1.4fr_.8fr_1fr]">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <Link href="/" className="flex w-fit items-center gap-3 font-heading text-xl font-bold tracking-tight" aria-label="Muiz Rexhepi home">
+              <Image src="/brand/mr-dark.svg" alt="" width={40} height={40} />
+              {site.name}
+            </Link>
+            <p className="mt-4 max-w-[29ch] text-sm leading-relaxed text-muted-foreground">
+              Independent software development for businesses in North Macedonia and internationally.
             </p>
-          </motion.div>
-          <div className="flex gap-6 md:gap-8 lg:gap-45 uppercase text-sm md:text-base font-light text-white">
-            <motion.a
-              href="https://www.instagram.com/muiz.rexhepi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-              initial={{ opacity: 0, y: 20 }}
-              animate={contentInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 1 }}
-            >
-              Instagram
-            </motion.a>
-            <motion.a
-              href="https://x.com/muiz_rexhepi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-              initial={{ opacity: 0, y: 20 }}
-              animate={contentInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 1.1 }}
-            >
-              Twitter
-            </motion.a>
-            <motion.a
-              href="https://www.linkedin.com/in/muiz-rexhepi/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-              initial={{ opacity: 0, y: 20 }}
-              animate={contentInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 1.2 }}
-            >
-              LinkedIn
-            </motion.a>
+          </div>
+
+          <nav aria-label="Footer navigation">
+            <p className="text-sm font-semibold text-foreground">Explore</p>
+            <ul className="mt-3 grid grid-cols-2 gap-x-5 gap-y-3 text-sm text-muted-foreground sm:max-w-[15rem]">
+              {navigation.map(({ label, href }) => (
+                <li key={href}><Link href={href} className="hover:text-foreground">{label}</Link></li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="min-w-0 lg:justify-self-end">
+            <p className="text-sm font-semibold text-foreground">Get in touch</p>
+            <a href={`mailto:${site.email}`} className="mt-3 inline-flex text-sm text-primary underline-offset-4 [overflow-wrap:anywhere] hover:underline">{site.email}</a>
+            <ul className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
+              {socials.map(({ label, href, icon }) => (
+                <li key={href}>
+                  <a href={href} className="inline-flex items-center gap-1.5 hover:text-foreground">
+                    <HugeiconsIcon icon={icon} size={17} /> {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-      </div>
+
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6 text-xs text-muted-foreground sm:mt-10">
+          <p>© {new Date().getFullYear()} {site.name}</p>
+          <div className="flex gap-5">
+            <Link href="/privacy" className="hover:text-foreground">Privacy</Link>
+            <Link href="/terms" className="hover:text-foreground">Terms</Link>
+          </div>
+        </div>
+      </Container>
     </footer>
   );
 }

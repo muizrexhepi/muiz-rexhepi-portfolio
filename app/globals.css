@@ -1,148 +1,135 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  /* Light Mode Colors */
-  --background: oklch(0.98 0.005 260);
-  --foreground: oklch(0.15 0.01 260);
-  --card: oklch(0.98 0.005 260);
-  --primary: oklch(0.25 0.01 260);
-  --primary-foreground: oklch(0.98 0.005 260);
-  --muted: oklch(0.94 0.005 260);
-  --muted-foreground: oklch(0.5 0.01 260);
-  --border: oklch(0.88 0.005 260);
-  --ring: oklch(0.7 0.01 260);
-
-  --font-sans: "Inter", "Poppins", sans-serif;
-}
-
-/* Updated to use .dark class so your ThemeProvider toggle works */
-.dark {
-  --background: oklch(0.18 0.01 250);
-  --foreground: oklch(0.9 0.005 260);
-  --card: oklch(0.2 0.01 250);
-  --primary: oklch(0.9 0.005 260);
-  --primary-foreground: oklch(0.18 0.01 250);
-  --muted: oklch(0.25 0.01 250);
-  --muted-foreground: oklch(0.6 0.01 260);
-  --border: oklch(0.28 0.01 250);
-  --ring: oklch(0.4 0.01 260);
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-border: var(--border);
+  --font-sans: var(--font-inter);
+  --font-mono: ui-monospace, 'SFMono-Regular', monospace;
+  --font-heading: var(--font-manrope);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
   --color-ring: var(--ring);
-  --font-sans: var(--font-sans);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-html,
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
-  scroll-behavior: smooth;
-  overflow-x: hidden; /* Prevent horizontal scroll */
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+:root {
+  color-scheme: dark;
+  --background: #141215;
+  --foreground: #fff8ed;
+  --card: #211e23;
+  --card-foreground: #fff8ed;
+  --popover: #211e23;
+  --popover-foreground: #fff8ed;
+  --primary: #f59ad8;
+  --primary-foreground: #151316;
+  --secondary: #27242a;
+  --secondary-foreground: #fff8ed;
+  --muted: #252229;
+  --muted-foreground: #c5bcc8;
+  --accent: #342d38;
+  --accent-foreground: #fff8ed;
+  --destructive: #ff9a8b;
+  --border: #4a414e;
+  --input: #332c37;
+  --ring: #f59ad8;
+  --radius: 0.45rem;
+  --ink: #151316;
+  --paper: #fff8ed;
+  --pink: #f59ad8;
+  --lilac: #b8aaff;
+  --mint: #7bdac4;
+  --yellow: #fbd45c;
+  --coral: #ffa685;
 }
 
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-  display: none;
-}
-
-/* --- Animated Background Section --- */
-
-.animated-gradient-background {
-  position: fixed;
-  inset: 0;
-  z-index: -1; /* Set to -1 to ensure it stays behind your content */
-
-  /* Using your dark theme colors for the gradient base */
-  background: linear-gradient(
-    -45deg,
-    oklch(0.1 0.01 250) 0%,
-    oklch(0.15 0.01 250) 25%,
-    oklch(0.18 0.01 250) 50%,
-    oklch(0.12 0.01 250) 75%,
-    oklch(0.05 0.01 250) 100%
-  );
-
-  background-size: 400% 400%;
-  animation: gradient-shift 15s ease infinite;
-}
-
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
-.animated-gradient-background::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    45deg,
-    transparent 0%,
-    oklch(0.3 0.01 250 / 0.1) 40%,
-    oklch(0.4 0.01 250 / 0.1) 60%,
-    transparent 100%
-  );
-  background-size: 300% 300%;
-  animation: gradient-shift-reverse 20s ease infinite;
-  opacity: 0.5;
-}
+  html {
+    @apply scroll-smooth font-sans;
+  }
 
-@keyframes gradient-shift-reverse {
-  0% {
-    background-position: 100% 0%;
+  body {
+    @apply overflow-x-clip bg-background text-foreground antialiased;
   }
-  50% {
-    background-position: 0% 100%;
-  }
-  100% {
-    background-position: 100% 0%;
+
+  ::selection {
+    background: var(--pink);
+    color: var(--ink);
   }
 }
 
-.animated-gradient-background::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-      ellipse at top left,
-      oklch(0.4 0.01 250 / 0.1) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse at bottom right,
-      oklch(0.3 0.01 250 / 0.05) 0%,
-      transparent 50%
-    );
-  animation: floating-orbs 25s ease-in-out infinite;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
 
-@keyframes floating-orbs {
-  0%,
-  100% {
-    transform: translateY(0px);
-    opacity: 0.6;
-  }
-  50% {
-    transform: translateY(-30px);
-    opacity: 0.3;
-  }
+.work-frame {
+  background: var(--project-color, var(--lilac));
+}
+
+.project-rendo-pos { --project-color: var(--lilac); }
+.project-ido-tours { --project-color: var(--yellow); }
+.project-villa-noar { --project-color: var(--mint); }
+
+.service-tile:nth-child(5n + 1) { background: var(--pink); }
+.service-tile:nth-child(5n + 2) { background: var(--lilac); }
+.service-tile:nth-child(5n + 3) { background: var(--yellow); }
+.service-tile:nth-child(5n + 4) { background: var(--mint); }
+.service-tile:nth-child(5n + 5) { background: var(--coral); }
+
+@keyframes artwork-float {
+  from { transform: translateY(0); }
+  to { transform: translateY(-9px); }
+}
+
+.hero-artwork {
+  animation: artwork-float 2s ease-in-out 2 alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-artwork { animation: none; }
 }

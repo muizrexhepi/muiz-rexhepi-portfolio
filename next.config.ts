@@ -1,9 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  eslint: {
-    ignoreDuringBuilds: true,
+  devIndicators: false,
+  async redirects() {
+    return [
+      { source: "/projects", destination: "/work", permanent: true },
+      { source: "/project/:slug", destination: "/work/:slug", permanent: true },
+      { source: "/experience", destination: "/about", permanent: true },
+    ];
   },
 };
 
