@@ -22,7 +22,7 @@ export function SelectedWorkSection() {
           </Link>
         </div>
         <div className="mt-9 grid gap-6">
-          {flagship && <WorkProjectCard project={flagship} large heading="h3" />}
+          {flagship && <WorkProjectCard project={flagship} large edgeToEdge heading="h3" />}
           <div className="grid gap-6 md:grid-cols-2">
             {projects.map((project) => <WorkProjectCard key={project.slug} project={project} heading="h3" />)}
           </div>

@@ -12,11 +12,15 @@ export function WorkProjectCard({
   priority = false,
   large = false,
   heading = "h2",
+  edgeToEdge = false,
+  imageSizes,
 }: {
   project: Project;
   priority?: boolean;
   large?: boolean;
   heading?: "h2" | "h3";
+  edgeToEdge?: boolean;
+  imageSizes?: string;
 }) {
   const image = project.coverImage ?? project.heroImage;
 
@@ -24,17 +28,24 @@ export function WorkProjectCard({
     <Link href={`/work/${project.slug}`} className={cn(
       "group/card grid h-full overflow-hidden rounded-2xl border border-border bg-card transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-[4px_5px_0_#713c62] motion-reduce:transform-none",
       `project-${project.visualTheme}`,
-      large && "lg:grid-cols-[1.35fr_1fr]",
+      large && "lg:grid-cols-[1.45fr_1fr]",
     )}>
-      <div className={cn("work-frame relative grid min-w-0 place-items-center p-4 sm:p-6", large && "lg:p-9")}>
-        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg border-2 border-[var(--ink)] bg-[var(--paper)] shadow-[4px_4px_0_var(--ink)]">
+      <div className={cn(
+        "work-frame relative grid min-w-0 place-items-center",
+        !edgeToEdge && "p-4 sm:p-6",
+        !edgeToEdge && large && "lg:p-9",
+      )}>
+        <div className={cn(
+          "relative w-full overflow-hidden",
+          edgeToEdge ? "aspect-video" : "aspect-[16/10] rounded-lg border-2 border-[var(--ink)] bg-[var(--paper)] shadow-[4px_4px_0_var(--ink)]",
+        )}>
           {image ? (
             <Image
               src={image}
               alt={project.coverAlt ?? project.heroAlt ?? `${project.name} interface`}
               fill
               preload={priority}
-              sizes={large ? "(min-width: 1024px) 51vw, 100vw" : "(min-width: 768px) 48vw, 100vw"}
+              sizes={imageSizes ?? (large ? "(min-width: 1280px) 720px, (min-width: 1024px) 55vw, 100vw" : "(min-width: 768px) 48vw, 100vw")}
               className={cn("object-cover object-top", project.coverImageClassName)}
             />
           ) : (

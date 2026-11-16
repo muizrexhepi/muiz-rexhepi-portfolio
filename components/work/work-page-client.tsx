@@ -1,14 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 import { Container } from "@/components/layout/container";
-import { PageIntro } from "@/components/layout/page-intro";
 import { Section } from "@/components/layout/section";
+import { Heading } from "@/components/ui/typography";
 import { WorkProjectCard } from "@/components/work/work-project-card";
-import { Heading, Text } from "@/components/ui/typography";
 import type { Project, ProjectCategory } from "@/lib/projects";
-import { cn } from "@/lib/utils";
 
 type Filter = "All" | ProjectCategory;
 
@@ -20,70 +18,43 @@ export function WorkPageClient({
   categories: ProjectCategory[];
 }) {
   const [activeCategory, setActiveCategory] = useState<Filter>("All");
-
-  const filteredProjects = useMemo(() => {
-    if (activeCategory === "All") return projects;
-
-    return projects.filter((project) =>
-      project.categories.includes(activeCategory),
-    );
-  }, [activeCategory, projects]);
-
-  const filters: Filter[] = ["All", ...categories];
+  const filteredProjects = activeCategory === "All"
+    ? projects
+    : projects.filter((project) => project.categories.includes(activeCategory));
 
   return (
-    <Section spacing="sm" className="pt-10 sm:pt-14 lg:pt-16">
+    <Section spacing="sm" className="bg-card">
       <Container>
-        <PageIntro
-          title="Built for real businesses."
-          description="Explore the software I’ve built for restaurant service, passenger booking, hospitality, and more."
-        />
-
-        <div className="mt-8 flex gap-2 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {filters.map((category) => {
-            const isActive = activeCategory === category;
-
-            return (
-              <button
-                key={category}
-                type="button"
-                onClick={() => setActiveCategory(category)}
-                aria-pressed={isActive}
-                className={cn(
-                  "shrink-0 rounded-full border px-4 py-2 text-sm font-medium transition-colors",
-                  isActive
-                    ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border bg-card text-muted-foreground hover:border-primary/30 hover:text-foreground",
-                )}
-              >
-                {category}
-              </button>
-            );
-          })}
+        <div className="flex flex-wrap items-end justify-between gap-5">
+          <Heading as="h2" variant="section">More projects.</Heading>
+          <div className="grid w-full gap-1.5 sm:w-auto">
+            <label htmlFor="project-category" className="text-sm font-medium text-muted-foreground">Filter by category</label>
+            <select
+              id="project-category"
+              value={activeCategory}
+              onChange={(event) => setActiveCategory(event.currentTarget.value as Filter)}
+              className="h-11 rounded-lg border border-border bg-background px-3 text-sm text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:min-w-48"
+            >
+              <option value="All">All projects</option>
+              {categories.map((category) => <option key={category} value={category}>{category}</option>)}
+            </select>
+          </div>
         </div>
 
-        <div className="mt-10 grid gap-x-6 gap-y-14 md:grid-cols-2">
-          {filteredProjects.map((project, index) => (
-            <div key={project.slug} className={cn(index === 0 && activeCategory === "All" && "md:col-span-2")}>
-              <WorkProjectCard
-                project={project}
-                priority={index === 0}
-                large={index === 0 && activeCategory === "All"}
-              />
-            </div>
+        <p aria-live="polite" className="sr-only">
+          {filteredProjects.length} {filteredProjects.length === 1 ? "project" : "projects"}
+        </p>
+        <div className="mt-7 grid gap-5 sm:mt-9 md:grid-cols-2 lg:grid-cols-3">
+          {filteredProjects.map((project) => (
+            <WorkProjectCard
+              key={project.slug}
+              project={project}
+              heading="h3"
+              edgeToEdge
+              imageSizes="(min-width: 1280px) 384px, (min-width: 1024px) 31vw, (min-width: 768px) 48vw, 100vw"
+            />
           ))}
         </div>
-
-        {filteredProjects.length === 0 ? (
-          <div className="mt-8 rounded-3xl border border-border bg-card p-10 text-center">
-            <Heading as="h2" variant="subsection">
-              No projects in this category yet.
-            </Heading>
-            <Text variant="body" className="mt-3">
-              Choose another category to see more work.
-            </Text>
-          </div>
-        ) : null}
       </Container>
     </Section>
   );
