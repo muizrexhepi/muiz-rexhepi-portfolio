@@ -21,7 +21,7 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-[#100e11]">
+    <footer className="border-t border-border bg-background">
       <Container className="pt-10 pb-7 sm:pt-14 sm:pb-8">
         <div className="grid items-start gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-[1.4fr_.8fr_1fr]">
           <div className="sm:col-span-2 lg:col-span-1">

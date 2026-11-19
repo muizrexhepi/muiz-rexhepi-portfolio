@@ -1,0 +1,18 @@
+{
+  "capturedAt": "2026-11-19",
+  "method": "Browser screenshots of the public live application, arranged in presentation frames and compressed locally. Application pixels and content were not replaced.",
+  "assets": [
+    { "file": "ulliri-experience.webp", "urls": ["https://www.restaurantulliri.com/", "https://www.restaurantulliri.com/garden/order"], "views": ["desktop homepage", "mobile ordering categories"] },
+    { "file": "restaurant.webp", "url": "https://www.restaurantulliri.com/", "view": "desktop homepage" },
+    { "file": "garden-and-menu.webp", "urls": ["https://www.restaurantulliri.com/garden", "https://www.restaurantulliri.com/garden/menu"], "views": ["desktop Garden landing page", "digital menu"] },
+    { "file": "order-mobile.webp", "url": "https://www.restaurantulliri.com/garden/order", "view": "mobile categories, English interface" },
+    { "file": "dessert-mobile.webp", "url": "https://www.restaurantulliri.com/garden/order", "view": "dessert options before adding to cart" },
+    { "file": "cart-mobile.webp", "url": "https://www.restaurantulliri.com/garden/order", "view": "cart review before submission; no live order was submitted" },
+    { "file": "share.png", "sources": ["restaurant.webp", "order-mobile.webp"], "view": "1200x630 portfolio sharing artwork" }
+  ],
+  "operationalClaims": {
+    "source": "Read-only inspection of the Ulliri restaurant implementation and the project information supplied by Muiz Rexhepi.",
+    "verifiedPaths": ["app/(ulliri-garden)/garden/order/page.tsx", "app/(ulliri-garden)/garden/order/status/[orderToken]/page.tsx", "convex/orders.ts", "convex/printJobs.ts", "app/display/pickup/page.tsx", "lib/garden-i18n.ts", "components/language-switcher.tsx", "apps/print-bridge/package.json"],
+    "limits": "Code establishes implemented payment confirmation, station ticket routing, and pickup status behavior. This portfolio task did not submit a live order, access private staff sessions, or test physical printers. No performance metrics or testimonials are claimed."
+  }
+}

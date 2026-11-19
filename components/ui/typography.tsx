@@ -7,6 +7,7 @@ const headingStyles = {
   section: "type-section",
   subsection: "type-subsection",
   card: "type-card",
+  project: "type-project",
   small: "type-small",
 };
 

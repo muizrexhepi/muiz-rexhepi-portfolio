@@ -18,12 +18,12 @@ export default function ContactPage() {
   return (
     <Section spacing="sm">
       <Container className="grid gap-5 lg:grid-cols-[.86fr_1.14fr] lg:gap-7">
-        <div className="flex flex-col overflow-hidden rounded-2xl border border-[var(--ink)] bg-[var(--pink)] p-6 text-[var(--ink)] sm:p-9 lg:p-11">
-          <Heading as="h1" variant="hero" className="text-[var(--ink)]">Start a project.</Heading>
+        <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 text-foreground sm:p-9 lg:p-11">
+          <Heading as="h1" variant="hero">Start a project.</Heading>
           <p className="mt-6 max-w-md text-base leading-7 sm:text-lg">
             Tell me what you’re building, who it’s for, and what you’d like it to do. I’ll reply with the next step.
           </p>
-          <a href={`mailto:${site.email}`} className="mt-8 inline-flex items-center gap-2 break-all font-semibold underline underline-offset-4">
+          <a href={`mailto:${site.email}`} className="mt-8 inline-flex items-center gap-2 break-all font-semibold text-primary underline underline-offset-4">
             <HugeiconsIcon icon={Mail01Icon} size={19} className="shrink-0" />
             {site.email}
           </a>

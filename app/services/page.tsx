@@ -23,12 +23,12 @@ const serviceGroups = [
     entries: [web, mobile],
   },
   {
-    color: "var(--lilac)",
+    color: "var(--yellow)",
     illustration: { src: "/brand/bookings.svg", width: 530, height: 420 },
     entries: [booking],
   },
   {
-    color: "var(--mint)",
+    color: "var(--yellow)",
     illustration: { src: "/brand/automation.svg", width: 530, height: 420 },
     entries: [software, automation],
   },
@@ -37,13 +37,11 @@ const serviceGroups = [
 export default function ServicesPage() {
   return (
     <>
-      <section className="relative isolate grid min-h-[26rem] place-items-center overflow-hidden border-b border-[var(--ink)] bg-[var(--yellow)] py-15 text-center text-[var(--ink)] sm:py-20">
-        <Image src="/brand/bracket-sticker.svg" alt="" width={234} height={181} className="pointer-events-none absolute -top-6 -left-8 -z-10 w-24 -rotate-12 sm:top-8 lg:left-[8%] lg:w-40" />
-        <Image src="/brand/cursor-sticker.svg" alt="" width={220} height={220} className="pointer-events-none absolute -right-9 -bottom-8 -z-10 w-28 rotate-12 sm:bottom-4 lg:right-[7%] lg:w-44" />
+      <section className="relative isolate grid min-h-[26rem] place-items-center overflow-hidden border-b border-border bg-background py-15 text-center text-foreground sm:py-20">
         <Container>
           <p className="mb-5 text-sm font-semibold">Software development services</p>
-          <Heading as="h1" variant="hero" className="mx-auto max-w-[15ch] text-[var(--ink)]">Software for the way you work.</Heading>
-          <Text variant="lead" className="mx-auto mt-6 max-w-[49ch] text-[var(--ink)]">
+          <Heading as="h1" variant="hero" className="mx-auto max-w-[15ch] text-foreground">Software for the way you work.</Heading>
+          <Text variant="lead" className="mx-auto mt-6 max-w-[49ch] text-foreground/90">
             From a customer’s first visit to the work your team does every day, I build around the part of your business you want to improve.
           </Text>
         </Container>
@@ -70,7 +68,7 @@ export default function ServicesPage() {
               )}
             </div>
             <div className={cn(
-              "grid min-h-60 place-items-center border-t border-[var(--ink)] bg-[var(--service-color)] p-4 md:border-t-0 md:p-7",
+              "grid min-h-60 place-items-center border-t border-border bg-card p-4 md:border-t-0 md:p-7",
               index % 2 === 1 && "md:row-start-1",
             )}>
               <Image {...illustration} alt="" className="h-auto w-full max-w-[27rem]" />

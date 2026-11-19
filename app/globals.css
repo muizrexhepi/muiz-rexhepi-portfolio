@@ -56,18 +56,18 @@
   --card-foreground: #fff8ed;
   --popover: #211e23;
   --popover-foreground: #fff8ed;
-  --primary: #f59ad8;
+  --primary: #fbd45c;
   --primary-foreground: #151316;
   --secondary: #27242a;
   --secondary-foreground: #fff8ed;
   --muted: #252229;
-  --muted-foreground: #c5bcc8;
-  --accent: #342d38;
+  --muted-foreground: #d4cdc5;
+  --accent: #302d25;
   --accent-foreground: #fff8ed;
   --destructive: #ff9a8b;
-  --border: #4a414e;
+  --border: #3b383a;
   --input: #332c37;
-  --ring: #f59ad8;
+  --ring: #fbd45c;
   --radius: 0.45rem;
   --ink: #151316;
   --paper: #fff8ed;
@@ -107,13 +107,7 @@
   }
 }
 
-.work-frame {
-  background: var(--project-color, var(--lilac));
-}
-
-.project-rendo-pos { --project-color: var(--lilac); }
-.project-ido-tours { --project-color: var(--yellow); }
-.project-villa-noar { --project-color: var(--mint); }
+.work-frame { background: var(--card); }
 
 .service-tile:nth-child(5n + 1) { background: var(--pink); }
 .service-tile:nth-child(5n + 2) { background: var(--lilac); }
@@ -121,15 +115,12 @@
 .service-tile:nth-child(5n + 4) { background: var(--mint); }
 .service-tile:nth-child(5n + 5) { background: var(--coral); }
 
-@keyframes artwork-float {
-  from { transform: translateY(0); }
-  to { transform: translateY(-9px); }
+.hero-ornament { animation: hero-drift 9s ease-in-out infinite alternate; }
+.hero-ornament-delayed { animation-delay: -4s; }
+@keyframes hero-drift {
+  from { transform: translateY(-5px) rotate(-2deg); }
+  to { transform: translateY(5px) rotate(2deg); }
 }
-
-.hero-artwork {
-  animation: artwork-float 2s ease-in-out 2 alternate;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .hero-artwork { animation: none; }
+  .hero-ornament { animation: none; }
 }

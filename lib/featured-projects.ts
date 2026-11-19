@@ -1,6 +1,8 @@
 import type { Project } from "@/lib/projects";
+import { ulliriProject } from "@/lib/ulliri-project";
 
 export const featuredProjects = [
+  ulliriProject,
   {
     slug: "rendo-pos",
     socialImage: "/work/rendo-pos/share.png",
@@ -16,7 +18,7 @@ export const featuredProjects = [
     industry: "Hospitality technology",
     status: "Hospitality operations platform",
     headline: "One order, from the guest to the kitchen.",
-    subheadline: "A restaurant operating system that connects self-service ordering, a Windows cashier app, kitchen and bar stations, and the tools managers use after service.",
+    subheadline: "A reusable restaurant platform connecting self-service ordering, a Windows cashier app, kitchen and bar stations, and the tools managers use after service.",
     summary: "Ordering, point of sale, and back-office operations in one hospitality platform.",
     description: "I built Rendo around the handoff between the person placing an order and the people preparing, serving, and reconciling it. The platform gives each part of a venue an interface for its own work while connecting them through a shared order workflow.",
     liveUrl: "https://www.rendopos.com/en",
@@ -35,6 +37,12 @@ export const featuredProjects = [
     solution: "I built a shared platform with separate views for guests, cashiers, preparation teams, and managers. The Windows POS adds a local hardware bridge for configured terminals and printers.",
     caseStudy: [
       {
+        eyebrow: "Platform and client implementation",
+        title: "The platform behind the venue workflow.",
+        body: "Rendo is the reusable hospitality software platform. Ulliri Restaurant & Garden is a commercial client implementation, with its own restaurant website, menus, and Garden ordering experience. That separate case study shows how the customer journey connects to day-to-day restaurant operations.",
+        links: [{ label: "Explore the Ulliri implementation", href: "/work/ulliri-garden" }],
+      },
+      {
         title: "Different ways to order. One shared workflow.",
         body: "Staff can take counter orders and send rounds from open tables. Guests can browse the menu and place orders using a venue QR code or a self-service kiosk. Guest QR orders are paid at the cashier. Staff-managed tables can send a round for preparation while the bill stays open.",
         image: "/work/rendo-pos/guest-ordering.webp",
@@ -47,8 +55,8 @@ export const featuredProjects = [
         imageAlt: "The same kitchen order shown as queued and then preparing at a Rendo station",
       },
       {
-        title: "A web platform and a Windows hardware bridge.",
-        body: "I built the role-specific web interfaces in Next.js and TypeScript, with Convex handling shared application data and reactive updates. The Electron cashier shell connects the web workflow to configured local hardware. Supported new counter orders can queue during a connection interruption and submit after reconnection.",
+        title: "Counter software that fits the venue.",
+        body: "The cashier workspace connects ordering and payment to the venue’s configured terminals and printers. Staff use an interface designed for counter service, while supported new counter orders can queue during a connection interruption and submit after reconnection.",
         image: "/work/rendo-pos/cashier-workspace.webp",
         imageAlt: "Rendo’s Windows cashier workspace with a menu and an active order awaiting payment",
       },
@@ -158,7 +166,7 @@ export const featuredProjects = [
       },
       {
         title: "Connect the website to the owner’s day-to-day work.",
-        body: "Convex powers availability and reservation state, while the owner area supports reviewing requests, managing villa settings, and recording bookings made through other channels. Transactional emails carry updates between the guest and the property.",
+        body: "The owner area connects live availability with reservation requests and supports reviewing requests, managing villa settings, and recording bookings made through other channels. Transactional emails carry updates between the guest and the property.",
       },
     ],
     inquiry: ["Want to bring more guests directly to your website?", "Tell me about your property and how you’d like guests to inquire or book."],

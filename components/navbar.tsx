@@ -72,7 +72,7 @@ export function Navbar() {
         className={cn(
           "sticky top-0 z-40 w-full border-b transition-[transform,border-color] duration-300 ease-out focus-within:translate-y-0 motion-reduce:transition-none",
           hasScrolled ? "border-border" : "border-transparent",
-          pathname === "/" && !hasScrolled ? "bg-[#100e11]" : "bg-background",
+          "bg-background",
           isHidden && !isOpen ? "-translate-y-full" : "translate-y-0",
         )}
       >
