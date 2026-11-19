@@ -14,7 +14,7 @@ export function StudioOverviewSection() {
         <div className="relative grid min-h-60 place-items-center overflow-hidden rounded-2xl border border-border bg-card p-8 sm:min-h-75">
           <div aria-hidden="true" className="absolute -inset-x-3 bottom-13 h-px -rotate-12 bg-[var(--ink)]/30" />
           <div aria-hidden="true" className="absolute -inset-x-3 bottom-8 h-px -rotate-12 bg-[var(--ink)]/30" />
-          <Image src="/brand/mr-dark.svg" alt="" width={172} height={172} className="relative w-36 sm:w-43" />
+          <Image unoptimized src="/brand/illustrations/digital-builder.webp" alt="" width={1100} height={1100} className="relative h-auto w-full max-w-72" />
         </div>
         <div>
           <Heading as="h2" variant="section">Hi, I’m Muiz.</Heading>

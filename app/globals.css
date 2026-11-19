@@ -49,32 +49,32 @@
 }
 
 :root {
-  color-scheme: dark;
-  --background: #141215;
-  --foreground: #fff8ed;
-  --card: #211e23;
-  --card-foreground: #fff8ed;
-  --popover: #211e23;
-  --popover-foreground: #fff8ed;
-  --primary: #fbd45c;
-  --primary-foreground: #151316;
-  --secondary: #27242a;
-  --secondary-foreground: #fff8ed;
-  --muted: #252229;
-  --muted-foreground: #d4cdc5;
-  --accent: #302d25;
-  --accent-foreground: #fff8ed;
-  --destructive: #ff9a8b;
-  --border: #3b383a;
-  --input: #332c37;
-  --ring: #fbd45c;
+  color-scheme: light;
+  --background: #fffaf0;
+  --foreground: #24211e;
+  --card: #fffdf7;
+  --card-foreground: #24211e;
+  --popover: #fffdf7;
+  --popover-foreground: #24211e;
+  --primary: #24211e;
+  --primary-foreground: #fffaf0;
+  --secondary: #f0e8dc;
+  --secondary-foreground: #24211e;
+  --muted: #eee5d7;
+  --muted-foreground: #625c54;
+  --accent: #f6e8be;
+  --accent-foreground: #24211e;
+  --destructive: #b93c35;
+  --border: #d9d0c4;
+  --input: #d9d0c4;
+  --ring: #9d7424;
   --radius: 0.45rem;
-  --ink: #151316;
-  --paper: #fff8ed;
-  --pink: #f59ad8;
+  --ink: #24211e;
+  --paper: #fffaf0;
+  --pink: #eea2c8;
   --lilac: #b8aaff;
   --mint: #7bdac4;
-  --yellow: #fbd45c;
+  --yellow: #f4cf5e;
   --coral: #ffa685;
 }
 
@@ -115,12 +115,14 @@
 .service-tile:nth-child(5n + 4) { background: var(--mint); }
 .service-tile:nth-child(5n + 5) { background: var(--coral); }
 
-.hero-ornament { animation: hero-drift 9s ease-in-out infinite alternate; }
-.hero-ornament-delayed { animation-delay: -4s; }
-@keyframes hero-drift {
-  from { transform: translateY(-5px) rotate(-2deg); }
-  to { transform: translateY(5px) rotate(2deg); }
+.hero-illustration-float { animation: illustration-drift 8s ease-in-out infinite alternate; }
+@keyframes illustration-drift {
+  from { transform: translateY(-4px); }
+  to { transform: translateY(4px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-ornament { animation: none; }
+  .hero-illustration-float { animation: none; }
+}
+@media (pointer: coarse) {
+  .hero-illustration-float { animation: none; }
 }

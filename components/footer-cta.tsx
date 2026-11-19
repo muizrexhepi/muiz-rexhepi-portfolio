@@ -5,6 +5,7 @@ import { HugeiconsIcon } from "@hugeicons/react";
 
 import { Container } from "@/components/layout/container";
 import { Heading } from "@/components/ui/typography";
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export function FooterCta({
@@ -33,18 +34,19 @@ export function FooterCta({
           </p>
           <Link
             href="/contact"
-            className="mt-7 inline-flex h-12 items-center gap-3 rounded-lg border border-primary bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-[#ffe49a]"
+            className={buttonVariants({ size: "lg", className: "mt-7" })}
           >
             Start a Project
             <HugeiconsIcon icon={ArrowUpRight01Icon} size={18} />
           </Link>
         </div>
         <Image
-          src="/brand/mr-dark.svg"
-          width={168}
-          height={168}
+          unoptimized
+          src="/brand/illustrations/project-inquiry.webp"
+          width={250}
+          height={250}
           alt=""
-          className="hidden size-28 shrink-0 opacity-70 md:block"
+          className="hidden size-52 shrink-0 md:block"
         />
       </Container>
     </section>

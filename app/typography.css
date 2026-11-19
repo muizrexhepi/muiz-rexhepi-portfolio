@@ -7,7 +7,7 @@
 }
 
 .type-display-home {
-  font-size: clamp(2.5rem, 6vw, 5.75rem);
+  font-size: clamp(2.5rem, 5.2vw, 4.5rem);
   font-weight: 500;
   line-height: 1.08;
   letter-spacing: -0.04em;

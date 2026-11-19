@@ -31,7 +31,7 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="grid min-h-70 place-items-center rounded-2xl border border-border bg-card p-9 sm:min-h-96">
-            <Image src="/brand/mr-dark.svg" alt="" loading="eager" width={210} height={210} className="w-44 sm:w-52" />
+            <Image unoptimized src="/brand/illustrations/digital-builder.webp" alt="" loading="eager" width={1100} height={1100} className="h-auto w-full max-w-84" />
           </div>
         </Container>
       </Section>

@@ -28,7 +28,7 @@ export default function ContactPage() {
             {site.email}
           </a>
           <div className="hidden flex-1 items-center justify-center pt-6 lg:flex">
-            <Image src="/brand/letter.svg" alt="" width={370} height={245} className="h-auto w-[90%] max-w-84" />
+            <Image unoptimized src="/brand/illustrations/project-inquiry.webp" alt="" width={1100} height={1100} className="h-auto w-[90%] max-w-84" />
           </div>
         </div>
         <ContactForm />

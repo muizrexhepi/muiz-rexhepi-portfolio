@@ -1,0 +1,54 @@
+{
+  "generator": "Built-in image_gen",
+  "generatedAt": "2026-11-19",
+  "style": "Cream, yellow, pink and ink editorial illustrations; transparent backgrounds.",
+  "prompts": [
+    {
+      "name": "software-workbench",
+      "prompt": "Use case: stylized-concept.\nAsset type: a finished, premium editorial illustration for the hero of an independent software developer's warm-cream website.\nPrimary request: create an original cohesive Gumroad-inspired 2D illustration of a thoughtfully assembled software workbench: one large off-white browser window, one smaller yellow mobile interface leaning in front, and a few connected modular interface blocks. A large crisp pink pointer interacts with the browser. The scene should feel expertly art-directed and confident, useful to a professional software agency, not childish or stock clipart.\nComposition: one balanced, sculptural cluster, square canvas, fully visible with generous transparent padding. Strong silhouette, clearly readable at 500px wide. Browser window has simplified geometric cards and a small chart made of abstract strokes, no words or numbers. The devices have slight angled perspectives and tasteful overlaps, never chaotic.\nStyle: flat editorial vector-like ink illustration, precise heavy near-black outlines, clean flat fills, subtle hand-drawn charm, hard offset near-black shadows, no soft airbrush. Light cream/off-white surfaces with buttery yellow as the main accent and a small amount of muted bubblegum pink.\nPalette: ink #24211e, cream #fffaf0, yellow #f4cf5e, pink #eea2c8. No purple, green, blue, neon, glow, chrome, gradients, grain or photographic textures. No people, faces, mascots, hands, logos, text, watermark, decorative background or outer frame.\nBackground: genuinely transparent alpha. Production-quality edges, all outlines completely opaque. This is a decorative brand illustration, not a screenshot of a real client product."
+    },
+    {
+      "name": "digital-builder",
+      "prompt": "Use case: stylized-concept. Asset type: finished illustration for a warm-cream software portfolio. Use the provided image only as a STYLE REFERENCE. Create a new original subject in exactly the same cohesive brand illustration family: premium Gumroad-inspired editorial vector-like drawing with bold near-black ink outlines, off-white cream surfaces, buttery yellow main accents and small muted bubblegum pink details, hard offset ink shadows, controlled perspective, smooth polished edges. This is a professional software developer brand, playful but confident and composed. Transparent alpha background, generous transparent padding, entire illustration visible, square composition readable at 450px. No words, letters, numbers, logos, faces, people, hands, outer frame, watermark, purple, green, blue, neon, grain, photorealism or soft background shadows. Avoid extra flourishes.\nSubject: A modular website builder made of three neatly arranged cream interface panels fitting together like architectural blocks. One tall yellow mobile interface and one pink draggable panel tab illustrate building a coherent digital product. One small ink pointer sits near a join. Focus on crafted interface architecture, different composition from the reference hero; no big dashboard/chart."
+    },
+    {
+      "name": "booking-commerce",
+      "prompt": "Use case: stylized-concept. Asset type: finished illustration for a warm-cream software portfolio. Use the provided image only as a STYLE REFERENCE. Create a new original subject in exactly the same cohesive brand illustration family: premium Gumroad-inspired editorial vector-like drawing with bold near-black ink outlines, off-white cream surfaces, buttery yellow main accents and small muted bubblegum pink details, hard offset ink shadows, controlled perspective, smooth polished edges. This is a professional software developer brand, playful but confident and composed. Transparent alpha background, generous transparent padding, entire illustration visible, square composition readable at 450px. No words, letters, numbers, logos, faces, people, hands, outer frame, watermark, purple, green, blue, neon, grain, photorealism or soft background shadows. Avoid extra flourishes.\nSubject: A cream booking calendar with a tidy grid of blank cells, a yellow selected cell marked with a crisp ink check, a compact yellow ticket sliding out beside it, and a small pink payment card in front. Present these as one elegant compact connected composition. No numbers or lettering anywhere, no invented transaction values."
+    },
+    {
+      "name": "connected-workflows",
+      "prompt": "Use case: stylized-concept. Asset type: finished illustration for a warm-cream software portfolio. Use the provided image only as a STYLE REFERENCE. Create a new original subject in exactly the same cohesive brand illustration family: premium Gumroad-inspired editorial vector-like drawing with bold near-black ink outlines, off-white cream surfaces, buttery yellow main accents and small muted bubblegum pink details, hard offset ink shadows, controlled perspective, smooth polished edges. This is a professional software developer brand, playful but confident and composed. Transparent alpha background, generous transparent padding, entire illustration visible, square composition readable at 450px. No words, letters, numbers, logos, faces, people, hands, outer frame, watermark, purple, green, blue, neon, grain, photorealism or soft background shadows. Avoid extra flourishes.\nSubject: Three cream rounded workflow panels linked by thick yellow right-angle connectors, with a precise black check in one panel, a pink toggle switch in another, and a yellow gear at the junction. Show a thoughtfully connected operations workflow, organized and purposeful, one balanced cluster."
+    },
+    {
+      "name": "project-inquiry",
+      "prompt": "Use case: stylized-concept. Asset type: finished illustration for a warm-cream software portfolio. Use the provided image only as a STYLE REFERENCE. Create a new original subject in exactly the same cohesive brand illustration family: premium Gumroad-inspired editorial vector-like drawing with bold near-black ink outlines, off-white cream surfaces, buttery yellow main accents and small muted bubblegum pink details, hard offset ink shadows, controlled perspective, smooth polished edges. This is a professional software developer brand, playful but confident and composed. Transparent alpha background, generous transparent padding, entire illustration visible, square composition readable at 450px. No words, letters, numbers, logos, faces, people, hands, outer frame, watermark, purple, green, blue, neon, grain, photorealism or soft background shadows. Avoid extra flourishes.\nSubject: A beautifully drawn yellow envelope opening around an off-white project brief card with a small abstract wireframe diagram on it, paired with a pink speech bubble containing two simple black horizontal strokes. One small cream cursor points toward the brief. Clear strong silhouette, invitation to start a professional project. No text."
+    }
+  ],
+  "files": [
+    {
+      "name": "software-workbench",
+      "source": "exec-a4db6374-3234-4f55-b60e-5d3a61637ff6.png",
+      "output": "software-workbench.webp"
+    },
+    {
+      "name": "digital-builder",
+      "source": "exec-fa35b17b-b9dc-4911-8ece-5153d24ad181.png",
+      "output": "digital-builder.webp"
+    },
+    {
+      "name": "booking-commerce",
+      "source": "exec-69783208-3681-46b7-8b63-1661a6e2835c.png",
+      "output": "booking-commerce.webp"
+    },
+    {
+      "name": "connected-workflows",
+      "source": "exec-223b6ed1-8f9f-49fe-8fad-5d88002cb2a6.png",
+      "output": "connected-workflows.webp"
+    },
+    {
+      "name": "project-inquiry",
+      "source": "exec-d7382029-e48f-4881-8940-9644d25ece9b.png",
+      "output": "project-inquiry.webp"
+    }
+  ]
+}

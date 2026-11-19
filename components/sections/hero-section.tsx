@@ -9,24 +9,26 @@ import { HeroArtwork } from "@/components/sections/hero-artwork";
 
 export function HeroSection() {
   return (
-    <section className="relative isolate grid min-h-[min(40rem,calc(100svh-4rem))] place-items-center bg-background py-20 sm:min-h-[38rem] sm:py-24 lg:min-h-[40rem]">
-      <HeroArtwork />
-      <Container className="relative z-10 text-center">
-        <Heading as="h1" variant="hero" className="type-display-home mx-auto max-w-[19ch]">
-          <span className="block">Websites &amp; software.</span>
-          <span className="block">Built for business.</span>
-        </Heading>
-        <Text variant="lead" className="mx-auto mt-6 max-w-[34ch] text-foreground/90 sm:mt-7 sm:max-w-[52ch]">
-          Custom websites, online booking systems, and business software that help you serve customers and simplify daily operations.
-        </Text>
-        <div className="mx-auto mt-8 flex max-w-sm flex-col justify-center gap-3 sm:mt-9 sm:max-w-none sm:flex-row">
-          <Link href="/contact" className={buttonVariants({ size: "lg", className: "sm:px-6" })}>
-            Start a Project <HugeiconsIcon icon={ArrowUpRight01Icon} size={18} />
-          </Link>
-          <Link href="#selected-work" className={buttonVariants({ variant: "outline", size: "lg", className: "sm:px-6" })}>
-            Explore My Work <HugeiconsIcon icon={ArrowDown01Icon} size={18} />
-          </Link>
+    <section className="relative isolate overflow-hidden bg-background py-10 sm:py-14 lg:py-20">
+      <Container className="grid items-center gap-7 lg:grid-cols-[1.05fr_1fr] lg:gap-8">
+        <div className="relative z-10 text-center lg:text-left">
+          <Heading as="h1" variant="hero" className="type-display-home mx-auto max-w-[19ch] lg:mx-0">
+            <span className="block">Websites &amp; software.</span>
+            <span className="block">Built for business.</span>
+          </Heading>
+          <Text variant="lead" className="mx-auto mt-6 max-w-[34ch] text-foreground/90 sm:mt-7 sm:max-w-[52ch] lg:mx-0">
+            Custom websites, online booking systems, and business software that help you serve customers and simplify daily operations.
+          </Text>
+          <div className="mx-auto mt-8 flex max-w-sm flex-col justify-center gap-3 sm:mt-9 sm:max-w-none sm:flex-row lg:justify-start">
+            <Link href="/contact" className={buttonVariants({ size: "lg", className: "sm:px-6" })}>
+              Start a Project <HugeiconsIcon icon={ArrowUpRight01Icon} size={18} />
+            </Link>
+            <Link href="#selected-work" className={buttonVariants({ variant: "outline", size: "lg", className: "sm:px-6" })}>
+              Explore My Work <HugeiconsIcon icon={ArrowDown01Icon} size={18} />
+            </Link>
+          </div>
         </div>
+        <HeroArtwork />
       </Container>
     </section>
   );

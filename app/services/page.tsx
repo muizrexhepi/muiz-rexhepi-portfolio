@@ -19,17 +19,17 @@ const [web, software, booking, mobile, automation] = services;
 const serviceGroups = [
   {
     color: "var(--yellow)",
-    illustration: { src: "/brand/building-blocks.svg", width: 550, height: 500 },
+    illustration: { src: "/brand/illustrations/digital-builder.webp", width: 1100, height: 1100 },
     entries: [web, mobile],
   },
   {
     color: "var(--yellow)",
-    illustration: { src: "/brand/bookings.svg", width: 530, height: 420 },
+    illustration: { src: "/brand/illustrations/booking-commerce.webp", width: 1100, height: 1100 },
     entries: [booking],
   },
   {
     color: "var(--yellow)",
-    illustration: { src: "/brand/automation.svg", width: 530, height: 420 },
+    illustration: { src: "/brand/illustrations/connected-workflows.webp", width: 1100, height: 1100 },
     entries: [software, automation],
   },
 ];
@@ -52,7 +52,7 @@ export default function ServicesPage() {
             <div className="flex flex-col justify-center divide-y divide-border px-5 py-9 sm:px-10 md:py-13 lg:px-16 xl:px-22">
               {entries.map((service) => (
                 <article key={service.id} id={service.id} className="scroll-mt-20 py-6 first:pt-0 last:pb-0">
-                  <Heading as="h2" variant="subsection" className="text-[var(--service-color)]">{service.title}</Heading>
+                  <Heading as="h2" variant="subsection">{service.title}</Heading>
                   <Text className="mt-3 max-w-[46ch]">{service.description}</Text>
                   <ul className="mt-5 flex flex-wrap gap-2">
                     {service.deliverables.map((item) => (
@@ -62,7 +62,7 @@ export default function ServicesPage() {
                 </article>
               ))}
               {entries.length === 1 && (
-                <Link href="/work/ido-tours" className="mt-6 w-fit border-t-0 pt-0 text-sm font-semibold text-[var(--service-color)] underline-offset-4 hover:underline">
+                <Link href="/work/ido-tours" className="mt-6 w-fit border-t-0 pt-0 text-sm font-semibold text-primary underline-offset-4 hover:underline">
                   See the Ido Tours case study ↗
                 </Link>
               )}
@@ -71,7 +71,7 @@ export default function ServicesPage() {
               "grid min-h-60 place-items-center border-t border-border bg-card p-4 md:border-t-0 md:p-7",
               index % 2 === 1 && "md:row-start-1",
             )}>
-              <Image {...illustration} alt="" className="h-auto w-full max-w-[27rem]" />
+              <Image unoptimized {...illustration} alt="" className="h-auto w-full max-w-[27rem]" />
             </div>
           </div>
         </section>
