@@ -19,7 +19,7 @@ const navItems = [
   { label: "Contact", href: "/contact" },
 ];
 
-const headerRow = "mx-auto flex h-16 w-full max-w-[100rem] shrink-0 items-center justify-between px-5 sm:h-[4.5rem] sm:px-6 lg:px-8";
+const headerRow = "mx-auto flex h-16 w-full max-w-7xl shrink-0 items-center justify-between px-5 sm:h-[4.5rem] sm:px-6 lg:px-8";
 const menuButton = "inline-grid size-11 shrink-0 place-items-center rounded-lg text-foreground transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
 
 export function Navbar() {

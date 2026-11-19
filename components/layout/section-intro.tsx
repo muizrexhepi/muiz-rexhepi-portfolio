@@ -15,7 +15,10 @@ export function SectionIntro({
   ink?: boolean;
 }) {
   return (
-    <div className="grid gap-5 md:grid-cols-[1.2fr_1fr] md:items-end md:gap-12">
+    <div className={cn(
+      "grid gap-5 md:grid-cols-[1.2fr_1fr] md:items-end md:gap-12",
+      !description && action && "flex flex-wrap items-end justify-between gap-x-5 gap-y-3",
+    )}>
       <div>
         <Heading as="h2" variant="section" className={cn("max-w-[19ch]", ink && "text-[var(--ink)]")}>
           {title}

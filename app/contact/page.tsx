@@ -18,7 +18,7 @@ export default function ContactPage() {
   return (
     <Section spacing="sm">
       <Container className="grid gap-5 lg:grid-cols-[.86fr_1.14fr] lg:gap-7">
-        <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 text-foreground sm:p-9 lg:p-11">
+        <div className="flex flex-col py-3 text-foreground lg:pr-8">
           <Heading as="h1" variant="hero">Start a project.</Heading>
           <p className="mt-6 max-w-md text-base leading-7 sm:text-lg">
             Tell me what you’re building, who it’s for, and what you’d like it to do. I’ll reply with the next step.
@@ -28,7 +28,7 @@ export default function ContactPage() {
             {site.email}
           </a>
           <div className="hidden flex-1 items-center justify-center pt-6 lg:flex">
-            <Image unoptimized src="/brand/illustrations/project-inquiry.webp" alt="" width={1100} height={1100} className="h-auto w-[90%] max-w-84" />
+            <Image unoptimized src="/brand/illustrations/project-inquiry-v2.webp" alt="" width={1200} height={800} className="h-auto w-[90%] max-w-96" />
           </div>
         </div>
         <ContactForm />

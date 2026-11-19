@@ -8,7 +8,6 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import { FooterCta } from "@/components/footer-cta";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
-import { buttonVariants } from "@/components/ui/button";
 import { Heading, Text } from "@/components/ui/typography";
 import { WorkProjectCard } from "@/components/work/work-project-card";
 import { getNextProject, getProject, projects, type Project } from "@/lib/projects";
@@ -54,7 +53,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <ProjectStory project={project} />
       <FooterCta title={project.inquiry?.[0]} description={project.inquiry?.[1]} />
       {nextProject && (
-        <Section className="border-t border-border">
+        <Section>
           <Container>
             <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
               <Heading as="h2" variant="subsection">Next project</Heading>
@@ -71,22 +70,22 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 function ProjectHero({ project }: { project: Project }) {
   const image = project.heroImage ?? project.coverImage;
   return (
-    <Section spacing="sm" className={cn("border-b border-border", `project-${project.visualTheme}`)}>
+    <Section spacing="sm" className={`project-${project.visualTheme}`}>
       <Container>
         <Link href="/work" className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-foreground">
           <HugeiconsIcon icon={ArrowLeft02Icon} size={17} />
           All work
         </Link>
-        <div className="mt-7 grid gap-6 md:grid-cols-[.44fr_.56fr] md:items-end">
+        <div className="mt-9 grid gap-7 md:grid-cols-[.44fr_.56fr] md:items-end md:gap-16">
           <div>
-            <p className="mb-3 text-xs font-semibold tracking-[.1em] text-primary uppercase">{project.flag ?? project.industry}</p>
-            <Heading as="h1" variant="hero">{project.name}</Heading>
+            <p className="mb-4 text-xs font-medium tracking-[.08em] text-muted-foreground uppercase">{project.flag ?? project.industry}</p>
+            <Heading as="h1" variant="hero" className={cn("[overflow-wrap:anywhere]", project.name.length > 18 && "type-display-long")}>{project.name}</Heading>
           </div>
           <div>
             <Heading as="h2" variant="subsection">{project.headline}</Heading>
             <Text className="mt-3 max-w-2xl">{project.subheadline}</Text>
             {project.liveUrl && (
-              <Link href={project.liveUrl} target="_blank" rel="noreferrer" className={buttonVariants({ variant: "outline", size: "lg", className: "mt-5" })}>
+              <Link href={project.liveUrl} target="_blank" rel="noreferrer" className="mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline decoration-border underline-offset-5 transition-colors hover:decoration-foreground">
                 {project.liveLabel ?? "Visit live project"}
                 <HugeiconsIcon icon={ArrowUpRight01Icon} size={17} />
               </Link>
@@ -94,8 +93,8 @@ function ProjectHero({ project }: { project: Project }) {
           </div>
         </div>
         {image && (
-          <div className="work-frame mt-8 rounded-2xl border border-[var(--ink)] p-3 sm:p-7 lg:p-9">
-            <div className="relative mx-auto aspect-video max-w-6xl overflow-hidden rounded-lg border-2 border-[var(--ink)] bg-[var(--paper)] shadow-[4px_5px_0_var(--ink)]">
+          <div className="mt-10 sm:mt-14">
+            <div className="relative mx-auto aspect-video overflow-hidden rounded-xl bg-secondary/40 sm:rounded-2xl">
               <Image
                 src={image}
                 alt={project.heroAlt ?? project.coverAlt ?? `${project.name} interface`}
@@ -115,47 +114,47 @@ function ProjectHero({ project }: { project: Project }) {
 function ProjectDetails({ project }: { project: Project }) {
   const outcome = projectOutcomes[project.slug];
   return (
-    <Section spacing="sm" className="border-b border-border">
+    <Section spacing="sm">
       <Container>
-        <div className="grid gap-5 border-b border-border pb-8 md:grid-cols-[.7fr_1.3fr] md:gap-12">
+        <div className="grid gap-5 md:grid-cols-[.7fr_1.3fr] md:gap-16">
           <div>
-            <p className="text-sm text-primary">The mission</p>
+            <p className="text-sm font-semibold">The mission</p>
             <p className="mt-3 text-sm text-muted-foreground">{project.clientType}</p>
           </div>
-          <Text variant="lead" className="max-w-3xl text-foreground">{outcome?.mission ?? project.headline}</Text>
+          <p className="max-w-3xl font-heading text-2xl leading-snug font-medium tracking-tight text-foreground sm:text-3xl">{outcome?.mission ?? project.headline}</p>
         </div>
-        <div className="mt-9 grid gap-8 md:grid-cols-2 md:gap-12">
+        <div className="mt-12 grid gap-9 md:mt-16 md:grid-cols-2 md:gap-16">
           <div>
-            <Heading as="h2" variant="subsection">The problem</Heading>
+            <Heading as="h2" variant="card">The problem</Heading>
             <Text className="mt-4">{project.challenge}</Text>
           </div>
           <div>
-            <Heading as="h2" variant="subsection">The solution</Heading>
+            <Heading as="h2" variant="card">The solution</Heading>
             <Text className="mt-4">{project.solution}</Text>
           </div>
         </div>
-        <div className="mt-9 grid gap-6 border-t border-border pt-8 md:grid-cols-[.7fr_1.3fr] md:gap-12">
-          <Heading as="h2" variant="subsection">Scope of work</Heading>
-          <ul className="grid gap-x-6 gap-y-3 text-sm sm:grid-cols-2">
-            {project.deliverables.map((item) => <li key={item} className="border-b border-border/60 pb-3">{item}</li>)}
+        <div className="mt-12 grid gap-6 md:mt-16 md:grid-cols-[.7fr_1.3fr] md:gap-16">
+          <Heading as="h2" variant="card">Scope of work</Heading>
+          <ul className="grid gap-x-7 gap-y-4 text-sm sm:grid-cols-2 sm:text-base">
+            {project.deliverables.map((item) => <li key={item} className="flex items-start gap-3"><span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-foreground/40" />{item}</li>)}
           </ul>
         </div>
         {outcome && (
-          <div className="mt-10 border-l-2 border-primary pl-5 sm:pl-7">
+          <div className="mt-14 rounded-2xl bg-[var(--yellow)]/20 p-6 sm:mt-18 sm:p-10 lg:p-12">
             <Heading as="h2" variant="subsection">The result</Heading>
-            <Text variant="lead" className="mt-4 max-w-4xl text-foreground/90">{outcome.result}</Text>
+            <Text variant="lead" className="mt-5 max-w-4xl text-foreground/90">{outcome.result}</Text>
+            {outcome.facts && (
+              <dl className="mt-9 grid gap-7 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+                {outcome.facts.map((fact) => (
+                  <div key={fact.label}>
+                    <dt className="text-xs font-medium tracking-wide text-muted-foreground">{fact.label}</dt>
+                    <dd className="mt-2 font-heading text-2xl leading-tight font-semibold tracking-tight">{fact.value}</dd>
+                    <dd className="mt-3 max-w-sm text-sm leading-6 text-muted-foreground">{fact.detail}</dd>
+                  </div>
+                ))}
+              </dl>
+            )}
           </div>
-        )}
-        {outcome?.facts && (
-          <dl className="mt-10 grid gap-7 border-t border-border pt-8 sm:grid-cols-2 lg:grid-cols-3">
-            {outcome.facts.map((fact) => (
-              <div key={fact.label}>
-                <dt className="text-sm font-medium">{fact.label}</dt>
-                <dd className="mt-3 font-heading text-3xl font-medium tracking-tight text-primary">{fact.value}</dd>
-                <dd className="mt-2 max-w-sm text-sm leading-6 text-muted-foreground">{fact.detail}</dd>
-              </div>
-            ))}
-          </dl>
         )}
       </Container>
     </Section>
@@ -167,17 +166,17 @@ function ProjectStory({ project }: { project: Project }) {
 
   return (
     <Section className={`project-${project.visualTheme}`}>
-      <Container className="grid gap-14 sm:gap-20">
+      <Container className="grid gap-16 sm:gap-24 lg:gap-28">
         {project.caseStudy.map((section, index) => {
           const gallery = project.galleryImages[index];
           const image = section.image ?? gallery?.src;
           const isMobile = (section.imageType ?? (section.image ? undefined : gallery?.type)) === "mobile";
 
           return (
-            <article key={section.title} className="border-t border-border pt-7">
-              <div className="grid gap-4 md:grid-cols-2 md:gap-12">
+            <article key={section.title}>
+              <div className="grid gap-5 md:grid-cols-[.7fr_1.3fr] md:gap-16">
                 <div>
-                  {section.eyebrow && <p className="mb-3 text-xs font-semibold tracking-[.1em] text-primary uppercase">{section.eyebrow}</p>}
+                  {section.eyebrow && <p className="mb-3 text-xs font-medium tracking-[.08em] text-muted-foreground uppercase">{section.eyebrow}</p>}
                   <Heading as="h2" variant="subsection" className="max-w-xl">{section.title}</Heading>
                 </div>
                 <div>
@@ -194,26 +193,26 @@ function ProjectStory({ project }: { project: Project }) {
                 </div>
               </div>
               {section.steps && (
-                <ol className="mt-7 grid gap-3 min-[360px]:grid-cols-2 lg:grid-cols-4">
+                <ol className="mt-9 grid gap-7 sm:grid-cols-2 lg:grid-cols-4 lg:gap-9">
                   {section.steps.map((step, stepIndex) => (
-                    <li key={step.title} className="rounded-xl border border-border bg-card p-5">
-                      <span className="font-heading text-sm font-semibold text-primary" aria-hidden="true">{String(stepIndex + 1).padStart(2, "0")}</span>
-                      <Heading as="h3" variant="small" className="mt-4">{step.title}</Heading>
+                    <li key={step.title}>
+                      <span className="flex size-8 items-center justify-center rounded-full bg-secondary font-heading text-xs font-semibold" aria-hidden="true">{String(stepIndex + 1).padStart(2, "0")}</span>
+                      <Heading as="h3" variant="small" className="mt-3">{step.title}</Heading>
                       <Text variant="body-sm" className="mt-2">{step.body}</Text>
                     </li>
                   ))}
                 </ol>
               )}
               {image && (
-                <figure className="mt-7">
-                  <div className="work-frame rounded-xl border border-[var(--ink)] p-3 sm:p-7">
+                <figure className="mt-8 sm:mt-10">
+                  <div className={cn(isMobile && "rounded-2xl bg-secondary/40 px-5 py-8 sm:py-12")}>
                     <Image
                       src={image}
                       alt={section.imageAlt ?? gallery?.alt ?? `${project.name} project detail`}
                       width={isMobile ? 430 : 1500}
                       height={isMobile ? 932 : 900}
                       sizes={isMobile ? "(min-width: 640px) 320px, 78vw" : "(min-width: 1280px) 1150px, 90vw"}
-                      className={cn("mx-auto h-auto w-full rounded-lg border-2 border-[var(--ink)] shadow-[4px_5px_0_var(--ink)]", isMobile && "max-w-[320px]")}
+                      className={cn("mx-auto h-auto w-full rounded-xl", isMobile && "max-w-[300px] shadow-[0_12px_40px_-16px_rgba(36,33,30,.25)]")}
                     />
                   </div>
                   {section.imageCaption && <figcaption className="mt-3 text-sm leading-6 text-muted-foreground">{section.imageCaption}</figcaption>}
@@ -224,7 +223,7 @@ function ProjectStory({ project }: { project: Project }) {
                   role="region"
                   aria-label="Customer ordering screenshots"
                   tabIndex={0}
-                  className="work-frame mt-7 flex snap-x snap-mandatory gap-5 overflow-x-auto rounded-xl border border-[var(--ink)] p-5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary sm:grid sm:grid-cols-3 sm:gap-7 sm:p-7"
+                  className="mt-9 flex snap-x snap-mandatory gap-6 overflow-x-auto rounded-2xl bg-secondary/40 p-6 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary sm:grid sm:grid-cols-3 sm:gap-9 sm:p-10"
                 >
                   {section.screens.map((screen) => (
                     <figure key={screen.src} className="min-w-0 basis-[85%] shrink-0 snap-center sm:basis-auto">
@@ -234,7 +233,7 @@ function ProjectStory({ project }: { project: Project }) {
                         width={430}
                         height={932}
                         sizes="(min-width: 1280px) 320px, (min-width: 640px) 28vw, 75vw"
-                        className="mx-auto h-auto w-full max-w-[320px] rounded-xl border-2 border-[var(--ink)] shadow-[4px_5px_0_var(--ink)]"
+                        className="mx-auto h-auto w-full max-w-[300px] rounded-xl shadow-[0_12px_40px_-16px_rgba(36,33,30,.25)]"
                       />
                       <figcaption className="mt-4 text-center text-sm font-semibold text-[var(--ink)]">{screen.label}</figcaption>
                     </figure>

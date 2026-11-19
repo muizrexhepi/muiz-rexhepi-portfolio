@@ -114,15 +114,3 @@
 .service-tile:nth-child(5n + 3) { background: var(--yellow); }
 .service-tile:nth-child(5n + 4) { background: var(--mint); }
 .service-tile:nth-child(5n + 5) { background: var(--coral); }
-
-.hero-illustration-float { animation: illustration-drift 8s ease-in-out infinite alternate; }
-@keyframes illustration-drift {
-  from { transform: translateY(-4px); }
-  to { transform: translateY(4px); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-illustration-float { animation: none; }
-}
-@media (pointer: coarse) {
-  .hero-illustration-float { animation: none; }
-}

@@ -11,10 +11,8 @@ export function StudioOverviewSection() {
   return (
     <Section id="about">
       <Container className="grid items-center gap-8 md:grid-cols-[.38fr_.62fr] lg:gap-16">
-        <div className="relative grid min-h-60 place-items-center overflow-hidden rounded-2xl border border-border bg-card p-8 sm:min-h-75">
-          <div aria-hidden="true" className="absolute -inset-x-3 bottom-13 h-px -rotate-12 bg-[var(--ink)]/30" />
-          <div aria-hidden="true" className="absolute -inset-x-3 bottom-8 h-px -rotate-12 bg-[var(--ink)]/30" />
-          <Image unoptimized src="/brand/illustrations/digital-builder.webp" alt="" width={1100} height={1100} className="relative h-auto w-full max-w-72" />
+        <div className="grid min-h-48 place-items-center sm:min-h-64">
+          <Image unoptimized src="/brand/illustrations/digital-builder-v2.webp" alt="" width={1200} height={800} className="h-auto w-full max-w-96" />
         </div>
         <div>
           <Heading as="h2" variant="section">Hi, I’m Muiz.</Heading>

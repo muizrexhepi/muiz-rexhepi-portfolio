@@ -30,12 +30,12 @@ export default function AboutPage() {
               <a href={site.profiles.github} className="hover:underline">GitHub ↗</a>
             </div>
           </div>
-          <div className="grid min-h-70 place-items-center rounded-2xl border border-border bg-card p-9 sm:min-h-96">
-            <Image unoptimized src="/brand/illustrations/digital-builder.webp" alt="" loading="eager" width={1100} height={1100} className="h-auto w-full max-w-84" />
+          <div className="grid place-items-center py-5">
+            <Image unoptimized src="/brand/illustrations/digital-builder-v2.webp" alt="" loading="eager" width={1200} height={800} className="h-auto w-full max-w-md" />
           </div>
         </Container>
       </Section>
-      <Section className="border-t border-border">
+      <Section>
         <Container className="grid gap-8 md:grid-cols-2 md:gap-14">
           <Heading as="h2" variant="section" className="max-w-lg">You’ll work directly with me.</Heading>
           <div>

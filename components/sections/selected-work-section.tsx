@@ -18,7 +18,7 @@ export function SelectedWorkSection() {
           title="Selected work."
           action={
             <Link href="/work" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-primary hover:underline">
-              View all work <HugeiconsIcon icon={ArrowUpRight01Icon} size={17} />
+              <span className="sm:hidden">All work</span><span className="hidden sm:inline">View all work</span> <HugeiconsIcon icon={ArrowUpRight01Icon} size={17} />
             </Link>
           }
         />

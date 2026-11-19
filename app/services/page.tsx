@@ -18,18 +18,15 @@ const [web, software, booking, mobile, automation] = services;
 
 const serviceGroups = [
   {
-    color: "var(--yellow)",
-    illustration: { src: "/brand/illustrations/digital-builder.webp", width: 1100, height: 1100 },
+    illustration: { src: "/brand/illustrations/digital-builder-v2.webp", width: 1200, height: 800 },
     entries: [web, mobile],
   },
   {
-    color: "var(--yellow)",
-    illustration: { src: "/brand/illustrations/booking-commerce.webp", width: 1100, height: 1100 },
+    illustration: { src: "/brand/illustrations/booking-commerce-v2.webp", width: 1200, height: 800 },
     entries: [booking],
   },
   {
-    color: "var(--yellow)",
-    illustration: { src: "/brand/illustrations/connected-workflows.webp", width: 1100, height: 1100 },
+    illustration: { src: "/brand/illustrations/connected-workflows-v2.webp", width: 1200, height: 800 },
     entries: [software, automation],
   },
 ];
@@ -37,7 +34,7 @@ const serviceGroups = [
 export default function ServicesPage() {
   return (
     <>
-      <section className="relative isolate grid min-h-[26rem] place-items-center overflow-hidden border-b border-border bg-background py-15 text-center text-foreground sm:py-20">
+      <section className="relative isolate grid min-h-[26rem] place-items-center overflow-hidden bg-background py-15 text-center text-foreground sm:py-20">
         <Container>
           <p className="mb-5 text-sm font-semibold">Software development services</p>
           <Heading as="h1" variant="hero" className="mx-auto max-w-[15ch] text-foreground">Software for the way you work.</Heading>
@@ -46,17 +43,17 @@ export default function ServicesPage() {
           </Text>
         </Container>
       </section>
-      {serviceGroups.map(({ color, illustration, entries }, index) => (
-        <section key={illustration.src} className="border-b border-border">
-          <div className="mx-auto grid max-w-[100rem] md:grid-cols-2" style={{ "--service-color": color } as React.CSSProperties}>
-            <div className="flex flex-col justify-center divide-y divide-border px-5 py-9 sm:px-10 md:py-13 lg:px-16 xl:px-22">
+      {serviceGroups.map(({ illustration, entries }, index) => (
+        <section key={illustration.src} className="py-8 sm:py-12">
+          <Container className="grid items-center gap-6 md:grid-cols-2 md:gap-14 lg:gap-20">
+            <div className="flex flex-col justify-center gap-8">
               {entries.map((service) => (
-                <article key={service.id} id={service.id} className="scroll-mt-20 py-6 first:pt-0 last:pb-0">
+                <article key={service.id} id={service.id} className="scroll-mt-24">
                   <Heading as="h2" variant="subsection">{service.title}</Heading>
                   <Text className="mt-3 max-w-[46ch]">{service.description}</Text>
                   <ul className="mt-5 flex flex-wrap gap-2">
                     {service.deliverables.map((item) => (
-                      <li key={item} className="rounded-full border border-border px-3 py-1.5 text-xs text-foreground/90 sm:text-sm">{item}</li>
+                      <li key={item} className="rounded-md bg-secondary/65 px-2.5 py-1.5 text-xs text-muted-foreground sm:text-sm">{item}</li>
                     ))}
                   </ul>
                 </article>
@@ -68,12 +65,12 @@ export default function ServicesPage() {
               )}
             </div>
             <div className={cn(
-              "grid min-h-60 place-items-center border-t border-border bg-card p-4 md:border-t-0 md:p-7",
+              "grid place-items-center py-4 md:py-8",
               index % 2 === 1 && "md:row-start-1",
             )}>
-              <Image unoptimized {...illustration} alt="" className="h-auto w-full max-w-[27rem]" />
+              <Image unoptimized {...illustration} alt="" className="h-auto w-full max-w-[30rem]" />
             </div>
-          </div>
+          </Container>
         </section>
       ))}
     </>

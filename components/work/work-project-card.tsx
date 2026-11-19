@@ -21,8 +21,8 @@ export function WorkProjectCard({
 
   return (
     <Link href={`/work/${project.slug}`} className={cn("group/card block h-full rounded-xl focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-primary", `project-${project.visualTheme}`)}>
-      <div className={cn("work-frame overflow-hidden rounded-xl border border-border transition-colors group-hover/card:border-primary/60", !edgeToEdge && "p-4 sm:p-6")}>
-        <div className={cn("relative aspect-video w-full overflow-hidden", !edgeToEdge && "rounded-lg border border-border")}>
+      <div className={cn("overflow-hidden rounded-xl bg-secondary/40", !edgeToEdge && "p-3 sm:p-5")}>
+        <div className={cn("relative aspect-video w-full overflow-hidden", !edgeToEdge && "rounded-lg")}>
           {image ? (
             <Image
               src={image}
@@ -37,7 +37,7 @@ export function WorkProjectCard({
           )}
         </div>
       </div>
-      <div className={cn("mt-5 grid gap-3", large && "border-b border-border pb-8 sm:mt-6 lg:grid-cols-2 lg:gap-12")}>
+      <div className={cn("mt-5 grid gap-3", large && "pb-5 sm:mt-6 lg:grid-cols-2 lg:gap-12")}>
         <div>
           <p className="text-sm text-muted-foreground">{project.industry}</p>
           <Heading as={heading} variant={large ? "subsection" : "project"} className="mt-2 transition-colors group-hover/card:text-primary">{project.name}</Heading>

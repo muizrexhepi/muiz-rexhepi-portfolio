@@ -20,7 +20,7 @@ export function FooterCta({
   return (
     <section
       className={cn(
-        "overflow-hidden border-y border-border bg-background py-16 text-foreground sm:py-20",
+        "overflow-hidden bg-background py-16 text-foreground sm:py-20",
         className,
       )}
     >
@@ -42,11 +42,11 @@ export function FooterCta({
         </div>
         <Image
           unoptimized
-          src="/brand/illustrations/project-inquiry.webp"
-          width={250}
-          height={250}
+          src="/brand/illustrations/project-inquiry-v2.webp"
+          width={360}
+          height={240}
           alt=""
-          className="hidden size-52 shrink-0 md:block"
+          className="hidden h-44 w-72 shrink-0 object-contain md:block"
         />
       </Container>
     </section>

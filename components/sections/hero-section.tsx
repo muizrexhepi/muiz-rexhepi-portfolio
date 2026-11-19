@@ -9,8 +9,8 @@ import { HeroArtwork } from "@/components/sections/hero-artwork";
 
 export function HeroSection() {
   return (
-    <section className="relative isolate overflow-hidden bg-background py-10 sm:py-14 lg:py-20">
-      <Container className="grid items-center gap-7 lg:grid-cols-[1.05fr_1fr] lg:gap-8">
+    <section className="relative isolate overflow-hidden bg-background pt-9 pb-7 sm:py-14 lg:py-20">
+      <Container className="grid items-center gap-5 sm:gap-8 lg:grid-cols-[1.2fr_1fr]">
         <div className="relative z-10 text-center lg:text-left">
           <Heading as="h1" variant="hero" className="type-display-home mx-auto max-w-[19ch] lg:mx-0">
             <span className="block">Websites &amp; software.</span>
