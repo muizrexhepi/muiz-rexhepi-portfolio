@@ -1,69 +1,54 @@
-export type ProcessStep = {
+export type ProcessPhase = {
   title: string;
-  description: string;
-  details: string[];
+  summary: string;
+  outcome: string;
+  steps: { title: string; description: string }[];
 };
 
-export const processSteps: ProcessStep[] = [
+export const processPhases: ProcessPhase[] = [
   {
-    title: "Discover",
-    description:
-      "We’ll clarify the business goal, audience, current workflow, constraints, and what the project needs to achieve.",
-    details: [
-      "Business goals",
-      "User needs",
-      "Current problems",
-      "Technical constraints",
+    title: "Define what matters",
+    summary: "We get clear on the problem, the people using the product, and what needs to be ready for launch.",
+    outcome: "A clear brief, agreed scope, and shared priorities.",
+    steps: [
+      {
+        title: "Understand the business",
+        description: "We talk through what your customers or team need to do, what gets in the way, and what a useful result looks like.",
+      },
+      {
+        title: "Agree on the plan",
+        description: "We define the scope, priorities, and responsibilities before design and development begins.",
+      },
     ],
   },
   {
-    title: "Structure",
-    description:
-      "I’ll define scope, information architecture, core features, content, and the technical direction before execution.",
-    details: [
-      "Project scope",
-      "Feature priorities",
-      "Information architecture",
-      "Technical direction",
+    title: "Design and build",
+    summary: "Designs and working previews make progress visible, so you can give useful feedback early.",
+    outcome: "Working software you’ve had a chance to use and review.",
+    steps: [
+      {
+        title: "Shape the experience",
+        description: "I design the key screens and journeys around the people using them, across desktop and mobile.",
+      },
+      {
+        title: "Build and review",
+        description: "I share working previews as the product takes shape. We check the important flows together and refine the details.",
+      },
     ],
   },
   {
-    title: "Design",
-    description:
-      "I’ll design clear, responsive interfaces that reduce friction and make the product easier to understand and use.",
-    details: [
-      "UX structure",
-      "Interface design",
-      "Responsive layouts",
-      "Design refinement",
-    ],
-  },
-  {
-    title: "Build",
-    description:
-      "I’ll develop the product with maintainable components, reliable integrations, and production-ready foundations.",
-    details: [
-      "Frontend development",
-      "Backend integration",
-      "CMS or product logic",
-      "Performance foundations",
-    ],
-  },
-  {
-    title: "Launch",
-    description:
-      "I’ll test critical flows, handle deployment, connect required services, and prepare the product for real users.",
-    details: ["Quality assurance", "Deployment", "Analytics", "Launch support"],
-  },
-  {
-    title: "Improve",
-    description:
-      "I can keep improving the product around usage, feedback, operational needs, and new business priorities.",
-    details: [
-      "Ongoing support",
-      "Conversion improvements",
-      "Feature iteration",
-      "Maintenance",
+    title: "Launch and improve",
+    summary: "We test the important journeys, prepare a considered handover, and decide what comes next.",
+    outcome: "A tested release, a practical handover, and agreed next steps.",
+    steps: [
+      {
+        title: "Prepare for launch",
+        description: "I check the critical flows, responsive layouts, and required integrations before connecting the finished product to your domain.",
+      },
+      {
+        title: "Hand over and improve",
+        description: "You get a walkthrough of how to manage the product. We agree on any ongoing support or next priorities.",
+      },
     ],
   },
 ];

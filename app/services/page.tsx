@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 
 import { Container } from "@/components/layout/container";
 import { Heading, Text } from "@/components/ui/typography";
@@ -59,8 +61,9 @@ export default function ServicesPage() {
                 </article>
               ))}
               {entries.length === 1 && (
-                <Link href="/work/ido-tours" className="mt-6 w-fit border-t-0 pt-0 text-sm font-semibold text-primary underline-offset-4 hover:underline">
-                  See the Ido Tours case study ↗
+                <Link href="/work/doros-premium" className="inline-flex min-h-11 w-fit items-center gap-2 text-sm font-semibold text-primary underline-offset-4 hover:underline">
+                  See the Doros Premium case study
+                  <HugeiconsIcon icon={ArrowUpRight01Icon} size={17} aria-hidden="true" />
                 </Link>
               )}
             </div>

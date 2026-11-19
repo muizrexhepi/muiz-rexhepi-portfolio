@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
@@ -26,8 +28,8 @@ export default function AboutPage() {
               In 4+ years of development, I’ve built production software for daily restaurant operations, bus ticket bookings, hospitality reservations, and mobile products.
             </Text>
             <div className="mt-7 flex flex-wrap gap-5 text-sm font-semibold text-primary">
-              <a href={site.profiles.linkedin} className="hover:underline">LinkedIn ↗</a>
-              <a href={site.profiles.github} className="hover:underline">GitHub ↗</a>
+              <a href={site.profiles.linkedin} className="inline-flex min-h-11 items-center gap-2 hover:underline">LinkedIn <HugeiconsIcon icon={ArrowUpRight01Icon} size={17} aria-hidden="true" /></a>
+              <a href={site.profiles.github} className="inline-flex min-h-11 items-center gap-2 hover:underline">GitHub <HugeiconsIcon icon={ArrowUpRight01Icon} size={17} aria-hidden="true" /></a>
             </div>
           </div>
           <div className="grid place-items-center py-5">
@@ -42,7 +44,7 @@ export default function AboutPage() {
             <Text variant="lead">
               I start by learning how your business runs and where software would make the biggest difference. I’ll share what I’m building early, explain the decisions that affect your team, and work with you through testing and launch.
             </Text>
-            <Link href="/work" className="mt-6 inline-flex font-semibold text-primary hover:underline">Explore my work ↗</Link>
+            <Link href="/work" className="mt-6 inline-flex min-h-11 items-center gap-2 font-semibold text-primary hover:underline">Explore my work <HugeiconsIcon icon={ArrowUpRight01Icon} size={17} aria-hidden="true" /></Link>
           </div>
         </Container>
       </Section>

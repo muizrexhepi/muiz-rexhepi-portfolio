@@ -1,8 +1,9 @@
+import Image from "next/image";
+
 import { Container } from "@/components/layout/container";
-import { PageIntro } from "@/components/layout/page-intro";
 import { Section } from "@/components/layout/section";
+import { ProcessPhaseList } from "@/components/process/process-phase-list";
 import { Heading, Text } from "@/components/ui/typography";
-import { processSteps } from "@/lib/process";
 import { pageMetadata } from "@/lib/site";
 
 export const metadata = pageMetadata(
@@ -14,28 +15,20 @@ export const metadata = pageMetadata(
 export default function ProcessPage() {
   return (
     <>
-      <Section spacing="sm" className="border-b border-border">
-        <Container>
-          <PageIntro
-            title="From first conversation to launch."
-            description="You’ll see what’s taking shape, know which decisions need your input, and have time to try the important workflows before they go live."
-          />
+      <Section spacing="sm">
+        <Container className="grid items-center gap-7 lg:grid-cols-[1.1fr_.9fr] lg:gap-16">
+          <div>
+            <Heading as="h1" variant="hero" className="max-w-[16ch]">Clear scope.<br />Visible progress.</Heading>
+            <Text variant="lead" className="mt-6 max-w-[47ch]">
+              You’ll work directly with me, see what’s taking shape, and try the important workflows before they go live.
+            </Text>
+          </div>
+          <Image unoptimized src="/brand/illustrations/connected-workflows-v2.webp" alt="" width={1200} height={800} className="mx-auto h-auto w-full max-w-64 lg:max-w-md" />
         </Container>
       </Section>
-      <Section>
+      <Section className="pt-5 sm:pt-10">
         <Container>
-          <ol className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {processSteps.map((step, index) => (
-              <li key={step.title} className="rounded-2xl border border-border bg-card p-6 sm:p-8">
-                <span className="grid size-10 place-items-center rounded-full border border-primary/50 font-semibold text-primary">{index + 1}</span>
-                <Heading as="h2" variant="subsection" className="mt-6">{step.title}</Heading>
-                <Text className="mt-3">{step.description}</Text>
-                <ul className="mt-5 space-y-2 border-t border-border pt-4 text-sm text-muted-foreground">
-                  {step.details.map((detail) => <li key={detail}>{detail}</li>)}
-                </ul>
-              </li>
-            ))}
-          </ol>
+          <ProcessPhaseList detailed />
         </Container>
       </Section>
     </>
